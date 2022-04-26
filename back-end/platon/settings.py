@@ -36,7 +36,7 @@ AUTH_USER_MODEL = 'pl_auth.User'
 
 # Application definition
 
-INSTALLED_APPS = [
+FIRST_PARTY_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -45,11 +45,15 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 ]
 
+THIRD_PARTY_APPS = [
+    'rest_framework_simplejwt',
+]
+
 PROJECT_APPS = [
     'pl_auth',
 ]
 
-INSTALLED_APPS += PROJECT_APPS
+INSTALLED_APPS = FIRST_PARTY_APPS + THIRD_PARTY_APPS + PROJECT_APPS
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -133,3 +137,7 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# REST FRAMEWORK
+REST_FRAMEWORK = {'DEFAULT_AUTHENTICATION_CLASSES': (
+    'rest_framework_simplejwt.authentication.JWTAuthentication',)}
