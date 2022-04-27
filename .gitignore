@@ -96,7 +96,7 @@ GitHub.sublime-settings
 /bazel-out
 
 # Node
-/node_modules
+/front-end/node_modules
 npm-debug.log
 yarn-error.log
 
