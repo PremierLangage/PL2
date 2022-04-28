@@ -1,10 +1,12 @@
 import uuid
 
 from typing import Any, Optional
-from django.contrib.auth.models import (AbstractUser, AbstractBaseUser, BaseUserManager, PermissionsMixin)
+from django.contrib.auth.models import (
+    AbstractUser, AbstractBaseUser, BaseUserManager, PermissionsMixin)
 from django.db import models
 
 from rest_framework_simplejwt.tokens import RefreshToken
+
 
 class UserManager(BaseUserManager):  # type: ignore
 
@@ -36,6 +38,7 @@ class UserManager(BaseUserManager):  # type: ignore
 
         return user
 
+
 class User(AbstractBaseUser, PermissionsMixin):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     username = models.CharField(db_index=True, max_length=255, unique=True)
@@ -48,8 +51,8 @@ class User(AbstractBaseUser, PermissionsMixin):
     full_name = models.CharField(max_length=20000, null=True)
     birth_date = models.DateField(null=True)
 
-    USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['username']
+    USERNAME_FIELD = 'username'
+    REQUIRED_FIELDS = ['email']
 
     # Tells Django that the UserManager class defined above should manage
     # objects of this type.

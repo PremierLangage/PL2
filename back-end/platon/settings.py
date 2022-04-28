@@ -46,11 +46,13 @@ FIRST_PARTY_APPS = [
 ]
 
 THIRD_PARTY_APPS = [
+    'rest_framework',
     'rest_framework_simplejwt',
 ]
 
 PROJECT_APPS = [
     'pl_auth',
+    'pl_assets'
 ]
 
 INSTALLED_APPS = FIRST_PARTY_APPS + THIRD_PARTY_APPS + PROJECT_APPS
@@ -139,5 +141,9 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # REST FRAMEWORK
-REST_FRAMEWORK = {'DEFAULT_AUTHENTICATION_CLASSES': (
-    'rest_framework_simplejwt.authentication.JWTAuthentication',)}
+REST_FRAMEWORK = {
+    'EXCEPTION_HANDLER': 'accounts.exceptions.core_exception_handler',
+    'NON_FIELD_ERRORS_KEY': 'error',
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',)
+}
