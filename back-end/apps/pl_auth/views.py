@@ -25,7 +25,7 @@ class RegistrationAPIView(APIView):
         serializer.is_valid(raise_exception=True)
         serializer.save()
         return Response(serializer.data, status=status.HTTP_201_CREATED)
-    
+
 
 class LoginAPIView(APIView):
     permission_classes = (AllowAny,)
@@ -36,7 +36,7 @@ class LoginAPIView(APIView):
         """Return user after login."""
         user = request.data.get('user', {})
         serializer = self.serializer_class(data=user)
-        print("LOGIN VIEW",user)
+        print("LOGIN VIEW", user)
         if not serializer.is_valid():
             print("NOT VALID")
             print(serializer.errors)
@@ -52,7 +52,8 @@ class UserRetrieveUpdateAPIView(RetrieveUpdateAPIView):
 
     def retrieve(self, request: Request, *args: dict[str, Any], **kwargs: dict[str, Any]) -> Response:
         """Return user on GET request."""
-        serializer = self.serializer_class(request.user, context={'request': request})
+        serializer = self.serializer_class(
+            request.user, context={'request': request})
 
         return Response(serializer.data, status=status.HTTP_200_OK)
 
@@ -81,5 +82,3 @@ class LogoutAPIView(APIView):
         serializer.save()
 
         return Response(status=status.HTTP_204_NO_CONTENT)
-
-
