@@ -1,8 +1,8 @@
 from django.urls import path
-from .views import AssetAPIView
+from .views import AbstractAssetViewSet
 
 app_name = 'pl_assets'
 
 urlpatterns = [
-    path('assets/', AssetAPIView.as_view(), name='assets')
+    path('assets/', AbstractAssetViewSet.as_list(), name='assets')
 ]
