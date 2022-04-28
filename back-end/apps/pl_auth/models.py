@@ -52,7 +52,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     birth_date = models.DateField(null=True)
 
     USERNAME_FIELD = 'username'
-    # REQUIRED_FIELDS = ['username']
+    REQUIRED_FIELDS = ['email']
 
     # Tells Django that the UserManager class defined above should manage
     # objects of this type.
