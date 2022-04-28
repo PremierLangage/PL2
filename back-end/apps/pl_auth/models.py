@@ -1,10 +1,12 @@
 import uuid
 
 from typing import Any, Optional
-from django.contrib.auth.models import (AbstractUser, AbstractBaseUser, BaseUserManager, PermissionsMixin)
+from django.contrib.auth.models import (
+    AbstractUser, AbstractBaseUser, BaseUserManager, PermissionsMixin)
 from django.db import models
 
 from rest_framework_simplejwt.tokens import RefreshToken
+
 
 class UserManager(BaseUserManager):  # type: ignore
 
@@ -35,6 +37,7 @@ class UserManager(BaseUserManager):  # type: ignore
         user.save()
 
         return user
+
 
 class User(AbstractBaseUser, PermissionsMixin):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
