@@ -1,0 +1,65 @@
+{
+    "AutomatonDrawer":{
+       "py/type":"components.AutomatonDrawer"
+    },
+    "AutomatonEditor":{
+       "py/type":"components.AutomatonEditor"
+    },
+    "CheckboxGroup":{
+       "py/type":"components.CheckboxGroup"
+    },
+    "CodeEditor":{
+       "py/type":"components.CodeEditor"
+    },
+    "Component":{
+       "py/type":"components.Component"
+    },
+    "DragDrop":{
+       "py/type":"components.DragDrop"
+    },
+    "GraphDrawer":{
+       "py/type":"components.GraphDrawer"
+    },
+    "Input":{
+       "py/type":"components.Input"
+    },
+    "MatchList":{
+       "py/type":"components.MatchList"
+    },
+    "MathDrawer":{
+       "py/type":"components.MathDrawer"
+    },
+    "MathInput":{
+       "py/type":"components.MathInput"
+    },
+    "MathMatrix":{
+       "py/type":"components.MathMatrix"
+    },
+    "RadioGroup":{
+       "py/type":"components.RadioGroup"
+    },
+    "SortList":{
+       "py/type":"components.SortList"
+    },
+    "Text":{
+       "py/type":"components.Text"
+    },
+    "TransfertList":{
+       "py/type":"components.TransfertList"
+    },
+    "author":"DR",
+    "before":"",
+    "code":"",
+    "doc":"pour cela vous utiliser la syntaxe de doctest par exemple pour tester une fonction f \n\n pltest==\n >>> f == f # La fonction existe ?\n True\n >>> f() # f retourne ou affiche 42\n 42\n >>> f() == 42 # retourne 42 \n True\n ==\n\nSi vous voulez plusieurs groupes de test vous notez pltest1 puis pltest2 etc \n\n pltest1==\n Le test suivant sera affich\u00e9 telquel \u00e0 l'\u00e9tudiant \n >>> f != f\n True \n ET sera biensur toujour faux\n le test suivant ne sera affich\u00e9 que si il cause une erreur et seulement l'erreur sera affich\u00e9\n >>> f==f #\n True\n\n le test suivant affichera le text qui suit le #\n >> f == f # Bande de moules \n True\n ==\n #@ template.md [template.html]\n \n\nSi vous souhaitez faire des tests sur le code de l'\u00e9l\u00e8ve la variable __student__ est accessible dans le pltest\n\n pltest2==\n >>> student.count(\"if\")>1 # Trop de tests IF \n False\n ==\n",
+    "editor":{
+       "fontsize":"14"
+    },
+    "form":"\n",
+    "seed":63,
+    "settings":{
+       "allow_reroll":"1"
+    },
+    "tag":"variable | affectation",
+    "text":"\n\nInitialisez les variables jour, mois, annee avec la date du jour.\n",
+    "title":"Initialisation d'une variable (3)."
+ }
