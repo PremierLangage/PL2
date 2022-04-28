@@ -144,5 +144,5 @@ REST_FRAMEWORK = {
     'EXCEPTION_HANDLER': 'accounts.exceptions.core_exception_handler',
     'NON_FIELD_ERRORS_KEY': 'error',
     'DEFAULT_AUTHENTICATION_CLASSES': (
-    'rest_framework_simplejwt.authentication.JWTAuthentication',)
-    }
+        'rest_framework_simplejwt.authentication.JWTAuthentication',)
+}
