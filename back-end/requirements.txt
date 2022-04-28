@@ -1,8 +1,8 @@
 django==4.0.4
 djangorestframework
 djangorestframework-simplejwt
-markdown=='3.3.6'
+markdown==3.3.6
 django-filter
 django-cors-headers
 django-extensions
-jwt
+pyjwt
