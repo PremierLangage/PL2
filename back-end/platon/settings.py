@@ -52,7 +52,8 @@ THIRD_PARTY_APPS = [
 
 PROJECT_APPS = [
     'pl_auth',
-    'pl_assets'
+    'pl_assets',
+    'pl_core',
 ]
 
 INSTALLED_APPS = FIRST_PARTY_APPS + THIRD_PARTY_APPS + PROJECT_APPS
@@ -142,8 +143,13 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # REST FRAMEWORK
 REST_FRAMEWORK = {
-    'EXCEPTION_HANDLER': 'accounts.exceptions.core_exception_handler',
     'NON_FIELD_ERRORS_KEY': 'error',
-    'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework_simplejwt.authentication.JWTAuthentication',)
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ]
 }
+
+
+# NFS_DISK Settigns
+NFS_DISK = os.path.abspath(os.path.join(BASE_DIR, "../nfs-disk/"))
+NFS_ASSETS = os.path.join(NFS_DISK, 'assets/')

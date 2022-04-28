@@ -20,5 +20,6 @@ from .views import api_root
 urlpatterns = [
     path('', api_root),
     path('admin/', admin.site.urls),
-    path('api/', include('pl_auth.urls', namespace='pl_auth')),
+    path('api/', include('pl_auth.urls', namespace='pl_auth',)),
+    path('api/', include('pl_assets.urls', namespace='pl_assets')),
 ]

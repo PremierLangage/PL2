@@ -11,4 +11,6 @@ def api_root(request, format=None):
         'auth-user' : reverse('pl_auth:user', request=request, format=format),
         'auth-token' : reverse('pl_auth:token_obtain_pair', request=request, format=format),
         'auth-token-refresh' : reverse('pl_auth:token_refresh', request=request, format=format),
+
+        'assets' : reverse('pl_assets:assets', request=request, format=format),
     })
