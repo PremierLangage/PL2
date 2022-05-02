@@ -1,9 +1,11 @@
 from django.db import models
 from django.contrib.auth import get_user_model
+from .enums import AssetType
 
 # Create your models here.
 class AbstractAsset(models.Model):
 
+    type = models.CharField(max_length=20, choices=AssetType.choices)
     name = models.CharField(max_length=50, primary_key=True, blank=False)
     date_creation = models.DateTimeField(auto_now_add=True)
     date_ouverture = models.DateField(blank=True)
@@ -13,3 +15,13 @@ class AbstractAsset(models.Model):
 
     def __str__(self):
         return self.name
+
+class ExerciceAsset(AbstractAsset):
+    pass
+
+class ActivityAsset(AbstractAsset):
+    pass
+
+class CoursAsset(AbstractAsset):
+    pass
+

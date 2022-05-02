@@ -54,6 +54,7 @@ PROJECT_APPS = [
     'pl_auth',
     'pl_assets',
     'pl_core',
+    'pl_properties',
 ]
 
 INSTALLED_APPS = FIRST_PARTY_APPS + THIRD_PARTY_APPS + PROJECT_APPS

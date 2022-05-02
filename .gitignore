@@ -5,6 +5,7 @@
 __pycache__
 db.sqlite3
 media
+*_initial.py
 
 # Backup files # 
 *.bak 
@@ -111,7 +112,7 @@ yarn-error.log
 
 
 # Miscellaneous
-/.angular/cache
+front-end/.angular
 .sass-cache/
 /connect.lock
 /coverage
