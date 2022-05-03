@@ -5,7 +5,6 @@ from django.utils.decorators import classonlymethod
 from django.views.generic.base import View
 from rest_framework import mixins, exceptions, viewsets
 from rest_framework.authentication import SessionAuthentication
-from rest_framework.response import Response
 
 
 class AsyncView(View):

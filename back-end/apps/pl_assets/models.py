@@ -2,7 +2,6 @@ from django.db import models
 from django.contrib.auth import get_user_model
 from .enums import AssetType
 
-# Create your models here.
 class AbstractAsset(models.Model):
 
     type = models.CharField(max_length=20, choices=AssetType.choices)
@@ -24,4 +23,5 @@ class ActivityAsset(AbstractAsset):
 
 class CoursAsset(AbstractAsset):
     pass
+
 

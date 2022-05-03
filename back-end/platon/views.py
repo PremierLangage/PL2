@@ -13,4 +13,6 @@ def api_root(request, format=None):
         'auth-token-refresh' : reverse('pl_auth:token_refresh', request=request, format=format),
 
         'assets' : reverse('pl_assets:assets', request=request, format=format),
+        'assets-properties' : reverse('pl_properties:assets-properties', request=request, format=format),
+        'assets-description' : reverse('pl_properties:assets-description', request=request, format=format),
     })

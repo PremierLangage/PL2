@@ -22,4 +22,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('pl_auth.urls', namespace='pl_auth',)),
     path('api/', include('pl_assets.urls', namespace='pl_assets')),
+    path('api/', include('pl_properties.urls', namespace='pl_properties')),
 ]

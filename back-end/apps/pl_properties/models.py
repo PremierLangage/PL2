@@ -1,27 +1,13 @@
 from django.db import models
 from pl_assets.models import AbstractAsset
-from pl_assets.enums import AssetType
+from django.contrib.contenttypes.models import ContentType
+from django.contrib.contenttypes.fields import GenericForeignKey
 
-class AbstractProperties(models.Model):
-    name = models.CharField(max_length=50, primary_key=True, blank=False)
-
-    def get_compatiblity(self, asset: AssetType) -> bool:
-        return False
-    
 class AssetProperties(models.Model):
     asset = models.ForeignKey(AbstractAsset, on_delete=models.CASCADE)
-    property = models.ForeignKey(AbstractProperties, on_delete=models.CASCADE)
+    content_type = models.ForeignKey(ContentType, on_delete=models.SET_NULL, null=True)
+    object_id = models.PositiveBigIntegerField()
+    content_object = GenericForeignKey('content_type', 'object_id')
 
-class Description(AbstractProperties):
-    desc = models.CharField(max_length=1024, null=False)
-
-    def get_compatiblity(self, asset: AssetType) -> bool:
-        return True
-
-class Notation(AbstractProperties):
-    note = models.IntegerField()
-
-    def get_compatiblity(self, asset : AssetType) -> bool:
-        if asset == AssetType.EXERCICE:
-            return True
-        return False
+class AssetDescription(models.Model):
+    desc = models.CharField(max_length=1024, null=False, blank=False)
