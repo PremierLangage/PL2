@@ -141,7 +141,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # REST FRAMEWORK
 REST_FRAMEWORK = {
-    'EXCEPTION_HANDLER': 'accounts.exceptions.core_exception_handler',
+    'EXCEPTION_HANDLER': 'pl_auth.exceptions.core_exception_handler',
     'NON_FIELD_ERRORS_KEY': 'error',
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',)
