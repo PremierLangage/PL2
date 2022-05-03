@@ -11,6 +11,9 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 import sys
 import os
+import hashlib
+import logging
+
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -32,7 +35,7 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 # User Model
-AUTH_USER_MODEL = 'pl_auth.User'
+AUTH_USER_MODEL = 'pl_user.User'
 
 # Application definition
 
@@ -52,7 +55,8 @@ THIRD_PARTY_APPS = [
 
 PROJECT_APPS = [
     'pl_auth',
-    'pl_assets'
+    'pl_assets',
+    'pl_user'
 ]
 
 INSTALLED_APPS = FIRST_PARTY_APPS + THIRD_PARTY_APPS + PROJECT_APPS
@@ -142,8 +146,27 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # REST FRAMEWORK
 REST_FRAMEWORK = {
-    'EXCEPTION_HANDLER': 'accounts.exceptions.core_exception_handler',
+    'EXCEPTION_HANDLER': 'pl_auth.exceptions.core_exception_handler',
     'NON_FIELD_ERRORS_KEY': 'error',
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',)
+}
+
+# Identicon (default avatar)
+IDENTICON_OPTIONS = {
+    'background':    'rgb(224,224,224)',
+    'foreground':    [
+        'rgb(45,79,255)',
+        'rgb(254,180,44)',
+        'rgb(226,121,234)',
+        'rgb(30,179,253)',
+        'rgb(232,77,65)',
+        'rgb(49,203,115)',
+    ],
+    'row':           15,
+    'col':           15,
+    'padding':       (20, 20, 20, 20),
+    'size':          (300, 300),
+    'digest':        hashlib.sha1,
+    'output_format': 'png',
 }
