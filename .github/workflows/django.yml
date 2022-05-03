@@ -1,0 +1,47 @@
+name: Python package
+
+on:
+  push:
+    branches:
+      - '*'
+      - '*/*'
+  pull_request:
+    branches:
+      - '*'
+      - '*/*'
+  schedule:
+    - cron:  '0 6 * * 1'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [3.10]
+
+    name: Python ${{ matrix.python-version }}
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup Python
+        uses: actions/setup-python@master
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install Tox
+        run: |
+          pip install tox
+      - name: Install app
+        run : |
+          ./back-end/bin/install.sh
+      - name: Run Tox
+        run: tox
+
+      - name: Upload coverage to Codecov
+        if: matrix.python-version == 3.10
+        uses: codecov/codecov-action@v1
+        with:
+          file: ./coverage.xml
+
+    
