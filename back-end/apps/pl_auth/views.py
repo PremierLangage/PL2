@@ -1,7 +1,9 @@
+from django.http import JsonResponse
 from django.shortcuts import render
 from typing import Any, Optional
 
-from django.conf import settings
+
+from django.contrib.auth import authenticate, login, logout
 from rest_framework import status
 from rest_framework.generics import RetrieveUpdateAPIView
 from rest_framework.permissions import AllowAny, IsAuthenticated
@@ -9,76 +11,69 @@ from rest_framework.request import Request
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from .renderers import UserJSONRenderer
-from .serializers import RegistrationSerializer, LoginSerializer, LogoutSerializer, UserSerializer
+from pl_auth.forms import SignInForm
+from pl_user.serializers import UserSerializer 
 
 
-class RegistrationAPIView(APIView):
-    permission_classes = (AllowAny,)
-    renderer_classes = (UserJSONRenderer,)
-    serializer_class = RegistrationSerializer
+# class RegistrationAPIView(APIView):
+#     permission_classes = (AllowAny,)
+#     renderer_classes = (UserJSONRenderer,)
+#     serializer_class = RegistrationSerializer
 
-    def post(self, request: Request) -> Response:
-        """Return user response after a successful registration."""
-        user_request = request.data.get('user', {})
-        serializer = self.serializer_class(data=user_request)
-        serializer.is_valid(raise_exception=True)
-        serializer.save()
-        return Response(serializer.data, status=status.HTTP_201_CREATED)
+#     def post(self, request: Request) -> Response:
+#         """Return user response after a successful registration."""
+#         user_request = request.data.get('user', {})
+#         serializer = self.serializer_class(data=user_request)
+#         serializer.is_valid(raise_exception=True)
+#         serializer.save()
+#         return Response(serializer.data, status=status.HTTP_201_CREATED)
 
 
 class LoginAPIView(APIView):
+    "View that handle sign in request."
+    
     permission_classes = (AllowAny,)
-    renderer_classes = (UserJSONRenderer,)
-    serializer_class = LoginSerializer
 
     def post(self, request: Request) -> Response:
         """Return user after login."""
-        user = request.data.get('user', {})
-        serializer = self.serializer_class(data=user)
-        print("LOGIN VIEW", user)
-        if not serializer.is_valid():
-            print("NOT VALID")
-            print(serializer.errors)
-            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-        print("NO ERROR LOGIN")
-        return Response(serializer.data, status=status.HTTP_200_OK)
-
-
-class UserRetrieveUpdateAPIView(RetrieveUpdateAPIView):
-    permission_classes = (IsAuthenticated,)
-    renderer_classes = (UserJSONRenderer,)
-    serializer_class = UserSerializer
-
-    def retrieve(self, request: Request, *args: dict[str, Any], **kwargs: dict[str, Any]) -> Response:
-        """Return user on GET request."""
-        serializer = self.serializer_class(
-            request.user, context={'request': request})
-
-        return Response(serializer.data, status=status.HTTP_200_OK)
-
-    def update(self, request: Request, *args: dict[str, Any], **kwargs: dict[str, Any]) -> Response:
-        """Return updated user."""
-        serializer_data = request.data.get('user', {})
-
-        serializer = self.serializer_class(
-            request.user, data=serializer_data, partial=True, context={'request': request}
-        )
-        serializer.is_valid(raise_exception=True)
-        serializer.save()
-
-        return Response(serializer.data, status=status.HTTP_200_OK)
+        form = SignInForm(request.data)
+        if form.is_valid():
+            user = authenticate(
+                username=form.cleaned_data['username'],
+                password=form.cleaned_data['password']
+            )
+            
+            if user is None:
+                print("NONE USER AFTER AUTHENTICATE")
+                return Response(request, status=status.HTTP_400_BAD_REQUEST)
+            print("before login", user)
+            login(request, user)
+            print("after login", user)
+            serializer = UserSerializer(user, context={'request': request})
+            print('SERIALIZER DATA', serializer.data)
+            print('LOGIN SUCCESS', serializer.data)
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        return JsonResponse(
+            {
+                'validation': form.errors,
+                
+                
+            },
+            status=status.HTTP_400_BAD_REQUEST
+            )
 
 
 class LogoutAPIView(APIView):
-    serializer_class = LogoutSerializer
 
     permission_classes = (IsAuthenticated,)
+    
+    def post(self, request: Request):
+        # logout session authentifications
+        logout(request)
 
-    def post(self, request: Request) -> Response:
-        """Validate token and save."""
-        serializer = self.serializer_class(data=request.data)
-        serializer.is_valid(raise_exception=True)
-        serializer.save()
+        # TODO blacklist current jwt token
+        # https://django-rest-framework-simplejwt.readthedocs.io/en/latest/blacklist_app.html
 
-        return Response(status=status.HTTP_204_NO_CONTENT)
+        return Response({
+            'detail': 'successfully logged out'
+        }, status=status.HTTP_200_OK)
