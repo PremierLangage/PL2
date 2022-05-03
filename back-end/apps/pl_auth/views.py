@@ -42,25 +42,24 @@ class LoginAPIView(APIView):
                 username=form.cleaned_data['username'],
                 password=form.cleaned_data['password']
             )
-            
             if user is None:
-                print("NONE USER AFTER AUTHENTICATE")
-                return Response(request, status=status.HTTP_400_BAD_REQUEST)
-            print("before login", user)
+                return JsonResponse(
+                    {
+                        "http_error": "401",
+                        "error": "We were unable to identify you"
+                    }
+                    , status=status.HTTP_401_UNAUTHORIZED
+                )
             login(request, user)
-            print("after login", user)
             serializer = UserSerializer(user, context={'request': request})
-            print('SERIALIZER DATA', serializer.data)
-            print('LOGIN SUCCESS', serializer.data)
             return Response(serializer.data, status=status.HTTP_200_OK)
         return JsonResponse(
             {
-                'validation': form.errors,
-                
-                
+                "http_error": "400",
+                'error': form.errors,                
             },
             status=status.HTTP_400_BAD_REQUEST
-            )
+        )
 
 
 class LogoutAPIView(APIView):
