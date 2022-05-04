@@ -5,7 +5,7 @@ from .enums import AssetType
 class AbstractAsset(models.Model):
 
     type = models.CharField(max_length=20, choices=AssetType.choices)
-    name = models.CharField(max_length=50, primary_key=True, blank=False)
+    name = models.CharField(max_length=50, blank=False, null=False, unique=True)
     date_creation = models.DateTimeField(auto_now_add=True)
     date_ouverture = models.DateField(blank=True)
     date_fermeture = models.DateField(blank=True)

@@ -6,6 +6,8 @@ from rest_framework.permissions import AllowAny
 from . import models, serializers
 class AbstractAssetViewSet(CrudViewSet):
     
+    lookup_field = 'pk'
+
     permission_classes = (AllowAny,)
     serializer_class = serializers.AbstractAssetSerialize
 

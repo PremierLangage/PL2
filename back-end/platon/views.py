@@ -2,6 +2,8 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework.reverse import reverse
 
+from pl_properties.enums import PropertiesTypes
+
 @api_view(('GET',))
 def api_root(request, format=None):
     return Response({
@@ -12,7 +14,7 @@ def api_root(request, format=None):
         'auth-token' : reverse('pl_auth:token_obtain_pair', request=request, format=format),
         'auth-token-refresh' : reverse('pl_auth:token_refresh', request=request, format=format),
 
-        'assets' : reverse('pl_assets:assets', request=request, format=format),
-        'assets-properties' : reverse('pl_properties:assets-properties', request=request, format=format),
-        'assets-description' : reverse('pl_properties:assets-description', request=request, format=format),
+        'asset' : reverse('pl_assets:asset-list', request=request, format=format),
+        'properties' : reverse('pl_properties:properties-list', request=request, format=format),
+        f'properties/{PropertiesTypes.DESCRIPTION.value}' : reverse(f'pl_properties:{PropertiesTypes.DESCRIPTION.value}-list', request=request, format=format),
     })
