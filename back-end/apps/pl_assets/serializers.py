@@ -1,9 +1,9 @@
 from rest_framework import serializers
 from . import models
 
-class AbstractAssetSerialize(serializers.ModelSerializer[models.AbstractAsset]):
+class AssetSerialize(serializers.ModelSerializer[models.Asset]):
     
     class Meta:
-        model = models.AbstractAsset
+        model = models.Asset
         fields = '__all__'
     

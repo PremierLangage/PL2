@@ -2,7 +2,7 @@ from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from pl_core.mixins import CrudViewSet
 from . import models, serializers
-from pl_assets.models import AbstractAsset
+from pl_assets.models import Asset
 
 class AssetPropertiesViewSet(CrudViewSet):
 
@@ -20,7 +20,7 @@ class AssetPropertiesViewSet(CrudViewSet):
         return Response(serializer.data)
     
     def create_asset_properties(self, request, *args, **kwargs):
-        asset = AbstractAsset.objects.get(pk=kwargs['asset_id'])
+        asset = Asset.objects.get(pk=kwargs['asset_id'])
 
     @classmethod
     def as_asset_properties(cls):
