@@ -27,7 +27,7 @@ jobs:
             echo "DISTRIB_RELEASE=18.04" > /etc/lsb-release
           fi
       - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@master
         with:
           python-version: ${{ matrix.python-version }}
       - name: Install Dependencies
@@ -50,6 +50,11 @@ jobs:
         run: |
           cd back-end/
           python manage.py test apps/
+      - name: Generate Report
+        run: |
+          pip install coverage
+          cd back-end
+          coverage run --source='.' manage.py test apps/
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v2
         with:
