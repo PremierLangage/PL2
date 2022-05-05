@@ -1,10 +1,7 @@
 name: Django Tests CI
 
-on:
-  push:
-    branches: [main, develop]
-  pull_request:
-    branches: [main, develop]
+on: [push, pull_request]
+  branches: [main, develop]
 
 jobs:
   test:
