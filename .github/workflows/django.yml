@@ -48,6 +48,7 @@ jobs:
           pip install coverage
           cd back-end
           coverage run --source='.' manage.py test apps/
-          coverage report -m
+          coverage xml
+          coverage report
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v2
