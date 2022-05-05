@@ -1,47 +1,45 @@
-name: Python package
+name: Django Tests CI
 
 on:
   push:
-    branches:
-      - '*'
-      - '*/*'
+    branches: [main, develop]
   pull_request:
-    branches:
-      - '*'
-      - '*/*'
-  schedule:
-    - cron:  '0 6 * * 1'
+    branches: [main, develop]
 
 jobs:
   test:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-18.04
     strategy:
+      max-parallel: 4
       matrix:
-        python-version: [3.10]
+        python-version: [3.9, 3.10]
 
-    name: Python ${{ matrix.python-version }}
     steps:
       - uses: actions/checkout@v3
-
-      - name: Setup Python
-        uses: actions/setup-python@master
+      # this fixes local act bug of python setup
+      - name: local act python setup fix
+        run: |
+          # Hack to get setup-python to work on act
+          # (see https://github.com/nektos/act/issues/251)
+          if [ ! -f "/etc/lsb-release" ] ; then
+            echo "DISTRIB_RELEASE=18.04" > /etc/lsb-release
+          fi
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v2
         with:
           python-version: ${{ matrix.python-version }}
-      
-      - name: Install Dependancies
+      - name: Install Dependencies
         run: |
-            cd ./back-end
-            pip install -r requirements.txt
-
-      - name: Tox
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run Tests
+        env:
+          DEBUG: ${{ secrets.DEBUG }}
+          SECRET_KEY: ${{ secrets.SECRET_KEY }}
+          DB_ENGINE: ${{ secrets.DB_ENGINE }}
+          DB_NAME: ${{ secrets.DB_NAME }}
+          BASE_WEATHER_API_URL: ${{ secrets.BASE_WEATHER_API_URL }}
+          WEATHER_API_KEY: ${{ secrets.WEATHER_API_KEY }}
         run: |
-          pip install tox
-          tox
-
-      - name: Upload coverage to Codecov
-        if: matrix.python-version == 3.10
-        uses: codecov/codecov-action@v1
-        with:
-          file: ./coverage.xml
-
-    
+          cd back-end/
+          python manage.py test apps/
