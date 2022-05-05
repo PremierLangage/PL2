@@ -57,5 +57,3 @@ jobs:
           coverage run --source='.' manage.py test apps/
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v2
-        with:
-          file: ./coverage.xml
