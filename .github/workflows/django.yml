@@ -40,13 +40,6 @@ jobs:
             cd back-end
             python manage.py migrate
       - name: Run Tests
-        env:
-          DEBUG: ${{ secrets.DEBUG }}
-          SECRET_KEY: ${{ secrets.SECRET_KEY }}
-          DB_ENGINE: ${{ secrets.DB_ENGINE }}
-          DB_NAME: ${{ secrets.DB_NAME }}
-          BASE_WEATHER_API_URL: ${{ secrets.BASE_WEATHER_API_URL }}
-          WEATHER_API_KEY: ${{ secrets.WEATHER_API_KEY }}
         run: |
           cd back-end/
           python manage.py test apps/
@@ -55,5 +48,6 @@ jobs:
           pip install coverage
           cd back-end
           coverage run --source='.' manage.py test apps/
+          coverage report -m
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v2
