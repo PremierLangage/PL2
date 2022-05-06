@@ -64,7 +64,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         # if self.pk and not self.avatar:
-        #self.avatar.save(self.username, File(generate_identicon(self)))
+        # self.avatar.save(self.username, File(generate_identicon(self)))
 
     def __str__(self) -> str:
         """Return a string representation of this `User`."""
