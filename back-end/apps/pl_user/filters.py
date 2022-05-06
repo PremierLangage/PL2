@@ -1,15 +1,3 @@
-
-  
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
-#
-#  filters.py
-#
-#  Authors:
-#       - Mamadou CISSE <mciissee.@gmail.com>
-#
-
-
 from django.contrib.auth import get_user_model
 from django_filters import rest_framework as filters
 from django.db.models import Q

@@ -1,6 +1,5 @@
 import uuid
 
-
 from typing import Optional
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 from django.core.files import File
@@ -54,18 +53,18 @@ class User(AbstractBaseUser, PermissionsMixin):
     last_name = models.CharField(max_length=20000, null=True)
     birth_date = models.DateField(null=True)
 
-    USERNAME_FIELD = 'username' 
+    USERNAME_FIELD = 'username'
     REQUIRED_FIELDS = ['email']
 
 
     # Tells Django that the UserManager class defined above should manage
     # objects of this type.
     objects = UserManager()
-    
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        #if self.pk and not self.avatar:
-            #self.avatar.save(self.username, File(generate_identicon(self)))
+        # if self.pk and not self.avatar:
+        # self.avatar.save(self.username, File(generate_identicon(self)))
 
     def __str__(self) -> str:
         """Return a string representation of this `User`."""
@@ -77,7 +76,7 @@ class User(AbstractBaseUser, PermissionsMixin):
         """Allow us to get a user's token by calling `user.token`."""
         refresh = RefreshToken.for_user(self)
         return {'refresh': str(refresh), 'access': str(refresh.access_token)}
-    
+
     @property
     def is_admin(self):
         """

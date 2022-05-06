@@ -20,6 +20,7 @@ def validate_email(value: str) -> tuple[bool, str]:
 
     return True, ''
 
+
 def avatar_path(instance, filename):
     print("AVATAR PATH", "avatar/" + filename + '.' + settings.IDENTICON_OPTIONS['output_format'])
     return "avatar/" + filename + '.' + settings.IDENTICON_OPTIONS['output_format']

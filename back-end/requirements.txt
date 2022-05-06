@@ -14,3 +14,4 @@ pydenticon
 PyJWT==2.3.0
 pytz==2022.1
 sqlparse==0.4.2
+tox~=3.23.0

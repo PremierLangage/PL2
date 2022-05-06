@@ -6,7 +6,7 @@ from .views import LoginAPIView, LogoutAPIView
 app_name = 'pl_auth'
 
 urlpatterns = [
-    #path('register/', RegistrationAPIView.as_view(), name='register'),
+    # path('register/', RegistrationAPIView.as_view(), name='register'),
     path('auth/login/', LoginAPIView.as_view(), name='login'),
     path('auth/logout/', LogoutAPIView.as_view(), name="logout"),
     path('token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
