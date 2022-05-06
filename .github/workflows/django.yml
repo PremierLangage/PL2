@@ -18,7 +18,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-      # this fixes local act bug of python setup
+      
       - name: local act python setup fix
         run: |
           # Hack to get setup-python to work on act
@@ -26,23 +26,30 @@ jobs:
           if [ ! -f "/etc/lsb-release" ] ; then
             echo "DISTRIB_RELEASE=18.04" > /etc/lsb-release
           fi
+          
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@master
         with:
           python-version: ${{ matrix.python-version }}
+          
       - name: Install Dependencies
         run: |
           cd back-end/
           python -m pip install --upgrade pip
           pip install -r requirements.txt
+          
       - name: Run migrations
         run: |
             cd back-end
             python manage.py migrate
+            
       - name: Run Tests
+        env:
+          DEBUG: true 
         run: |
           cd back-end/
-          python manage.py test apps/
+          tox        
+          
       - name: Generate Report
         run: |
           pip install coverage
@@ -50,6 +57,7 @@ jobs:
           coverage run --source='.' manage.py test apps/
           coverage xml
           coverage report
+          
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v2
         with:
