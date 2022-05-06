@@ -14,11 +14,13 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
+from django.shortcuts import redirect
 from django.urls import path, include
 from .views import api_root
 
 urlpatterns = [
-    path('', api_root),
-    path('admin/', admin.site.urls),
-    path('api/', include('pl_auth.urls', namespace='pl_auth')),
+    path('api/v1/admin/', admin.site.urls),
+    path('api/v1/', api_root),
+    path('api/v1/', include('pl_auth.urls', namespace='pl_auth')),
+    path('api/v1/', include('pl_user.urls', namespace='pl_user')),
 ]

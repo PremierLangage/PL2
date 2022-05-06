@@ -1,0 +1,9 @@
+{
+    "title":"Mon super activite",
+    "description":"This is a test",
+    "exercises":[
+       "./exercise1.json",
+       "./exercise2.json",
+       "./exercise3.json"
+    ]
+ }

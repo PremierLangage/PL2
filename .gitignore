@@ -111,7 +111,7 @@ yarn-error.log
 
 
 # Miscellaneous
-/.angular/cache
+/front-end/.angular
 .sass-cache/
 /connect.lock
 /coverage
@@ -130,5 +130,4 @@ Thumbs.db
 !.vscode/launch.json 
 !.vscode/extensions.json 
 .history
-
 
