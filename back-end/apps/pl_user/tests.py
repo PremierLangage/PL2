@@ -13,7 +13,7 @@ class ModelsTestCase(TestCase):
     @classmethod
     def setUpTestData(cls):
         User.objects.create_user(username='user', password='12345', email="fake1@fake.com")
-        admin:User = User.objects.create_user(username='admin', password='adminadmin', email="fake2@fake.com")
+        admin: User = User.objects.create_user(username='admin', password='adminadmin', email="fake2@fake.com")
         admin.is_staff = True
         admin.is_editor = True
 
@@ -29,7 +29,3 @@ class ModelsTestCase(TestCase):
         user.is_staff = False
         user.is_superuser = True
         self.assertTrue(user.is_admin)
-        
-    
-    
-    

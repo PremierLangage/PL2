@@ -86,7 +86,7 @@ User = get_user_model()
 #         if not user.is_active:
 #             raise serializers.ValidationError(
 #                 'This user is not currently activated.')
-        
+
 #         return user
 
 
@@ -127,7 +127,7 @@ class UserSerializer(serializers.ModelSerializer[User]):
             'url',
         )
         read_only_fields = ('tokens',)
-        
+
     def get_url(self, value):
         print("In get url", self.context)
         request = self.context['request']
@@ -136,4 +136,3 @@ class UserSerializer(serializers.ModelSerializer[User]):
             request=request,
             kwargs={'username': value.username}
         )
-

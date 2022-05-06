@@ -12,7 +12,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from pl_auth.forms import SignInForm
-from pl_user.serializers import UserSerializer 
+from pl_user.serializers import UserSerializer
 
 
 # class RegistrationAPIView(APIView):
@@ -31,7 +31,7 @@ from pl_user.serializers import UserSerializer
 
 class LoginAPIView(APIView):
     "View that handle sign in request."
-    
+
     permission_classes = (AllowAny,)
 
     def post(self, request: Request) -> Response:
@@ -47,8 +47,7 @@ class LoginAPIView(APIView):
                     {
                         "http_error": "401",
                         "error": "We were unable to identify you"
-                    }
-                    , status=status.HTTP_401_UNAUTHORIZED
+                    }, status=status.HTTP_401_UNAUTHORIZED
                 )
             login(request, user)
             serializer = UserSerializer(user, context={'request': request})
@@ -56,7 +55,7 @@ class LoginAPIView(APIView):
         return JsonResponse(
             {
                 "http_error": "400",
-                'error': form.errors,                
+                'error': form.errors,
             },
             status=status.HTTP_400_BAD_REQUEST
         )
@@ -65,7 +64,7 @@ class LoginAPIView(APIView):
 class LogoutAPIView(APIView):
 
     permission_classes = (IsAuthenticated,)
-    
+
     def post(self, request: Request):
         # logout session authentifications
         logout(request)
