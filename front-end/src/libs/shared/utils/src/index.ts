@@ -1,2 +1,2 @@
-export * from './lib/pipes';
-export * from './lib/utils';
+export * from './libs/pipes';
+export * from './libs/utils';

@@ -1,5 +1,5 @@
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule, Type } from '@angular/core';
-import { BaseModule } from './shared/components/base/base.module';
+import { BaseModule } from '../../app/exercise/shared/components/base/base.module';
 
 import { ExerciseComponent } from './exercise.component';
 

@@ -1,5 +1,5 @@
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule, Type } from '@angular/core';
-import { IconGrPipeModule } from '@platon/shared/utils';
+import { IconGrPipeModule } from 'src/libs/shared/utils/src';
 import { BaseModule } from '../../shared/components/base/base.module';
 
 import { MathLiveComponent } from './math-live.component';

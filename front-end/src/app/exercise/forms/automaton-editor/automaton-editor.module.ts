@@ -2,7 +2,7 @@ import { NgModule, Type } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { SharedUiDialogModule } from '@platon/shared/ui/dialog';
+import { SharedUiDialogModule } from 'src/libs/shared/ui/dialog/src';
 import { BaseModule } from '../../shared/components/base/base.module';
 
 import { AutomatonEditorComponent } from './automaton-editor.component';

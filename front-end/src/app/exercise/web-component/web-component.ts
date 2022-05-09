@@ -1,6 +1,6 @@
 import { ChangeDetectorRef, InjectionToken, Injector } from '@angular/core';
 import { JSONSchema7 } from 'json-schema';
-import { deepCopy } from '../../../libs/shared/utils/src/index';;
+import { deepCopy } from 'src/libs/shared/utils/src';
 
 export enum WebComponentTypes {
     form = 'form',

@@ -4,7 +4,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { PickerComponent } from './picker.component';
 import { FormsModule } from '@angular/forms';
-import { IconGrPipeModule } from '@platon/shared/utils';
+import { IconGrPipeModule } from 'src/libs/shared/utils/src';
 
 @NgModule({
     declarations: [PickerComponent],

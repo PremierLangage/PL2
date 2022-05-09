@@ -1,7 +1,7 @@
 import { ElementRef, Pipe, PipeTransform } from '@angular/core';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
-import { Exercise } from './exercise.service';
-import { WebComponentService } from './web-component/web-component.service';
+import { Exercise } from '../exercise/exercise.service';
+import { WebComponentService } from '../exercise/web-component/web-component.service';
 
 @Pipe({
     name: 'component',

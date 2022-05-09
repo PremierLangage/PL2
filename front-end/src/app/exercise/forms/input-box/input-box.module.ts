@@ -7,7 +7,7 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 import { InputBoxComponent } from './input-box.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { IconGrPipeModule } from '@platon/shared/utils';
+import { IconGrPipeModule } from 'src/libs/shared/utils/src';
 
 @NgModule({
     declarations: [InputBoxComponent],

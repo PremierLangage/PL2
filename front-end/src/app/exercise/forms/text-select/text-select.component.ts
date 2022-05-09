@@ -7,7 +7,7 @@ import {
     Input
 } from '@angular/core';
 import { CssPipe } from '../../shared/pipes/css.pipe';
-import { WebComponent, WebComponentHooks } from '../../web-component';
+import { WebComponent, WebComponentHooks } from '../../web-component/web-component';
 import { TextSelectComponentDefinition, TextSelectState } from './text-select';
 
 // https://javascript.info/selection-range

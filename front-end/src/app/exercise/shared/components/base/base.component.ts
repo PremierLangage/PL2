@@ -1,5 +1,5 @@
 import { Component, ElementRef, EventEmitter, Input, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
-import { WebComponentDefinition } from '../../../web-component/web-component';
+import { WebComponentDefinition } from 'src/app/exercise/web-component/web-component';
 import { WebComponentService } from '../../../web-component/web-component.service';
 
 
