@@ -5,11 +5,9 @@ import { ExerciseComponent } from './exercise.component';
 
 import { NzCardModule } from 'ng-zorro-antd/card';
 
-import { PipesModule } from './pipes.module';
-
 @NgModule({
     declarations: [ExerciseComponent],
-    imports: [BaseModule, NzCardModule,PipesModule],
+    imports: [BaseModule, NzCardModule],
     exports: [ExerciseComponent],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })

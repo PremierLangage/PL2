@@ -27,10 +27,13 @@ import { FormsModule } from '@angular/forms';
 import { IconsProviderModule } from './icons-provider.module';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
 
+import { SafePipeM } from './exercise/safe.pipe';
+import { ExercisePipe } from './exercise/exercise.pipe';
+
 registerLocaleData(fr);
 
 @NgModule({
-  declarations: [AppComponent, CourseComponent, ActivityComponent,CourseListComponent, ExerciseComponent],
+  declarations: [AppComponent, CourseComponent, ActivityComponent,CourseListComponent, ExerciseComponent, SafePipeM, ExercisePipe],
   imports: [BrowserModule, BrowserAnimationsModule,AppRoutingModule, HttpClientModule,MatCardModule,MatExpansionModule,MatSidenavModule,MatCheckboxModule,MatIconModule,NzLayoutModule,NzBreadCrumbModule, FormsModule, IconsProviderModule, NzMenuModule],
   providers: [ActivityService, ExerciseService, { provide: NZ_I18N, useValue: fr_FR }],
   bootstrap: [AppComponent],
