@@ -1,35 +1,37 @@
-
-<h2 >
-    MY ACTIVITY WORKS
-</h2>
 <nz-layout>
-    <nz-header>
-        <div class="logo"></div>
-        <ul nz-menu nzTheme="dark" nzMode="horizontal" class="header-menu">
-        <li nz-menu-item>activite 1</li>
-        <li nz-menu-item>activite 2</li>
-        <li nz-menu-item>activite 3</li>
+  <nz-header>
+    <h2>MY ACTIVITY WORKS</h2>
+    <div class="logo"></div>
+    <ul nz-menu nzTheme="dark" nzMode="horizontal" class="header-menu">
+      <li
+        *ngFor="let e of activity.exercises"
+        nz-menu-item
+        (click)="onExerciseClick(e)"
+      >
+        >e.name
+      </li>
+    </ul>
+  </nz-header>
+  <nz-content class="outer-content">
+    <nz-breadcrumb>
+      <nz-breadcrumb-item>{{ activity.title }}</nz-breadcrumb-item>
+    </nz-breadcrumb>
+    <nz-layout class="inner-layout">
+      <nz-sider nzWidth="200px" nzTheme="light">
+        <ul nz-menu nzMode="inline" class="sider-menu">
+          <li
+            nz-menu-item
+            *ngFor="let item of activity.exercises"
+            (click)="setToDisplay(item)"
+          >
+            {{ item }}
+          </li>
         </ul>
-    </nz-header>
-    <nz-content class="outer-content">
-        <nz-breadcrumb>
-        <nz-breadcrumb-item>{{activity.title}}</nz-breadcrumb-item>
-        </nz-breadcrumb>
-        <nz-layout class="inner-layout">
-        <nz-sider nzWidth="200px" nzTheme="light">
-            <ul nz-menu nzMode="inline" class="sider-menu">
-            <li nz-menu-item *ngFor="let item of activity.exercises" (click)="setToDisplay(item)"> {{item}}</li>
-            </ul>
-        </nz-sider>
-        <nz-content class="inner-content">
-            <wc-exercise></wc-exercise>
-        </nz-content>
-        </nz-layout>
-        <nz-footer>footer</nz-footer>
-    </nz-content>
+      </nz-sider>
+      <nz-content class="inner-content">
+        <wc-exercise></wc-exercise>
+      </nz-content>
+    </nz-layout>
+    <nz-footer>footer</nz-footer>
+  </nz-content>
 </nz-layout>
-
-
-
-
-
