@@ -1,0 +1,1 @@
+export * from './icongr.pipe';
