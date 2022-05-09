@@ -11,7 +11,6 @@ class AssetSerialize(serializers.ModelSerializer[models.Asset]):
         fields = '__all__'
     
     def get_properties(self, value : models.Asset):
-        request = self.context['request']
         queryset = AssetProperties.objects.filter(asset=value)
         properties = list()
         for asset in queryset:
