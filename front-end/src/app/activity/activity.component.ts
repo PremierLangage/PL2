@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivityService } from '../activity/activity.service';
 import { ExerciseService } from '../exercise/exercise.service';
+import { ExerciseComponent } from '../exercise/exercise.component';
 
 @Component({
   selector: 'app-activity',
@@ -9,7 +10,6 @@ import { ExerciseService } from '../exercise/exercise.service';
 })
 export class ActivityComponent implements OnInit {
   toDisplay:string = '';
-  isChosen:boolean = false;
   constructor(private activityService: ActivityService,
               private exerciseService: ExerciseService
     ) {
@@ -24,9 +24,7 @@ export class ActivityComponent implements OnInit {
 
   setToDisplay(str:string) : void{
     this.toDisplay = str;
-    this.isChosen = true;
     this.exercise = JSON.stringify(this.exerciseService.getExercise(this.toDisplay));
-    console.log(this.isChosen);
     console.log(this.exercise);
   }
 

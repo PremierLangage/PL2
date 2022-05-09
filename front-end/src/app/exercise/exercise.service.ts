@@ -25,3 +25,14 @@ export class ExerciseService {
         }
     }
 }
+
+export interface Exercise {
+    title: string;
+    text: string;
+    form: string;
+    state: Object;
+    selector: string;
+    general_feedback: string;
+    feedback_correct: string;
+    feedback_wrong: string;
+}

@@ -20,6 +20,9 @@
     "@angular/platform-browser": "~13.2.0",
     "@angular/platform-browser-dynamic": "~13.2.0",
     "@angular/router": "~13.2.0",
+    "@juristr/ngx-lazy-el": "^1.0.1",
+    "juristr": "^1.1.0",
+    "ng-zorro-antd": "^13.2.1",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
