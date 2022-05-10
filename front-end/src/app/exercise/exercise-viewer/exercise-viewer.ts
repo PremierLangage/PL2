@@ -2,15 +2,15 @@ import {
     defineWebComponent,
     IWebComponent,
     WebComponentTypes,
-} from './web-component/web-component';
+} from '../web-component/web-component';
 
-import { Exercise } from './exercise.service';
+import { Exercise } from '../exercise.service';
 
-export interface ExerciseState extends IWebComponent {
+export interface ExerciseViewerState extends IWebComponent {
     exercise: Exercise;
 }
 
-export const ExerciseComponentDefinition = defineWebComponent({
+export const ExerciseViewerComponentDefinition = defineWebComponent({
     type: WebComponentTypes.widget,
     name: 'Exercise',
     icon: '',

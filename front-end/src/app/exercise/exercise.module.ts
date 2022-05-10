@@ -1,16 +1,19 @@
-import { CUSTOM_ELEMENTS_SCHEMA, NgModule, Type } from '@angular/core';
-import { BaseModule } from '../../app/exercise/shared/components/base/base.module';
-
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { ExerciseComponent } from './exercise.component';
-
-import { NzCardModule } from 'ng-zorro-antd/card';
+import { ShowcaseComponent } from './showcase/showcase.component';
+import { MatButtonModule } from '@angular/material/button';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule({
-    declarations: [ExerciseComponent],
-    imports: [BaseModule, NzCardModule],
-    exports: [ExerciseComponent],
-    schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  imports: [
+    CommonModule,
+    MatButtonModule,
+    MatTooltipModule,
+  ],
+  declarations: [ExerciseComponent, ShowcaseComponent],
+  exports: [ExerciseModule]
 })
 export class ExerciseModule {
-    customElementComponent: Type<any> = ExerciseComponent;
+    component = ExerciseComponent;
 }

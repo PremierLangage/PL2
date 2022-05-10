@@ -5,7 +5,6 @@ import { AppComponent } from './app.component';
 import { CourseComponent } from './course/course.component';
 import { ActivityComponent } from './activity/activity.component';
 import { ActivityService} from './activity/activity.service';
-import { ExerciseComponent } from './exercise/exercise.component';
 import { ExerciseService} from './exercise/exercise.service';
 import { CourseListComponent } from './course-list/course-list.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -26,12 +25,14 @@ import fr from '@angular/common/locales/fr';
 import { FormsModule } from '@angular/forms';
 import { IconsProviderModule } from './icons-provider.module';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
-import { SafePipe } from './exercise/safe.pipe';
-import { ExercisePipe } from './exercise/exercise.pipe';
+import { SafePipe } from './shared/pipes/safe.pipe';
+import { ExercisePipe } from './shared/pipes/exercise.pipe';
+import { ExerciseModule } from './exercise/exercise.module';
+
 
 @NgModule({
-  declarations: [AppComponent, CourseComponent, ActivityComponent,CourseListComponent, ExerciseComponent,SafePipe, ExercisePipe],
-  imports: [BrowserModule, BrowserAnimationsModule,AppRoutingModule, HttpClientModule,MatCardModule,MatExpansionModule,MatSidenavModule,MatCheckboxModule,MatIconModule,NzLayoutModule,NzBreadCrumbModule, FormsModule, IconsProviderModule, NzMenuModule],
+  declarations: [AppComponent, CourseComponent, ActivityComponent, CourseListComponent,SafePipe, ExercisePipe],
+  imports: [ExerciseModule, BrowserModule, BrowserAnimationsModule,AppRoutingModule, HttpClientModule,MatCardModule,MatExpansionModule,MatSidenavModule,MatCheckboxModule,MatIconModule,NzLayoutModule,NzBreadCrumbModule, FormsModule, IconsProviderModule, NzMenuModule],
   providers: [ActivityService, ExerciseService, { provide: NZ_I18N, useValue: fr_FR }],
   bootstrap: [AppComponent],
 })

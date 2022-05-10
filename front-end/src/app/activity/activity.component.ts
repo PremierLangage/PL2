@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivityService } from '../activity/activity.service';
 import { ExerciseService } from '../exercise/exercise.service';
-import { ExerciseComponent } from '../exercise/exercise.component';
 
 @Component({
   selector: 'app-activity',
