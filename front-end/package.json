@@ -72,7 +72,7 @@
     "mathlive": "^0.59.0",
     "monaco-editor": "^0.25.2",
     "ng-event-bus": "^2.0.0",
-    "ng-zorro-antd": "^11.2.0",
+    "ng-zorro-antd": "^13.2.2",
     "ngx-build-plus": "^11.0.0",
     "ngx-pipes": "^2.7.5",
     "rxjs": "~6.6.6",
