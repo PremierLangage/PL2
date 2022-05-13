@@ -1,0 +1,43 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "alwaysStrict": true,
+    "strictNullChecks": true,
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "esnext",
+    "typeRoots": ["node_modules/@types"],
+    "lib": ["es2017", "dom"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@platon/core/auth": ["libs/core/auth/src/index.ts"],
+      "@platon/core/config": ["libs/core/config/src/index.ts"],
+      "@platon/shared/utils": ["libs/shared/utils/src/index.ts"],
+      "@platon/shared/vendors": ["libs/shared/vendors/src/index.ts"],
+      "@platon/shared/ui/tree": ["libs/shared/ui/tree/src/index.ts"],
+      "@platon/shared/ui/icon": ["libs/shared/ui/icon/src/index.ts"],
+      "@platon/shared/ui/list": ["libs/shared/ui/list/src/index.ts"],
+      "@platon/shared/ui/dialog": ["libs/shared/ui/dialog/src/index.ts"],
+      "@platon/shared/ui/search": ["libs/shared/ui/search/src/index.ts"],
+      "@platon/shared/ui/stepper": ["libs/shared/ui/stepper/src/index.ts"],
+      "@platon/feature/web-component": ["libs/feature/web-component/src/index.ts"],
+      "@platon/feature/workspace": ["libs/feature/workspace/src/index.ts"]
+    }
+  },
+  "angularCompilerOptions": {
+    "strictTemplates": true,
+    "strictInjectionParameters": true
+  },
+  "exclude": ["node_modules", "tmp"]
+}

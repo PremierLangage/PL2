@@ -1,109 +1,624 @@
 {
-  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
-  "cli": {
-    "analytics": "9a82519c-f249-4b7d-b8f9-7f67e5418c2e"
-  },
   "version": 1,
-  "newProjectRoot": "projects",
   "projects": {
-    "pl2": {
+    "platon": {
       "projectType": "application",
       "schematics": {
-        "@schematics/angular:application": {
-          "strict": true
+        "@nrwl/angular:component": {
+          "style": "scss"
         }
       },
-      "root": "",
-      "sourceRoot": "src",
+      "root": "apps/platon",
+      "sourceRoot": "apps/platon/src",
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "ngx-build-plus:browser",
           "options": {
-            "outputPath": "dist/pl2",
-            "index": "src/index.html",
-            "main": "src/main.ts",
-            "polyfills": "src/polyfills.ts",
-            "tsConfig": "tsconfig.app.json",
+            "outputPath": "dist/apps/platon",
+            "index": "apps/platon/src/index.html",
+            "main": "apps/platon/src/main.ts",
+            "polyfills": "apps/platon/src/polyfills.ts",
+            "tsConfig": "apps/platon/tsconfig.app.json",
+            "aot": true,
             "assets": [
-              "src/favicon.ico",
-              "src/assets"
+              "apps/platon/src/favicon.ico",
+              "apps/platon/src/assets",
+              {
+                "glob": "**/*",
+                "input": "assets",
+                "output": "./assets"
+              },
+              {
+                "glob": "**/*",
+                "input": "./node_modules/@ant-design/icons-angular/src/inline-svg/",
+                "output": "/assets/@ant-design/assets/"
+              },
+              {
+                "glob": "**/*.md",
+                "input": "libs/feature/web-component/src/lib",
+                "output": "./assets/docs/components"
+              },
+              {
+                "glob": "**/*.svg",
+                "input": "libs/feature/web-component/src/lib",
+                "output": "./assets/images/components"
+              },
+              {
+                "glob": "**/*",
+                "input": "./node_modules/intro.js/",
+                "output": "./assets/vendors/intro.js/"
+              },
+              {
+                "glob": "**/*",
+                "input": "./node_modules/katex/dist/",
+                "output": "./assets/vendors/katex/"
+              },
+              {
+                "glob": "**/*",
+                "input": "./node_modules/jsplumb/dist/",
+                "output": "./assets/vendors/jsplumb/"
+              },
+              {
+                "glob": "**/*",
+                "input": "./node_modules/jsplumb/css/",
+                "output": "./assets/vendors/jsplumb/css/"
+              },
+              {
+                "glob": "**/*",
+                "input": "./node_modules/jsxgraph/distrib/",
+                "output": "./assets/vendors/jsxgraph/"
+              },
+              {
+                "glob": "**/*",
+                "input": "./node_modules/mathlive/dist/",
+                "output": "./assets/vendors/mathlive/"
+              },
+              {
+                "glob": "**/*",
+                "input": "./node_modules/jsoneditor/dist/",
+                "output": "./assets/vendors/jsoneditor/"
+              },
+              {
+                "glob": "**/*",
+                "input": "./node_modules/@mcisse/nge/assets/monaco/",
+                "output": "./assets/vendors/nge/monaco/"
+              },
+              {
+                "glob": "**/*",
+                "input": "./node_modules/monaco-editor/min",
+                "output": "./assets/vendors/nge/monaco/min"
+              },
+              {
+                "glob": "**/*",
+                "input": "./node_modules/monaco-editor/min-maps",
+                "output": "./assets/vendors/nge/monaco/min-maps"
+              },
+              {
+                "glob": "**/*.js",
+                "input": "./node_modules/emoji-toolkit/lib/js/",
+                "output": "./assets/vendors/emoji-toolkit/"
+              },
+              {
+                "glob": "viz.js",
+                "input": "./node_modules/viz.js/",
+                "output": "./assets/vendors/viz/"
+              }
             ],
             "styles": [
-              "src/styles.css"
+              "styles/app.scss",
+              "apps/platon/src/styles.scss",
+              { "input": "styles/ng-zorro/dark.less", "bundleName": "styles.ng-zorro.dark", "inject": false },
+              { "input": "styles/ng-zorro/light.less", "bundleName": "styles.ng-zorro.light", "inject": false },
+              { "input": "styles/material/dark.scss", "bundleName": "styles.material.dark", "inject": false },
+              { "input": "styles/material/light.scss", "bundleName": "styles.material.light", "inject": false }
             ],
-            "scripts": []
+            "scripts": [
+              {
+                "bundleName": "polyfill-webcomp-es5",
+                "input": "node_modules/@webcomponents/webcomponentsjs/custom-elements-es5-adapter.js"
+              },
+              {
+                "bundleName": "polyfill-webcomp",
+                "input": "node_modules/@webcomponents/webcomponentsjs/bundles/webcomponents-sd-ce-pf.js"
+              },
+              "node_modules/rxjs/bundles/rxjs.umd.js",
+              "node_modules/@angular/core/bundles/core.umd.js",
+              "node_modules/@angular/common/bundles/common.umd.js",
+              "node_modules/@angular/common/bundles/common-http.umd.js",
+              "node_modules/@angular/compiler/bundles/compiler.umd.js",
+              "node_modules/@angular/elements/bundles/elements.umd.js",
+              "node_modules/@angular/platform-browser/bundles/platform-browser.umd.js",
+              "node_modules/@angular/platform-browser-dynamic/bundles/platform-browser-dynamic.umd.js",
+              "node_modules/@angular/router/bundles/router.umd.js",
+              "node_modules/@angular/forms/bundles/forms.umd.js"
+            ],
+            "allowedCommonJsDependencies": ["hammerjs", "d3-graphviz"]
           },
           "configurations": {
             "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/platon/src/environments/environment.ts",
+                  "with": "apps/platon/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "none",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "2kb",
-                  "maximumError": "4kb"
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
                 }
-              ],
-              "fileReplacements": [
-                {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.prod.ts"
-                }
-              ],
-              "outputHashing": "all"
-            },
-            "development": {
-              "buildOptimizer": false,
-              "optimization": false,
-              "vendorChunk": true,
-              "extractLicenses": false,
-              "sourceMap": true,
-              "namedChunks": true
+              ]
             }
-          },
-          "defaultConfiguration": "production"
+          }
         },
         "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
+          "builder": "ngx-build-plus:dev-server",
+          "options": {
+            "browserTarget": "platon:build"
+          },
           "configurations": {
             "production": {
-              "browserTarget": "pl2:build:production"
-            },
-            "development": {
-              "browserTarget": "pl2:build:development"
+              "browserTarget": "platon:build:production"
             }
-          },
-          "defaultConfiguration": "development"
+          }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "pl2:build"
+            "browserTarget": "platon:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/platon/tsconfig.app.json",
+              "apps/platon/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!apps/platon/**/*"]
+          }
+        },
+        "test": {
+          "builder": "ngx-build-plus:karma",
+          "options": {
+            "main": "apps/platon/src/test.ts",
+            "tsConfig": "apps/platon/tsconfig.spec.json",
+            "karmaConfig": "apps/platon/karma.conf.js",
+            "polyfills": "apps/platon/src/polyfills.ts",
+            "styles": [],
+            "scripts": [],
+            "assets": []
+          }
+        }
+      }
+    },
+    "platon-e2e": {
+      "root": "apps/platon-e2e",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "apps/platon-e2e/protractor.conf.js",
+            "devServerTarget": "platon:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "platon:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": "apps/platon-e2e/tsconfig.e2e.json",
+            "exclude": ["**/node_modules/**", "!apps/platon-e2e/**/*"]
+          }
+        }
+      }
+    },
+    "core-auth": {
+      "projectType": "library",
+      "root": "libs/core/auth",
+      "sourceRoot": "libs/core/auth/src",
+      "prefix": "auth",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/core/auth/tsconfig.lib.json",
+              "libs/core/auth/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/core/auth/**/*"]
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "src/test.ts",
-            "polyfills": "src/polyfills.ts",
-            "tsConfig": "tsconfig.spec.json",
-            "karmaConfig": "karma.conf.js",
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ],
-            "styles": [
-              "src/styles.css"
-            ],
-            "scripts": []
+            "main": "libs/core/auth/src/test.ts",
+            "tsConfig": "libs/core/auth/tsconfig.spec.json",
+            "karmaConfig": "libs/core/auth/karma.conf.js"
           }
+        }
+      },
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "core-config": {
+      "projectType": "library",
+      "root": "libs/core/config",
+      "sourceRoot": "libs/core/config/src",
+      "prefix": "config",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/core/config/tsconfig.lib.json",
+              "libs/core/config/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/core/config/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/core/config/src/test.ts",
+            "tsConfig": "libs/core/config/tsconfig.spec.json",
+            "karmaConfig": "libs/core/config/karma.conf.js"
+          }
+        }
+      },
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "shared-utils": {
+      "projectType": "library",
+      "root": "libs/shared/utils",
+      "sourceRoot": "libs/shared/utils/src",
+      "prefix": "utils",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/shared/utils/tsconfig.lib.json",
+              "libs/shared/utils/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/shared/utils/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/shared/utils/src/test.ts",
+            "tsConfig": "libs/shared/utils/tsconfig.spec.json",
+            "karmaConfig": "libs/shared/utils/karma.conf.js"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "shared-vendors": {
+      "projectType": "library",
+      "root": "libs/shared/vendors",
+      "sourceRoot": "libs/shared/vendors/src",
+      "prefix": "vendors",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/shared/vendors/tsconfig.lib.json",
+              "libs/shared/vendors/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/shared/vendors/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/shared/vendors/src/test.ts",
+            "tsConfig": "libs/shared/vendors/tsconfig.spec.json",
+            "karmaConfig": "libs/shared/vendors/karma.conf.js"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "shared-ui-tree": {
+      "projectType": "library",
+      "root": "libs/shared/ui/tree",
+      "sourceRoot": "libs/shared/ui/tree/src",
+      "prefix": "ui-tree",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/shared/ui/tree/tsconfig.lib.json",
+              "libs/shared/ui/tree/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/shared/ui/tree/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/shared/ui/tree/src/test.ts",
+            "tsConfig": "libs/shared/ui/tree/tsconfig.spec.json",
+            "karmaConfig": "libs/shared/ui/tree/karma.conf.js"
+          }
+        }
+      },
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "shared-ui-icon": {
+      "projectType": "library",
+      "root": "libs/shared/ui/icon",
+      "sourceRoot": "libs/shared/ui/icon/src",
+      "prefix": "ui-icon",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/shared/ui/icon/tsconfig.lib.json",
+              "libs/shared/ui/icon/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/shared/ui/icon/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/shared/ui/icon/src/test.ts",
+            "tsConfig": "libs/shared/ui/icon/tsconfig.spec.json",
+            "karmaConfig": "libs/shared/ui/icon/karma.conf.js"
+          }
+        }
+      },
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "shared-ui-list": {
+      "projectType": "library",
+      "root": "libs/shared/ui/list",
+      "sourceRoot": "libs/shared/ui/list/src",
+      "prefix": "ui-list",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/shared/ui/list/tsconfig.lib.json",
+              "libs/shared/ui/list/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/shared/ui/list/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/shared/ui/list/src/test.ts",
+            "tsConfig": "libs/shared/ui/list/tsconfig.spec.json",
+            "karmaConfig": "libs/shared/ui/list/karma.conf.js"
+          }
+        }
+      },
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "shared-ui-dialog": {
+      "projectType": "library",
+      "root": "libs/shared/ui/dialog",
+      "sourceRoot": "libs/shared/ui/dialog/src",
+      "prefix": "ui-dialog",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/shared/ui/dialog/tsconfig.lib.json",
+              "libs/shared/ui/dialog/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/shared/ui/dialog/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/shared/ui/dialog/src/test.ts",
+            "tsConfig": "libs/shared/ui/dialog/tsconfig.spec.json",
+            "karmaConfig": "libs/shared/ui/dialog/karma.conf.js"
+          }
+        }
+      },
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "shared-ui-search": {
+      "projectType": "library",
+      "root": "libs/shared/ui/search",
+      "sourceRoot": "libs/shared/ui/search/src",
+      "prefix": "ui-search",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/shared/ui/search/tsconfig.lib.json",
+              "libs/shared/ui/search/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/shared/ui/search/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/shared/ui/search/src/test.ts",
+            "tsConfig": "libs/shared/ui/search/tsconfig.spec.json",
+            "karmaConfig": "libs/shared/ui/search/karma.conf.js"
+          }
+        }
+      },
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "shared-ui-stepper": {
+      "projectType": "library",
+      "root": "libs/shared/ui/stepper",
+      "sourceRoot": "libs/shared/ui/stepper/src",
+      "prefix": "ui-stepper",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/shared/ui/stepper/tsconfig.lib.json",
+              "libs/shared/ui/stepper/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/shared/ui/stepper/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/shared/ui/stepper/src/test.ts",
+            "tsConfig": "libs/shared/ui/stepper/tsconfig.spec.json",
+            "karmaConfig": "libs/shared/ui/stepper/karma.conf.js"
+          }
+        }
+      },
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "feature-web-component": {
+      "projectType": "library",
+      "root": "libs/feature/web-component",
+      "sourceRoot": "libs/feature/web-component/src",
+      "prefix": "wc",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/feature/web-component/tsconfig.lib.json",
+              "libs/feature/web-component/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/feature/web-component/**/*"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/feature/web-component/src/test.ts",
+            "tsConfig": "libs/feature/web-component/tsconfig.spec.json",
+            "karmaConfig": "libs/feature/web-component/karma.conf.js"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "feature-workspace": {
+      "projectType": "library",
+      "root": "libs/feature/workspace",
+      "sourceRoot": "libs/feature/workspac/src",
+      "prefix": "ws",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/feature/workspace/tsconfig.lib.json",
+              "libs/feature/workspace/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/feature/workspace/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/feature/workspace/src/test.ts",
+            "tsConfig": "libs/feature/workspace/tsconfig.spec.json",
+            "karmaConfig": "libs/feature/workspace/karma.conf.js"
+          }
+        }
+      },
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
         }
       }
     }
   },
-  "defaultProject": "pl2"
+  "cli": {
+    "defaultCollection": "@nrwl/angular"
+  },
+  "schematics": {
+    "@nrwl/angular:application": {
+      "unitTestRunner": "karma",
+      "e2eTestRunner": "protractor"
+    },
+    "@nrwl/angular:library": {
+      "unitTestRunner": "karma"
+    }
+  },
+  "defaultProject": "platon"
 }

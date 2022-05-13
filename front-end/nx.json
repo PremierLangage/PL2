@@ -1,0 +1,69 @@
+{
+  "npmScope": "platon",
+  "implicitDependencies": {
+    "angular.json": "*",
+    "package.json": {
+      "dependencies": "*",
+      "devDependencies": "*"
+    },
+    "tslint.json": "*",
+    "nx.json": "*",
+    "tsconfig.base.json": "*"
+  },
+  "tasksRunnerOptions": {
+    "default": {
+      "runner": "@nrwl/workspace/tasks-runners/default",
+      "options": {
+        "cacheableOperations": ["build", "lint", "test", "e2e"]
+      }
+    }
+  },
+  "projects": {
+    "platon": {
+      "tags": ["scope:platon"]
+    },
+    "platon-e2e": {
+      "tags": [],
+      "implicitDependencies": ["platon"]
+    },
+    "core-auth": {
+      "tags": ["scope:core", "type:auth"]
+    },
+    "core-config": {
+      "tags": ["scope:core", "type:config"]
+    },
+    "shared-utils": {
+      "tags": ["scope:shared", "type:utils"]
+    },
+    "shared-vendors": {
+      "tags": ["scope:shared", "type:vendors"]
+    },
+    "feature-web-component": {
+      "tags": ["scope:feature", "type:web-component"]
+    },
+    "feature-workspace": {
+      "tags": ["scope:feature", "type:workspace"]
+    },
+    "shared-ui-tree": {
+      "tags": ["scope:shared", "type:ui"]
+    },
+    "shared-ui-icon": {
+      "tags": ["scope:shared", "type:ui"]
+    },
+    "shared-ui-list": {
+      "tags": ["scope:shared", "type:ui"]
+    },
+    "shared-ui-dialog": {
+      "tags": ["scope:shared", "type:ui"]
+    },
+    "shared-ui-search": {
+      "tags": ["scope:shared", "type:ui"]
+    },
+    "shared-ui-stepper": {
+      "tags": ["scope:shared", "type:ui"]
+    }
+  },
+  "affected": {
+    "defaultBase": "master"
+  }
+}

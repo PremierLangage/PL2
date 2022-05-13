@@ -96,9 +96,10 @@ GitHub.sublime-settings
 /bazel-out
 
 # Node
+/*/node_modules/
 /front-end/node_modules
-npm-debug.log
-yarn-error.log
+/*/npm-debug.log
+/*/yarn-error.log
 
 # IDEs and editors
 .idea/
@@ -111,8 +112,9 @@ yarn-error.log
 
 
 # Miscellaneous
+.angular
 /front-end/.angular
-.sass-cache/
+/*/.sass-cache/
 /connect.lock
 /coverage
 /libpeerconnection.log

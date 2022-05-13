@@ -1,0 +1,23 @@
+nz-spin {
+  display: flex;
+  justify-content: center;
+  margin-top: 32px;
+}
+
+mat-expansion-panel {
+  margin: 8px 0;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+.search-wrapper {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+  button {
+    margin: 0 12px;
+  }
+}

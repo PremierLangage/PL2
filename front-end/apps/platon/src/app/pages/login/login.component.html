@@ -1,0 +1,40 @@
+<section>
+  <mat-toolbar>
+    <img class="logo" src="assets/images/logo/platon.svg" alt="Logo PLaTon"/>
+    <span>PLaTon</span>
+    <div class="spacer"></div>
+    <a mat-button [routerLink]="'/doc'" target="_blank" [disabled]="connecting">
+      <mat-icon>local_library</mat-icon>
+      Documentation
+    </a>
+  </mat-toolbar>
+    <h1>Connectez-vous à votre compte</h1>
+    <form #form="ngForm" (ngSubmit)="signIn()">
+      <mat-card>
+        <mat-card-content>
+          <mat-form-field appearance="fill">
+            <mat-label>Nom d'utilisateur</mat-label>
+            <input name="username" [(ngModel)]="username" type="text" required matInput>
+            <mat-error>Une nom d'utilisateur valide est requise !</mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Mot de passe</mat-label>
+            <input name="password" [(ngModel)]="password" type="password" required matInput>
+            <mat-error>Un mot de passe est requis !</mat-error>
+          </mat-form-field>
+        </mat-card-content>
+        <mat-card-actions>
+            <mat-spinner
+              *ngIf="connecting"
+              [diameter]="32"
+              [mode]="'indeterminate'">
+            </mat-spinner>
+          <button *ngIf="!connecting" type="submit" mat-raised-button color="primary" [disabled]="!form.valid">SE CONNECTER</button>
+        </mat-card-actions>
+      </mat-card>
+    </form>
+</section>
+<section>
+  <h2>Platform for Learning and Teaching online</h2>
+  <img class="illustration" src="assets/images/illustrations/online-learning.svg" >
+</section>

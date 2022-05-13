@@ -1,0 +1,21 @@
+<ng-container *ngIf="user != null">
+  <app-header
+    [drawerEnabled]="drawerEnabled"
+    [(drawerVisible)]="drawerVisible">
+  </app-header>
+  <mat-drawer-container>
+    <mat-drawer mode="side" [opened]="drawerVisible">
+      <ng-container *ngIf="drawer; else: nodrawer">
+        <ng-content select="app-drawer"></ng-content>
+      </ng-container>
+      <ng-template #nodrawer>
+        <app-drawer drawerTitle="PLaTon">
+          <app-nav></app-nav>
+        </app-drawer>
+      </ng-template>
+    </mat-drawer>
+    <mat-drawer-content>
+      <ng-content select="app-content"></ng-content>
+    </mat-drawer-content>
+  </mat-drawer-container>
+</ng-container>
