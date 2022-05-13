@@ -183,16 +183,6 @@
             "browserTarget": "platon:build"
           }
         },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "apps/platon/tsconfig.app.json",
-              "apps/platon/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**", "!apps/platon/**/*"]
-          }
-        },
         "test": {
           "builder": "ngx-build-plus:karma",
           "options": {
@@ -222,13 +212,6 @@
               "devServerTarget": "platon:serve:production"
             }
           }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": "apps/platon-e2e/tsconfig.e2e.json",
-            "exclude": ["**/node_modules/**", "!apps/platon-e2e/**/*"]
-          }
         }
       }
     },
@@ -238,16 +221,6 @@
       "sourceRoot": "libs/core/auth/src",
       "prefix": "auth",
       "architect": {
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "libs/core/auth/tsconfig.lib.json",
-              "libs/core/auth/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**", "!libs/core/auth/**/*"]
-          }
-        },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -269,16 +242,6 @@
       "sourceRoot": "libs/core/config/src",
       "prefix": "config",
       "architect": {
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "libs/core/config/tsconfig.lib.json",
-              "libs/core/config/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**", "!libs/core/config/**/*"]
-          }
-        },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -300,16 +263,6 @@
       "sourceRoot": "libs/shared/utils/src",
       "prefix": "utils",
       "architect": {
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "libs/shared/utils/tsconfig.lib.json",
-              "libs/shared/utils/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**", "!libs/shared/utils/**/*"]
-          }
-        },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -331,16 +284,6 @@
       "sourceRoot": "libs/shared/vendors/src",
       "prefix": "vendors",
       "architect": {
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "libs/shared/vendors/tsconfig.lib.json",
-              "libs/shared/vendors/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**", "!libs/shared/vendors/**/*"]
-          }
-        },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -362,16 +305,6 @@
       "sourceRoot": "libs/shared/ui/tree/src",
       "prefix": "ui-tree",
       "architect": {
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "libs/shared/ui/tree/tsconfig.lib.json",
-              "libs/shared/ui/tree/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**", "!libs/shared/ui/tree/**/*"]
-          }
-        },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -393,16 +326,6 @@
       "sourceRoot": "libs/shared/ui/icon/src",
       "prefix": "ui-icon",
       "architect": {
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "libs/shared/ui/icon/tsconfig.lib.json",
-              "libs/shared/ui/icon/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**", "!libs/shared/ui/icon/**/*"]
-          }
-        },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -424,16 +347,6 @@
       "sourceRoot": "libs/shared/ui/list/src",
       "prefix": "ui-list",
       "architect": {
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "libs/shared/ui/list/tsconfig.lib.json",
-              "libs/shared/ui/list/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**", "!libs/shared/ui/list/**/*"]
-          }
-        },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -455,16 +368,6 @@
       "sourceRoot": "libs/shared/ui/dialog/src",
       "prefix": "ui-dialog",
       "architect": {
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "libs/shared/ui/dialog/tsconfig.lib.json",
-              "libs/shared/ui/dialog/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**", "!libs/shared/ui/dialog/**/*"]
-          }
-        },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -486,16 +389,6 @@
       "sourceRoot": "libs/shared/ui/search/src",
       "prefix": "ui-search",
       "architect": {
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "libs/shared/ui/search/tsconfig.lib.json",
-              "libs/shared/ui/search/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**", "!libs/shared/ui/search/**/*"]
-          }
-        },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -517,16 +410,6 @@
       "sourceRoot": "libs/shared/ui/stepper/src",
       "prefix": "ui-stepper",
       "architect": {
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "libs/shared/ui/stepper/tsconfig.lib.json",
-              "libs/shared/ui/stepper/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**", "!libs/shared/ui/stepper/**/*"]
-          }
-        },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -548,19 +431,6 @@
       "sourceRoot": "libs/feature/web-component/src",
       "prefix": "wc",
       "architect": {
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "libs/feature/web-component/tsconfig.lib.json",
-              "libs/feature/web-component/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/feature/web-component/**/*"
-            ]
-          }
-        },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -582,16 +452,6 @@
       "sourceRoot": "libs/feature/workspac/src",
       "prefix": "ws",
       "architect": {
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "libs/feature/workspace/tsconfig.lib.json",
-              "libs/feature/workspace/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**", "!libs/feature/workspace/**/*"]
-          }
-        },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
