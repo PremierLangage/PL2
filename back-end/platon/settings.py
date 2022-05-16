@@ -56,7 +56,8 @@ THIRD_PARTY_APPS = [
 PROJECT_APPS = [
     'pl_auth',
     'pl_assets',
-    'pl_user'
+    'pl_user',
+    'playexo',
 ]
 
 INSTALLED_APPS = FIRST_PARTY_APPS + THIRD_PARTY_APPS + PROJECT_APPS
