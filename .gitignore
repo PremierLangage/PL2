@@ -125,6 +125,8 @@ testem.log
 .DS_Store
 Thumbs.db
 
+docs/env_docs
+
 # Visual Studio Code # 
 .vscode/* 
 !.vscode/settings.json 
@@ -132,4 +134,22 @@ Thumbs.db
 !.vscode/launch.json 
 !.vscode/extensions.json 
 .history
+
+
+
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# project
+
+/documentation
+
+
+# compiled output
+/dist
+/tmp
+/out-tsc
+
+# dependencies
+/node_modules
+
 

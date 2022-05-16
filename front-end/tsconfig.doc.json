@@ -1,7 +1,0 @@
-{
-  "include": ["apps/**/*.ts", "libs/**/*.ts"],
-  "exclude": [
-    "apps/**/*.spec.ts",
-    "libs/**/*.spec.ts"
-  ]
-}
