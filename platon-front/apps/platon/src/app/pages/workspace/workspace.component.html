@@ -1,0 +1,20 @@
+<app-tabs [tabs]="tabs">
+  <h1>Espace de travail</h1>
+  <nz-button-group *ngIf="actions.length">
+    <button nz-button nzType="primary" [matMenuTriggerFor]="menu">
+      <i nz-icon nzType="plus" nzTheme="outline"></i>
+    </button>
+  </nz-button-group>
+  <mat-menu #menu="matMenu">
+    <ng-container *ngFor="let action of actions">
+      <a
+        mat-menu-item
+        [disabled]="false"
+        [id]="action.id"
+        [routerLink]="action.link">
+        <mat-icon>{{ action.icon }}</mat-icon>
+        <span>{{ action.title }}</span>
+      </a>
+    </ng-container>
+  </mat-menu>
+</app-tabs>
