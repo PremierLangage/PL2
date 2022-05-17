@@ -4,12 +4,12 @@ from pl_core.mixins import CrudViewSet
 from rest_framework.response import Response
 from rest_framework.permissions import AllowAny
 from . import models, serializers
-class AbstractAssetViewSet(CrudViewSet):
+class AssetViewSet(CrudViewSet):
     
     lookup_field = 'pk'
 
     permission_classes = (AllowAny,)
-    serializer_class = serializers.AbstractAssetSerialize
+    serializer_class = serializers.AssetSerialize
 
     def get_queryset(self):
-        return models.AbstractAsset.objects.all()
+        return models.Asset.objects.all()
