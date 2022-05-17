@@ -153,4 +153,4 @@ REST_FRAMEWORK = {
 
 # NFS_DISK Settigns
 NFS_DISK = os.path.abspath(os.path.join(BASE_DIR, "../nfs-disk/"))
-NFS_ASSETS = os.path.join(NFS_DISK, 'assets/')
+NFS_ASSETS = os.path.join(NFS_DISK, 'Assets/')
