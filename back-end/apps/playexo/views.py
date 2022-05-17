@@ -3,6 +3,7 @@ import io
 import json
 import logging
 import traceback
+from typing import Optional
 from django.http.request import HttpRequest
 
 import htmlprint
@@ -23,7 +24,7 @@ from re import split
 logger = logging.getLogger(__name__)
 
 
-def find_course(parents: dict, childId: int, name: str = None):
+def find_course(parents: dict, childId: int, name: Optional[str]):
     """
         This function return the id and the name of the course at the root of the activity_id: id
     """
@@ -48,10 +49,10 @@ def filter_by_login_or_role(login: bool, request: HttpRequest,
             else:
                 userId = int(request.GET["teacherLogin"])
             sql_request &= Q(user_id=userId)
-            
+
         except (ValueError, Profile.DoesNotExist) as err:
             raise err
-        
+
     elif "type" in request.GET:
         if request.GET["type"] == "teacher":
             tmp = list(map(lambda teacher: teacher[0], teachers))
@@ -81,7 +82,7 @@ def filter_by_grade(minInRequest: bool, maxInRequest: bool, request: HttpRequest
         else:
             minGrade, maxGrade = int(request.GET["min"]), int(request.GET["max"])
             sql_request &= Q(grade__range=(minGrade, maxGrade))
-            
+
     return sql_request
 
 
@@ -229,22 +230,22 @@ def download_answers(request: HttpRequest):
     activities = Activity.objects.exclude(activity_type='course')\
         .filter(id__in=Answer.objects.values_list("activity_id", flat=True)
                 .distinct()).exclude(id=0).values_list("name", "id", "parent_id").order_by('id')
-    sizeMaxActivity = max(map(lambda activity: len(activity[0]), activities))//1.3
+    sizeMaxActivity = max(map(lambda activity: len(activity[0]), activities)) // 1.3
 
     pls = PL.objects.filter(id__in=Answer.objects.values_list(
         "pl_id", flat=True).distinct()).values_list("name", "id").order_by('id')
-    sizeMaxPl = max(map(lambda pl: len(pl[0]), pls))//1.3
+    sizeMaxPl = max(map(lambda pl: len(pl[0]), pls)) // 1.3
 
     courses = Activity.objects.values_list(
         "name", "id").filter(activity_type="course").order_by('id')
-    sizeMaxCourse = max(map(lambda course: len(course[0]), courses))//1.3
+    sizeMaxCourse = max(map(lambda course: len(course[0]), courses)) // 1.3
 
     tags = set()
     tags.update(['tag1', 'tag2', 'tag3', 'tag4'])
 
     parents = {id: Activity.objects.values_list('parent_id', 'name').get(
         id=id) for id in Activity.objects.values_list(
-                "parent_id", flat=True).distinct().filter(parent_id__isnull=False)}
+        "parent_id", flat=True).distinct().filter(parent_id__isnull=False)}
 
     students = list(map(lambda student: (student[0], split(
         "[/_]", student[1])[1]), Profile.objects.filter(role=4).values_list("user_id", "avatar")))
@@ -255,13 +256,13 @@ def download_answers(request: HttpRequest):
         raise PermissionDenied
     if "start" in request.GET or "end" in request.GET:
         sql_request = Q()  # creation of an emtpy request that we will feed gradually
-                
+
         answers = Answer.objects.select_related("activity", "pl", "user")
 
         # the differents boolean follow down, help us to know if elements
         # are present in the request and to calculate if
         # they're required in the final result or not
-        
+
         startInRequest = "start" in request.GET and request.GET["start"] != ''
         endInRequest = "end" in request.GET and request.GET["end"] != ''
 
@@ -284,7 +285,7 @@ def download_answers(request: HttpRequest):
         # the lines below are adding the potential filters to sql_request
 
         sql_request = filter_by_date(startInRequest, endInRequest, request, sql_request)
-        
+
         try:
             sql_request = filter_by_pl(plInRequest, request, sql_request)
         except (ValueError, PL.DoesNotExist):
@@ -300,13 +301,13 @@ def download_answers(request: HttpRequest):
         except (Activity.DoesNotExist, ValueError):
             return HttpResponseNotFound("Course does not exist")
 
-        
+
         try:
             sql_request = filter_by_login_or_role(login, request, sql_request, teachers, students)
         except (ValueError, Profile.DoesNotExist):
             return HttpResponseNotFound("User does not exist")
-        
-                
+
+
 
         if "exclude_grade" in request.GET and request.GET["exclude_grade"] == "on":
             sql_request &= ~Q(grade=None)
@@ -316,7 +317,7 @@ def download_answers(request: HttpRequest):
             # answers = answers.filter( tag__in = request.GET.getlist("tags[]"))
 
         sql_request = filter_by_grade(minInRequest, maxInRequest, request, sql_request)
-        
+
         if actifInRequest:
             sql_request &= Q(activity_id__in=Activity.objects.select_related(
                 "id").all().filter(open=True).values_list("id", flat=True))
@@ -326,7 +327,7 @@ def download_answers(request: HttpRequest):
         if answers.count() == 0:
             return HttpResponseBadRequest(
                 "There is no informations in our database linked to your request", status=400)
-            
+
         if limit:
             answers = answers[:int(request.GET["limit"])]
 
@@ -353,7 +354,7 @@ def download_answers(request: HttpRequest):
                     "tag": answer.pl.json["tag"].split("|")
                     if "include_tag" in request.GET and "tag" in answer.pl.json else None,
                 }
-                    
+
                 try:
                     if answer.activity is None:
                         answer.activity = Activity.objects.get(pl=answer.pl.id)
@@ -367,7 +368,7 @@ def download_answers(request: HttpRequest):
                     course = find_course(parents, answer.activity.parent_id, answer.activity.name)
                     dic[answer.id]["course"] = course[1]
                     dic[answer.id]["course_id"] = course[0]
-                        
+
         stream = io.StringIO(json.dumps(dic))
         response = StreamingHttpResponse(stream, content_type="application/json")
         response['Content-Disposition'] = 'attachment;filename=answers.json'
@@ -379,12 +380,12 @@ def download_answers(request: HttpRequest):
     #         activities = filter((lambda activity:
     #           find_course(parents, activity[2], activity[0])[0] == course_id
     #           if activity[2] is not None else False ), activities)
-            
+
     #     elif("activity" in request.GET and request.GET['activity'].isnumeric()):
     #         pass
 
-        
-    
+
+
     return render(
         request,
         "playexo/download_answers.html",

@@ -3,7 +3,7 @@ from typing import Any, Optional
 
 from django.http import HttpRequest
 
-import htmlprint
+# import htmlprint
 from django.contrib.auth.models import User
 from django.db import models
 from django.db.models import Index
@@ -11,13 +11,13 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.template.loader import get_template
 from django.utils import timezone
-from django_jinja.backend import Jinja2
+# from django_jinja.backend import Jinja2
 from jsonfield import JSONField
 
-from components.components import Component, components_source
-from loader.models import PL
+# from components.components import Component, components_source
+
 from playexo.enums import State
-from playexo.exception import BuildScriptError, SandboxError
+from playexo.exceptions import BuildScriptError, SandboxError
 from playexo.request import SandboxBuild, SandboxEval
 
 from .utils import create_seed
@@ -26,6 +26,21 @@ logger = logging.getLogger(__name__)
 
 
 
+class PL(models.Model):
+    json = JSONField(default={})
+    name = models.CharField(max_length=100, null=False)
+    #directory = models.ForeignKey(Directory, on_delete=models.SET_NULL, null=True)
+    rel_path = models.CharField(max_length=360, null=False)
+
+    def __str__(self):  # pragma: no cover
+        return str(self.id) + " : " + str(self.name)
+
+
+    def duplicate(self):
+        # return PL.objects.create(json=self.json, name=self.name, directory=self.directory,
+        #                          rel_path=self.rel_path)
+        return PL.objects.create(json=self.json, name=self.name,
+                                  rel_path=self.rel_path)
 
 
 class SessionExerciseAbstract(models.Model):
@@ -36,15 +51,15 @@ class SessionExerciseAbstract(models.Model):
         envid   - Must contains the ID of the environment on the sandbox if the session is built.
         context - Dictionnary of the PL (or PLTP)."""
 
-    pl: PL = models.ForeignKey(PL, on_delete=models.CASCADE, null=True)
-    built: models.BooleanField = models.BooleanField(default=False)
-    envid: models.CharField = models.CharField(max_length=300, null=True)
-    context: JSONField = JSONField(null=True)
+    pl = models.ForeignKey(PL, on_delete=models.CASCADE, null=True)
+    built = models.BooleanField(default=False)
+    envid = models.CharField(max_length=300, null=True)
+    context = JSONField(null=True)
 
     class Meta:
         abstract = True
 
-    def add_to_context(self, key: str, value: Any):
+    def add_to_context(self, key: str, value: Any) -> None:
         """Add value corresponding to key in the context."""
 
         current_dic = self.context
@@ -67,7 +82,7 @@ class SessionExerciseAbstract(models.Model):
         'context['dict1']['dict2']...['dictn']['val']"""
         current_dic: JSONField = self.context
         sub_keys: list[str] = key.split('.')
-        
+
         try:
             for k in sub_keys[:-1]:
                 current_dic = current_dic[k]
@@ -75,7 +90,7 @@ class SessionExerciseAbstract(models.Model):
         except KeyError:
             return False
 
-    def reroll(self, seed: int, grade: Optional[int]):
+    def reroll(self, seed: int, grade: Optional[int]) -> bool:
         """Return whether the seed must be reroll (True) or not (False).
         Seed must be reroll if:
             - seed does not exists yet
@@ -88,7 +103,7 @@ class SessionExerciseAbstract(models.Model):
                              else 100)
         return not seed or (oneshot and grade is not None and grade < oneshot_threshold)
 
-    def raw_evaluate(self, request: HttpRequest, answers: dict, test: bool=False):
+    def raw_evaluate(self, request: HttpRequest, answers: dict, test: bool = False) -> tuple[dict, dict, int]:
         """Evaluate the exercise with the given answers according to the current context.
         Parameters:
             request - (django.http.request) Current Django request object.
@@ -109,23 +124,26 @@ class SessionExerciseAbstract(models.Model):
             "grade": response['grade'],
         }
 
-        if response['status'] < 0:  # Sandbox Error
-            feedback = response['feedback']
-            if request.user.profile.can_load() and response['sandboxerr']:
-                feedback += "<br><hr>Sandbox error:<br>" + htmlprint.code(response['sandboxerr'])
-                feedback += "<br><hr>Received on stderr:<br>" + htmlprint.code(response['stderr'])
+        # if response['status'] < 0:  # Sandbox Error
+        #     feedback = response['feedback']
+        #     if request.user.profile.can_load() and response['sandboxerr']:
+        #         feedback += "<br><hr>Sandbox error:<br>" + htmlprint.code(response['sandboxerr'])
+        #         feedback += "<br><hr>Received on stderr:<br>" + htmlprint.code(response['stderr'])
 
-        elif response['status'] > 0:  # Grader Error
-            feedback = ("Une erreur s'est produite lors de l'exécution du grader "
-                        + ("(exit code: %d, env: %s). Merci de prévenir votre professeur"
-                           % (response['status'], response['id'])))
-            if request.user.profile.can_load():
-                feedback += "<br><hr>Received on stderr:<br>" + htmlprint.code(response['stderr'])
+        # elif response['status'] > 0:  # Grader Error
+        #     feedback = ("Une erreur s'est produite lors de l'exécution du grader "
+        #                 + ("(exit code: %d, env: %s). Merci de prévenir votre professeur"
+        #                    % (response['status'], response['id'])))
+        #     if request.user.profile.can_load():
+        #         feedback += "<br><hr>Received on stderr:<br>" + htmlprint.code(response['stderr'])
 
-        else:
-            feedback = response['feedback']
-            if request.user.profile.can_load() and response['stderr']:
-                feedback += "<br><br>Received on stderr:<br>" + htmlprint.code(response['stderr'])
+        # else:
+        #     feedback = response['feedback']
+        #     if request.user.profile.can_load() and response['stderr']:
+        #         feedback += "<br><br>Received on stderr:<br>" + htmlprint.code(response['stderr'])
+        feedback = response['feedback']
+        if request.user.can_load() and response['stderr']:
+            feedback += "<br><br>Received on stderr:<br>" + response['stderr']
 
         self.context.update(response['context'])
         self.context['answers__'] = answers
@@ -134,7 +152,7 @@ class SessionExerciseAbstract(models.Model):
 
         return answer, feedback, response['status']
 
-    def evaluate(self, request, answers, test=False):
+    def evaluate(self, request: HttpRequest, answers: dict, test: bool=False) -> tuple[dict, dict]:
         """Evaluate the exercise with the given answers according to the current context.
         Parameters:
             request - (django.http.request) Current Django request object.
@@ -144,7 +162,7 @@ class SessionExerciseAbstract(models.Model):
         answer, feedback, status = self.raw_evaluate(request, answers, test)
         return answer, feedback
 
-    def build(self, request, test=False, seed=None):
+    def build(self, request: HttpRequest, test=False, seed=None) -> None:
         """Build the exercise with the given according to the current context.
         Parameters:
             request - (django.http.request) Current Django request object.
@@ -157,22 +175,25 @@ class SessionExerciseAbstract(models.Model):
         self.context['seed'] = seed if seed else create_seed()
         self.save()
 
-        response = SandboxBuild(dict(self.context), test=test).call()
-        if response['status'] < 0:
-            msg = ("Une erreur s'est produit sur la sandbox (exit code: %d, env: %s)."
-                   + " Merci de prévenir votre professeur.") % \
-                  (response['status'], response['id'])
-            if request.user.profile.can_load():
-                msg += "<br><br>" + htmlprint.code(response['sandboxerr'])
-            raise SandboxError(msg)
+        response = SandboxBuild(dict(self.context), None, test=test).call()
+        
+        # TODO Find a way to just send a json with the error for the front end.
+        
+        # if response['status'] < 0:
+        #     msg = ("Une erreur s'est produit sur la sandbox (exit code: %d, env: %s)."
+        #            + " Merci de prévenir votre professeur.") % \
+        #           (response['status'], response['id'])
+        #     if request.user.can_load():
+        #         msg += "<br><br>" + response['sandboxerr']
+        #     raise SandboxError(msg)
 
-        if response['status'] > 0:
-            msg = ("Une erreur s'est produite lors de l'exécution du script before/build "
-                   + ("(exit code: %d, env: %s). Merci de prévenir votre professeur"
-                      % (response['status'], response['id'])))
-            if request.user.profile.can_load() and response['stderr']:
-                msg += "<br><br>Reçu sur stderr:<br>" + htmlprint.code(response['stderr'])
-            raise BuildScriptError(msg)
+        # if response['status'] > 0:
+        #     msg = ("Une erreur s'est produite lors de l'exécution du script before/build "
+        #            + ("(exit code: %d, env: %s). Merci de prévenir votre professeur"
+        #               % (response['status'], response['id'])))
+        #     if request.user.profile.can_load() and response['stderr']:
+        #         msg += "<br><br>Reçu sur stderr:<br>" + htmlprint.code(response['stderr'])
+        #     raise BuildScriptError(msg)
 
         context = dict(response['context'])
         keys = list(response.keys())
@@ -187,19 +208,19 @@ class SessionExerciseAbstract(models.Model):
         self.built = True
         self.save()
 
-    def render(self, template, context, request):
-        env = Jinja2.get_default()
-        for k, v in context.items():
-            if isinstance(v, str):
-                context[k] = env.from_string(v).render(
-                    context=context,
-                    request=request
-                )
+    # def render(self, template, context, request):
+    #     env = Jinja2.get_default()
+    #     for k, v in context.items():
+    #         if isinstance(v, str):
+    #             context[k] = env.from_string(v).render(
+    #                 context=context,
+    #                 request=request
+    #             )
 
-        return get_template(template).render({
-            "__components": Component.from_context(context),
-            **context
-        }, request)
+    #     return get_template(template).render({
+    #         "__components": Component.from_context(context),
+    #         **context
+    #     }, request)
 
 
 class SessionExercise(SessionExerciseAbstract):
@@ -209,8 +230,9 @@ class SessionExercise(SessionExerciseAbstract):
         built   - Whether the session is built (True), or need to be built (False).
         envid   - Must contains the ID of the environment on the sandbox if the session is built.
         context - Dictionnary of the PL (or PLTP).
-        session_activity - SessionActivity to which this SessionExercise belong."""
-    session_activity = models.ForeignKey("activity.SessionActivity", on_delete=models.CASCADE)
+        session_activity - SessionActivity to which this SessionExercise belong.
+        """
+    #session_activity = models.ForeignKey("activity.SessionActivity", on_delete=models.CASCADE)
 
     class Meta:
         unique_together = ('pl', 'session_activity')
@@ -440,8 +462,8 @@ class HighestGrade(models.Model):
 def update_highest_grade(sender, instance, created, *args, **kwargs):
     try:
         prev = HighestGrade.objects.get(user=instance.user, pl=instance.pl)
-        if prev.grade is None or (instance.grade is not None and
-                                  int(prev.grade) < int(instance.grade)):
+        if prev.grade is None or (instance.grade is not None
+                                  and int(prev.grade) < int(instance.grade)):
             prev.grade = instance.grade
             prev.activity = instance.activity
             prev.save()

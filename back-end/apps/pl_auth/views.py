@@ -1,4 +1,4 @@
-from django.http import JsonResponse
+from django.http import HttpRequest, JsonResponse
 from django.shortcuts import render
 from typing import Any, Optional
 
@@ -34,7 +34,7 @@ class LoginAPIView(APIView):
 
     permission_classes = (AllowAny,)
 
-    def post(self, request: Request) -> Response:
+    def post(self, request: HttpRequest) -> JsonResponse:
         """Return user after login."""
         form = SignInForm(request.data)
         if form.is_valid():

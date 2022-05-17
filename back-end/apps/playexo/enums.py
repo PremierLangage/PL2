@@ -1,7 +1,4 @@
-from enum import unique
-
-from enumfields import Enum
-
+from enum import unique, Enum
 
 
 @unique

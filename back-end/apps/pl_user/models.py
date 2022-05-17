@@ -95,3 +95,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     def get_username(self) -> str:
         """Return user username."""
         return self.username
+
+    def can_load(self) -> bool:
+    #    return self.role <= Role.INSTRUCTOR or self.is_admin()
+        return self.is_admin()
