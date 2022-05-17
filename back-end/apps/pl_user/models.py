@@ -68,7 +68,7 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     def __str__(self) -> str:
         """Return a string representation of this `User`."""
-        string = self.email if self.email != '' else self.get_full_name()
+        string = self.email if self.email != '' else self.get_username()
         return f'{self.id} {string}'
 
     @property
@@ -82,12 +82,16 @@ class User(AbstractBaseUser, PermissionsMixin):
         """
         Returns whether the user is an administrator
         """
-        return self.is_superuser or self.is_staff
+        return self.is_superuser
 
-    def get_full_name(self) -> Optional[str]:
+    def get_first_name(self) -> Optional[str]:
         """Return the full name of the user."""
-        return self.full_name
+        return self.first_name
 
-    def get_short_name(self) -> str:
+    def get_last_name(self) -> Optional[str]:
+        """Return the full name of the user."""
+        return self.last_name
+
+    def get_username(self) -> str:
         """Return user username."""
         return self.username
