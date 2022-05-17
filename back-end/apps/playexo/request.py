@@ -28,7 +28,7 @@ logger = logging.getLogger(__name__)
 
 class SandboxBuild:
 
-    def __init__(self, dic: dict, sandbox: Optional[SandboxUrl], test: bool=False):
+    def __init__(self, dic: dict, sandbox: Optional[SandboxUrl], test: bool = False):
         self.sandbox: SandboxUrl = settings.SANDBOX if sandbox is None else sandbox
         self.dic: dict = dict(dic)
         self.test: bool = test
@@ -50,16 +50,9 @@ class SandboxBuild:
             s = os.path.join(settings.DOCKER_DEFAULT_FILES, item)
             with open(s, "r") as f:
                 env[item] = f.read()
-
         return env
 
-    def call(self, request_timeout: int=10) -> SandboxResponse:
-        env: Environment = self._build_env()
-        files = {'environment': tar_from_dic(env)}
-        commands = ['chmod +x clean.sh', './clean.sh', 'chmod +x builder.sh', './builder.sh']
-        data = make_data(commands, True, )
-        logger.info("Building on sandbox '" + self.sandbox + "'.")
-        url = os.path.join(self.sandbox, "execute/")
+    def __buildSandboxResponse(self, url: SandboxUrl, data: SandboxRequest, files: dict, request_timeout: int) -> SandboxResponse:
         try:
             request_response: requests.Response = requests.post(url, data=data, files=files, timeout=request_timeout)
             response: SandboxResponse = json.loads(request_response.text)
@@ -90,6 +83,15 @@ class SandboxBuild:
             raise SandboxUnavailable(msg)
         return response
 
+    def call(self, request_timeout: int = 10) -> SandboxResponse:
+        env: Environment = self._build_env()
+        files: dict = {'environment': tar_from_dic(env)}
+        commands: CommandList = ['chmod +x clean.sh', './clean.sh', 'chmod +x builder.sh', './builder.sh']
+        data: SandboxRequest = make_data(commands, True, )
+        logger.info("Building on sandbox '" + self.sandbox + "'.")
+        url: SandboxUrl = os.path.join(self.sandbox, "execute/")
+        return self.__buildSandboxResponse(url, data, files, request_timeout)
+
 
 class SandboxEval:
 
@@ -108,12 +110,7 @@ class SandboxEval:
             logger.exception(msg)
             raise SandboxUnavailable(msg)
 
-    def call(self, request_timeout:int=10) -> SandboxResponse:
-        logger.info("Evaluating on sandbox '" + self.sandbox + "'.")
-        files:dict = {'environment': tar_from_dic({'answers.json': json.dumps(self.answers)})}
-        commands: CommandList = ['chmod +x clean.sh', './clean.sh', 'chmod +x grader.sh', './grader.sh']
-        data: dict = make_data(commands, True, environment=str(self.uuid))
-        url: SandboxUrl = os.path.join(self.sandbox, "execute/")
+    def __buildSandboxResponse(self, url: SandboxUrl, data: SandboxRequest, files: dict, request_timeout: int) -> SandboxResponse:
         try:
             request_response: requests.Response = requests.post(url, data=data, files=files, timeout=request_timeout)
             response: SandboxResponse = json.loads(request_response.text)
@@ -155,3 +152,11 @@ class SandboxEval:
             logger.exception(msg)
             raise SandboxUnavailable(msg)
         return response
+
+    def call(self, request_timeout: int = 10) -> SandboxResponse:
+        logger.info("Evaluating on sandbox '" + self.sandbox + "'.")
+        files: dict = {'environment': tar_from_dic({'answers.json': json.dumps(self.answers)})}
+        commands: CommandList = ['chmod +x clean.sh', './clean.sh', 'chmod +x grader.sh', './grader.sh']
+        data: dict = make_data(commands, True, environment=str(self.uuid))
+        url: SandboxUrl = os.path.join(self.sandbox, "execute/")
+        return self.__buildSandboxResponse(url, data, files, request_timeout)
