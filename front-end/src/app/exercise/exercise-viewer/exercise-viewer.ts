@@ -14,7 +14,7 @@ export const ExerciseViewerComponentDefinition = defineWebComponent({
     type: WebComponentTypes.widget,
     name: 'Exercise',
     icon: '',
-    selector: 'wc-exercise',
+    selector: 'wc-exercise-viewer',
     description: "Permet d'afficher un fichier pl de la plateforme.",
     fullDescriptionUrl:
         '',

@@ -29,7 +29,6 @@ import { SafePipe } from './shared/pipes/safe.pipe';
 import { ExercisePipe } from './shared/pipes/exercise.pipe';
 import { ExerciseModule } from './exercise/exercise.module';
 
-
 @NgModule({
   declarations: [AppComponent, CourseComponent, ActivityComponent, CourseListComponent,SafePipe, ExercisePipe],
   imports: [ExerciseModule, BrowserModule, BrowserAnimationsModule,AppRoutingModule, HttpClientModule,MatCardModule,MatExpansionModule,MatSidenavModule,MatCheckboxModule,MatIconModule,NzLayoutModule,NzBreadCrumbModule, FormsModule, IconsProviderModule, NzMenuModule],
