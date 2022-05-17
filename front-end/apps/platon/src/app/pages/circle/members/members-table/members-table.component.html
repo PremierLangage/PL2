@@ -1,0 +1,42 @@
+<nz-table
+  #nzTable
+  nzShowPagination
+  nzShowSizeChanger
+  nzSize="small"
+  [nzData]="members.results"
+  [nzFrontPagination]="false"
+  [nzLoading]="loading"
+  [nzTotal]="total"
+  [nzPageSize]="pageSize"
+  [nzPageIndex]="pageIndex"
+  (nzQueryParams)="onQueryParamsChange($event)">
+  <thead>
+    <tr>
+      <th>Utilisateur</th>
+      <th>Date d'ajout</th>
+      <th *ngIf="editable"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of nzTable.data">
+      <td>
+        <auth-avatar [username]="data.username"></auth-avatar>
+      </td>
+      <td>{{data.dateJoined|date}}</td>
+      <td *ngIf="editable">
+        <button
+          nz-button
+          nzDanger
+          nzType="primary"
+          nzShape="circle"
+          nz-popconfirm
+          nzOkText="Retirer"
+          nzOkType="danger"
+          [nzPopconfirmTitle]="'Voulez-vous vraiment retirer “'+ data.username +'” des membres du cercle?'"
+          (nzOnConfirm)="didDelete.emit(data)">
+          <i nz-icon nzType="delete"></i>
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</nz-table>

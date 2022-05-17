@@ -1,0 +1,41 @@
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
+import { FileTree } from '@platon/feature/workspace';
+import { Subscription } from 'rxjs';
+import { CirclePresenter } from '../circle.presenter';
+
+@Component({
+    selector: 'app-circle-files',
+    templateUrl: './files.component.html',
+    styleUrls: ['./files.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush
+})
+export class FilesComponent implements OnInit, OnDestroy {
+    private readonly subscriptions: Subscription[] = [];
+
+    context = this.presenter.defaultContext;
+    tree?: FileTree;
+
+    constructor(
+        private readonly presenter: CirclePresenter,
+        private readonly changeDetectorRef: ChangeDetectorRef,
+    ) { }
+
+    ngOnInit() {
+        this.subscriptions.push(
+            this.presenter.contextChange.subscribe(async context => {
+                this.context = context;
+                this.tree = await this.presenter.fileTree().toPromise();
+                this.changeDetectorRef.markForCheck();
+            })
+        );
+    }
+
+    ngOnDestroy(): void {
+        this.subscriptions.forEach(s => s.unsubscribe());
+    }
+
+    async refreshFiles() {
+        this.tree = await this.presenter.fileTree().toPromise();
+        this.changeDetectorRef.markForCheck();
+    }
+}

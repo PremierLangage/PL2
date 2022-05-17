@@ -1,0 +1,23 @@
+<form
+  nz-form
+  nzLayout="vertical"
+  [formGroup]="form"
+  (ngSubmit)="didSubmit.emit(form.value)">
+  <nz-form-item>
+    <nz-form-label nzFor="invitee" nzRequired>Utilisateur</nz-form-label>
+    <nz-form-control>
+      <auth-search-bar
+        id="invitee"
+        name="invitee"
+        formControlName="invitee"
+        [searchMulti]="false"
+        [searchAdmin]="false"
+        [searchEditor]="true"
+        [searchExcludes]="excludes">
+      </auth-search-bar>
+    </nz-form-control>
+  </nz-form-item>
+  <button nz-button type="submit" nzType="primary" [disabled]="!form.valid">
+    Inviter
+  </button>
+</form>

@@ -1,0 +1,52 @@
+<app-tabs [state]="context.state" [tabs]="tabs">
+  <ng-container *ngIf="context.state === 'READY'">
+    <nz-breadcrumb>
+      <nz-breadcrumb-item>
+        <a [routerLink]="circleLink">{{ circleName }}</a>
+      </nz-breadcrumb-item>
+      <nz-breadcrumb-item>
+        {{ context.resource!.name }}
+        <mat-icon>{{ context.resource!.type | resourceIcon }}</mat-icon>
+      </nz-breadcrumb-item>
+    </nz-breadcrumb>
+    <p class="description">{{ context.resource!.desc }}</p>
+    <nz-button-group>
+      <a
+        *ngIf="canEditOnline"
+        nz-button
+        nzType="primary"
+        matTooltip="Éditer en ligne">
+        <i nz-icon nzType="edit" nzTheme="outline"></i>
+      </a>
+      <a
+        nz-button
+        nzType="primary"
+        matTooltip="Prévisualiser">
+        <i nz-icon nzType="play-circle" nzTheme="outline"></i>
+      </a>
+      <a
+        *ngIf="canEditWithVSCode"
+        nz-button
+        matTooltip="Éditer avec Visual Studio Code"
+        [href]="openInVsCodeUrl | safe: 'url'">
+        <img src="assets/images/vscode/vscode.svg" />
+      </a>
+    </nz-button-group>
+    <nz-button-group>
+      <nz-select
+        id="status"
+        name="status"
+        nzShowSearch
+        [(ngModel)]="context.resource!.status"
+        (ngModelChange)="updateStatus($event)"
+        nzPlaceHolder="Cliquez pour selectionner un status"
+        [nzDisabled]="false">
+        <nz-option
+          *ngFor="let item of status; trackBy: trackByValue"
+          [nzLabel]="item|statusLabel"
+          [nzValue]="item">
+        </nz-option>
+      </nz-select>
+    </nz-button-group>
+  </ng-container>
+</app-tabs>

@@ -1,9 +1,0 @@
-mat-sidenav-container {
-    width:1000px;
-    height:1000px; 
-    display: inline-block;
-}
-
-mat-card:hover {
-    background-color: grey;
-  }
