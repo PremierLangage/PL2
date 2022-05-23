@@ -2,11 +2,12 @@
 import io
 import json
 import logging
+import string
 import traceback
 from typing import Optional
 from django.http.request import HttpRequest
 
-import htmlprint
+#import htmlprint
 #from activity.models import Activity
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import PermissionDenied
@@ -14,13 +15,14 @@ from django.http import HttpResponse, HttpResponseNotFound
 from django.http import StreamingHttpResponse, HttpResponseBadRequest
 from django.shortcuts import get_object_or_404, render
 from django.views.decorators.http import require_GET
-#from loader.models import PL
-#from playexo.exception import BuildScriptError, SandboxError
+from .models import PL
+from .exceptions import BuildScriptError, SandboxError
 from playexo.models import Answer, SessionTest
 from django.db.models import Q
-#from user_profile.models import Profile
+from django.contrib.auth import get_user_model
 from re import split
 
+User = get_user_model()
 logger = logging.getLogger(__name__)
 
 
@@ -50,7 +52,7 @@ def filter_by_login_or_role(login: bool, request: HttpRequest,
                 userId = int(request.GET["teacherLogin"])
             sql_request &= Q(user_id=userId)
 
-        except (ValueError, Profile.DoesNotExist) as err:
+        except (ValueError, User.DoesNotExist) as err:
             raise err
 
     elif "type" in request.GET:
@@ -151,7 +153,7 @@ def filter_by_course(courseInRequest: bool, request: HttpRequest, sql_request: Q
 
 @login_required
 def test_pl(request, pl_id):
-    if not request.user.profile.can_load():
+    if not request.user.can_load():
         raise PermissionDenied
     try:
         pl = get_object_or_404(PL, id=pl_id)
@@ -248,9 +250,9 @@ def download_answers(request: HttpRequest):
         "parent_id", flat=True).distinct().filter(parent_id__isnull=False)}
 
     students = list(map(lambda student: (student[0], split(
-        "[/_]", student[1])[1]), Profile.objects.filter(role=4).values_list("user_id", "avatar")))
+        "[/_]", student[1])[1]), User.objects.filter(role=4).values_list("user_id", "avatar")))
     teachers = list(map(lambda teacher: (teacher[0], split(
-        "[/_]", teacher[1])[1]), Profile.objects.filter(role=2).values_list("user_id", "avatar")))
+        "[/_]", teacher[1])[1]), User.objects.filter(role=2).values_list("user_id", "avatar")))
 
     if not request.user.is_staff:
         raise PermissionDenied
@@ -304,7 +306,7 @@ def download_answers(request: HttpRequest):
 
         try:
             sql_request = filter_by_login_or_role(login, request, sql_request, teachers, students)
-        except (ValueError, Profile.DoesNotExist):
+        except (ValueError, User.DoesNotExist):
             return HttpResponseNotFound("User does not exist")
 
 
@@ -383,8 +385,6 @@ def download_answers(request: HttpRequest):
 
     #     elif("activity" in request.GET and request.GET['activity'].isnumeric()):
     #         pass
-
-
 
     return render(
         request,
