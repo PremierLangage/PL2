@@ -14,12 +14,12 @@
 - 
 (à compléter)
 
-git clone git@github.com:PremierLangage/PL2.git
-git checkout develop
-cd back-end/ 
-python3 -m venv env
-source env/bin/activate
-pip install -r requirements.txt
+    git clone git@github.com:PremierLangage/PL2.git
+    git checkout develop
+    cd back-end/ 
+    python3 -m venv env
+    source env/bin/activate
+    pip install -r requirements.txt
 
 cd ../front-end
 npm ci
