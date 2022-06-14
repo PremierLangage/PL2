@@ -21,5 +21,6 @@
     source env/bin/activate
     pip install -r requirements.txt
 
-cd ../front-end
-npm ci
+
+    cd ../front-end
+    npm ci
