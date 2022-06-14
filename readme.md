@@ -14,6 +14,8 @@
 - 
 (à compléter)
 
+### Back End
+
     git clone git@github.com:PremierLangage/PL2.git
     git checkout develop
     cd back-end/ 
@@ -22,5 +24,6 @@
     pip install -r requirements.txt
 
 
+### Front End
     cd ../front-end
     npm ci
