@@ -35,6 +35,7 @@ class UserManager(BaseUserManager):  # type: ignore
         user.is_superuser = True
         user.is_editor = True
         user.is_active = True
+        user.is_staff = True
         user.save()
 
         return user
@@ -45,6 +46,8 @@ class User(AbstractBaseUser, PermissionsMixin):
     username = models.CharField(db_index=True, max_length=255, unique=True)
     email = models.EmailField(db_index=True, unique=True)
     is_editor = models.BooleanField('Editor', default=False)
+    is_staff = models.BooleanField(default=False)
+    is_superuser = models.BooleanField(default=False)
     avatar = models.ImageField(upload_to=avatar_path, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
