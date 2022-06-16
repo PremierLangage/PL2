@@ -89,7 +89,7 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     def get_full_name(self) -> Optional[str]:
         """Return the full name of the user."""
-        return self.full_name
+        return self.last_name + self.first_name
 
     def get_short_name(self) -> str:
         """Return user username."""
