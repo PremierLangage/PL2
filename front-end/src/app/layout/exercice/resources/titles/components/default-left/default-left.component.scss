@@ -1,0 +1,29 @@
+.Exercice-Header {
+    order: -10;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  
+    .top {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+  
+      .author {
+        font-weight: bold;
+      }
+  
+      .version {
+        font-style: italic;
+        opacity: 0.4;
+      }
+    }
+  
+  
+    .title {
+      align-self:center;
+      font-weight: bold;
+    }
+  }
+  

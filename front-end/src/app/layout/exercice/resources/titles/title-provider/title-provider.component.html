@@ -1,0 +1,15 @@
+<span [ngSwitch]="this.exercice?.templates?.titleSelector">
+  <exercice-title-default-left
+    *ngSwitchCase="'default-left'"
+    [title]="this.title"
+    [author]="this.author"
+    [version]="this.version"
+  >
+  </exercice-title-default-left>
+  <exercice-title-default
+    *ngSwitchDefault
+    [title]="this.title"
+    [author]="this.author"
+    [version]="this.version"
+  ></exercice-title-default>
+</span>

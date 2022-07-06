@@ -1,0 +1,6 @@
+<span [ngSwitch]="this.exercice?.templates?.templateSelector">
+  <exercice-templates-default
+    *ngSwitchDefault
+    [exercice]="this.exercice"
+  ></exercice-templates-default>
+</span>
