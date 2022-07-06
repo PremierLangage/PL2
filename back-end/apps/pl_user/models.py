@@ -6,8 +6,6 @@ from django.core.files import File
 from django.db import models
 from rest_framework_simplejwt.tokens import RefreshToken
 
-from .utils import avatar_path, generate_identicon
-
 
 class UserManager(BaseUserManager):  # type: ignore
 
@@ -48,7 +46,6 @@ class User(AbstractBaseUser, PermissionsMixin):
     is_editor = models.BooleanField('Editor', default=False)
     is_staff = models.BooleanField(default=False)
     is_superuser = models.BooleanField(default=False)
-    avatar = models.ImageField(upload_to=avatar_path, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     bio = models.TextField(null=True)
@@ -66,8 +63,6 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        # if self.pk and not self.avatar:
-        # self.avatar.save(self.username, File(generate_identicon(self)))
 
     def __str__(self) -> str:
         """Return a string representation of this `User`."""
