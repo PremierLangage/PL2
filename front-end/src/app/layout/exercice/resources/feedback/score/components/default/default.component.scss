@@ -12,8 +12,16 @@ nz-progress {
 .title {
     display: flex;
     justify-content: center;
+    font-size: 3vw;
 }
 
+.SCOREICON {
+    font-size: 2vw;
+}
+
+h3.scoreText {
+    font-size: 2vw;
+}
 #tv {
     padding: 1vmax;
     position: relative;

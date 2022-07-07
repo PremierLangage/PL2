@@ -1,0 +1,12 @@
+import { Template } from "@angular/compiler/src/render3/r3_ast";
+import { Component, Input } from "@angular/core";
+import { exercice, exerciceFeedBack } from "src/app/models/exercice";
+
+@Component({
+    selector: 'statement-superclass',
+    template: ''
+})
+export class TemplateSuperclass {
+    @Input() exercice?: exercice;
+    @Input() feedback?: exerciceFeedBack;
+}

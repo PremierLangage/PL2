@@ -2,5 +2,15 @@
   <exercice-templates-default
     *ngSwitchDefault
     [exercice]="this.exercice"
+    [feedback]="this.feedback"
   ></exercice-templates-default>
 </span>
+<button
+  nz-button
+  nzShape="round"
+  nzSize="large"
+  nzType="primary"
+  (click)="switchFeedBack()"
+>
+  {{ this.gotFeedBack ? "Disable FeedBack" : "Enable FeedBack" }}
+</button>

@@ -14,7 +14,7 @@
     [ngStyle]="{ background: getScoreColor('0.05') }"
   >
     <div class="title">
-      <h1 nz-typography><strong>Score</strong></h1>
+      <span nz-typography><strong>Score</strong></span>
     </div>
     <nz-divider [nzText]="text">
       <ng-template #text>
@@ -28,11 +28,14 @@
             <i class="c"></i><i class="c"></i><i class="c"></i><i class="c"></i>
           </div>
           <i
+            class="SCOREICON"
             nz-icon
             [nzType]="getScoreEmoji()"
             [ngClass]="getScoreEmojiAnimation()"
           ></i>
-          <h3 nz-typography>{{ this.feedback.score }} / 100</h3>
+          <h3 class="scoreText" nz-typography>
+            {{ this.feedback.score }} / 100
+          </h3>
         </div>
       </ng-template>
     </nz-divider>

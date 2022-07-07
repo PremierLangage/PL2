@@ -1,5 +1,10 @@
 <nz-result
-  [nzStatus]="getStatus()"
-  [nzTitle]="'Score : ' + this.feedback?.score"
-  [nzSubTitle]="this.feedback?.feedback"
-></nz-result>
+  [nzTitle]="'Score : ' + this.feedback?.score + ' / 100'"
+  [nzIcon]="getScoreEmoji()"
+>
+  <div nz-result-subtitle>
+    <div nz-typography class="text">
+      {{ this.feedback?.feedback }}
+    </div>
+  </div>
+</nz-result>

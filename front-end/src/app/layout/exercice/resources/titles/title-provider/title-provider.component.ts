@@ -1,19 +1,18 @@
-import { AfterViewInit, Component, ElementRef, Input, ViewChild } from '@angular/core';
+import { AfterContentInit, AfterViewInit, Component, ElementRef, Input, ViewChild } from '@angular/core';
 import { exercice } from 'src/app/models/exercice';
 
 @Component({
   selector: 'app-title-provider',
   templateUrl: './title-provider.component.html',
 })
-export class TitleProviderComponent implements AfterViewInit {
-
+export class TitleProviderComponent implements AfterContentInit {
   @Input() exercice?: exercice;
 
   title?: string;
   author?: string;
   version?: string;
 
-  ngAfterViewInit(): void {
+  ngAfterContentInit(): void {
     //Called after ngAfterContentInit when the component's view has been initialized. Applies to components only.
     //Add 'implements AfterViewInit' to the class.
     this.title = this.exercice?.process.title;

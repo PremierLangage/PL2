@@ -8,7 +8,7 @@ export const cexExercice : exercice = {
         titleSelector: "default",
         statementSelector: "default-centered",
         feedBackTextSelector: "default",
-        feedBackScoreSelector: "default"
+        feedBackScoreSelector: "default-result"
     },
     process: {
         title: "Example Title Showcase",
