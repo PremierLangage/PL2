@@ -12,7 +12,7 @@ const DECLARATIONS = [
 @NgModule({
     imports: [
         CommonModule,
-        ExerciceTemplateModule
+        ExerciceTemplateModule,
     ],
     exports: [
         ...DECLARATIONS,

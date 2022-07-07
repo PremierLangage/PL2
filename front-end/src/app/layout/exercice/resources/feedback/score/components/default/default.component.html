@@ -1,0 +1,48 @@
+<div
+  id="main"
+  *ngIf="this.feedback"
+  class="rounded-edge"
+  @fadeSlideInOutUpward
+  [ngStyle]="{ margin: '1%' }"
+>
+  <!--
+    SCORE DISPLAYING
+  -->
+  <div
+    id="tv"
+    [@fadeSlideInOutLeftToRight]
+    [ngStyle]="{ background: getScoreColor('0.05') }"
+  >
+    <div class="title">
+      <h1 nz-typography><strong>Score</strong></h1>
+    </div>
+    <nz-divider [nzText]="text">
+      <ng-template #text>
+        <div class="confettis">
+          <div *ngIf="this.feedback.score == 100">
+            <!-- 16 confettis -->
+            <i class="c"></i><i class="c"></i><i class="c"></i
+            ><i class="c"></i> <i class="c"></i><i class="c"></i
+            ><i class="c"></i><i class="c"></i> <i class="c"></i
+            ><i class="c"></i><i class="c"></i><i class="c"></i>
+            <i class="c"></i><i class="c"></i><i class="c"></i><i class="c"></i>
+          </div>
+          <i
+            nz-icon
+            [nzType]="getScoreEmoji()"
+            [ngClass]="getScoreEmojiAnimation()"
+          ></i>
+          <h3 nz-typography>{{ this.feedback.score }} / 100</h3>
+        </div>
+      </ng-template>
+    </nz-divider>
+    <nz-progress
+      nzType="dashboard"
+      [nzPercent]="this.feedback.score"
+      [nzStrokeColor]="getScoreColor('1.0')"
+      nzStatus="active"
+    ></nz-progress>
+
+    <!-- <nz-slider [(ngModel)]="this.feedback.score"></nz-slider> -->
+  </div>
+</div>

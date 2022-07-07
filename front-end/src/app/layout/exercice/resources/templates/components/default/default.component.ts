@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { exercice } from 'src/app/models/exercice';
+import { exercice, exerciceFeedBack} from 'src/app/models/exercice';
+import { cexFeedBackUsed } from "src/app/models/constUsed";
 
 @Component({
   selector: 'exercice-templates-default',
@@ -8,8 +9,10 @@ import { exercice } from 'src/app/models/exercice';
 })
 export class DefaultComponent implements OnInit {
   @Input() exercice? : exercice;
-
-  constructor() { }
+  feedback : exerciceFeedBack;
+  constructor() {
+    this.feedback = cexFeedBackUsed;
+  }
 
   ngOnInit() {
   }

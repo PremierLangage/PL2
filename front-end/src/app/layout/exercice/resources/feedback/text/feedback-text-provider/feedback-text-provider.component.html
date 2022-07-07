@@ -1,0 +1,6 @@
+<span [ngSwitch]="this.exercice?.templates?.feedBackTextSelector">
+  <exercice-feedback-text-default
+    *ngSwitchDefault
+    [feedback]="this.feedback"
+  ></exercice-feedback-text-default>
+</span>
