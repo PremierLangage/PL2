@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { TitleSuperClass } from '../../title-superclass';
 
 
 @Component({
@@ -6,12 +7,5 @@ import { Component, Input, OnInit } from '@angular/core';
   templateUrl: './default.component.html',
   styleUrls: ['./default.component.scss']
 })
-export class DefaultComponent implements OnInit {
-  @Input() title?:    string;
-  @Input() version?:  string;
-  @Input() author?:   string;
-
-  ngOnInit() {    
-  }
-
+export class DefaultComponent extends TitleSuperClass{
 }

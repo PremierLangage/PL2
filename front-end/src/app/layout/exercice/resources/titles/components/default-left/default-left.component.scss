@@ -2,13 +2,13 @@
     order: -10;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: left;
     flex-wrap: wrap;
   
     .top {
       display: flex;
       flex-direction: row;
-      justify-content: space-around;
+      justify-content: space-between;
   
       .author {
         font-weight: bold;
@@ -22,7 +22,7 @@
   
   
     .title {
-      align-self:center;
+      align-self:left;
       font-weight: bold;
     }
   }

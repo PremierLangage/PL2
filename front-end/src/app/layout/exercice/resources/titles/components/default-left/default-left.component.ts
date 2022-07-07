@@ -1,19 +1,10 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { TitleSuperClass } from '../../title-superclass';
 
 @Component({
   selector: 'exercice-title-default-left',
   templateUrl: './default-left.component.html',
   styleUrls: ['./default-left.component.scss']
 })
-export class DefaultLeftComponent implements OnInit {
-
-  @Input() title?:    string;
-  @Input() version?:  string;
-  @Input() author?:   string;
-  
-  constructor() { }
-
-  ngOnInit() {
-  }
-
+export class DefaultLeftComponent extends TitleSuperClass {
 }
