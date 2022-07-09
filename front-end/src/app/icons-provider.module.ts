@@ -11,7 +11,13 @@ import {
   TrophyOutline,
   SmileOutline,
   MehOutline,
-  FrownOutline
+  FrownOutline,
+  ReadOutline,
+  SmileFill,
+  MehFill,
+  FrownFill,
+  CheckCircleFill,
+  CloseCircleFill
 } from '@ant-design/icons-angular/icons';
 
 const icons = [
@@ -24,7 +30,14 @@ const icons = [
   TrophyOutline,
   SmileOutline,
   MehOutline,
-  FrownOutline
+  FrownOutline,
+  ReadOutline,
+  SolutionOutline,
+  SmileFill,
+  MehFill,
+  FrownFill,
+  CheckCircleFill,
+  CloseCircleFill,
 ];
 
 @NgModule({

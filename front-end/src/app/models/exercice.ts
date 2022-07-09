@@ -4,6 +4,7 @@ export interface exerciceFeedBack {
 }
 
 export interface exercice {
+    cid: string;
     author: string;
     version: string;
 
@@ -16,9 +17,15 @@ export interface exercice {
 
     templates : {
         templateSelector: string;
-        titleSelector: string; 
-        statementSelector: string;
-        feedBackTextSelector:  string; 
-        feedBackScoreSelector: string; 
+        titleProperties: titleProperties; 
+        feedback: {
+            feedBackTextSelector:  string; 
+            feedBackScoreSelector: string; 
+        }
     }
 }
+
+export interface titleProperties {
+    titlePlacement?: "left" | "center" | "right";
+}
+

@@ -1,6 +1,21 @@
-<span [ngSwitch]="this.exercice?.templates?.templateSelector">
-  <exercice-templates-default
-    *ngSwitchDefault
+<div #target class="exercice-template-container">
+  <app-exercice-template-provider
     [exercice]="this.exercice"
-  ></exercice-templates-default>
-</span>
+    [feedback]="this.feedback"
+  >
+  </app-exercice-template-provider>
+  <nz-affix [nzTarget]="target" id="affix-container-target">
+    <button nz-button nzShape="round" nzSize="large" nzType="primary">
+      Submit Answer
+    </button>
+  </nz-affix>
+</div>
+<button
+  nz-button
+  nzShape="round"
+  nzSize="large"
+  nzType="primary"
+  (click)="switchFeedBack()"
+>
+  {{ this.gotFeedBack ? "Disable FeedBack" : "Enable FeedBack" }}
+</button>

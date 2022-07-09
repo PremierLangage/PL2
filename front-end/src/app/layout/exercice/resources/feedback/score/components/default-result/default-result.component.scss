@@ -1,0 +1,68 @@
+.rounded-edge {
+    border-radius: 25px;
+}
+
+nz-progress {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5%;
+}
+
+.title {
+    display: flex;
+    justify-content: center;
+    font-size: 3vw;
+}
+
+.SCOREICON {
+    font-size: 2vw;
+}
+
+h3.scoreText {
+    font-size: 2vw;
+}
+#tv {
+    padding: 1vmax;
+    position: relative;
+    border-radius: 0% 0% 0% 0% / 0% 0% 0% 0% ;
+    box-shadow: 4px 4px rgba(0,0,0,.15);
+    transition: all .4s ease;
+}
+#tv:hover {
+    border-radius: 0% 0% 5% 5% / 0% 0% 5% 5% ;
+    box-shadow: 1vmin 1vmin rgba(0,0,0,.25);
+}
+
+
+.confettis {
+    cursor: pointer;
+    position: relative;
+    i.c {
+    position: absolute;
+    display: block;
+    left: 50%;
+    top: 0;
+    width: 5px;
+    height: 10px;
+    background: red;
+    opacity: 0;
+    }
+    &:hover {
+    @for $i from 1 through 50 {
+        i.c:nth-of-type(#{$i}) {
+        transform: translate3d(random(190) - 100 + px, random(200) - 100 + px, 0)
+            rotate(random(360) + deg);
+        background: hsla(random(360), 100%, 50%, 1);
+        animation: bang 700ms ease-out forwards;
+        opacity: 0;
+        }
+    }
+    }
+}
+@keyframes bang {
+    from {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+    }
+}
