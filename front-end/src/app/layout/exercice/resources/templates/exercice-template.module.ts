@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DefaultComponent } from './components/default/default.component';
 import { ExerciceFeedbackScoreModule } from '../feedback/score/exercice-feedback-score.module';
-import { ExerciceFeedbackTextModule } from '../feedback/text/exercice-feedback-text.module';
 import { TemplateSuperclass } from './template-superclass';
 import { NzDividerModule } from 'ng-zorro-antd/divider';
 import { NzTabsModule } from 'ng-zorro-antd/tabs';
@@ -13,13 +12,13 @@ import { TemplateProviderComponent } from './template-provider/template-provider
 import { TitleComponent } from '../title/title.component';
 import { StatementComponent } from '../statement/statement.component';
 import { MarkdownModule } from 'ngx-markdown';
+import { FeedbackTextComponent } from '../feedback/text/feedback-text.component';
 
 
 @NgModule({
   imports: [
     CommonModule,
     ExerciceFeedbackScoreModule,
-    ExerciceFeedbackTextModule,
     MarkdownModule.forRoot(),
 
     NzDividerModule,
@@ -34,6 +33,7 @@ import { MarkdownModule } from 'ngx-markdown';
     TemplateProviderComponent,
     TitleComponent,
     StatementComponent,
+    FeedbackTextComponent
   ],
   exports: [
     TemplateProviderComponent

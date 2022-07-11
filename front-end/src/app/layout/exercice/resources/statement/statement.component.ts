@@ -3,8 +3,7 @@ import { exercice } from 'src/app/models/exercice';
 
 @Component({
   selector: 'app-exercice-statement',
-  templateUrl: './statement.component.html',
-  styleUrls: ['./statement.component.scss']
+  template: '<markdown>{{ this.statement }}</markdown>'
 })
 export class StatementComponent {
   @Input() set exercice(value: exercice | undefined) {
