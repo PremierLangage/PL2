@@ -28,5 +28,7 @@ export class ExerciceComponent implements AfterViewInit {
     this.feedback = this.gotFeedBack ? cexFeedBackUsed : undefined;
   }
 
-
+  logExo() {
+    console.log(JSON.stringify(this.exercice?.process.formState));
+  }
 }

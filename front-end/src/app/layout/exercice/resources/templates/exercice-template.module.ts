@@ -13,6 +13,7 @@ import { TitleComponent } from '../title/title.component';
 import { StatementComponent } from '../statement/statement.component';
 import { MarkdownModule } from 'ngx-markdown';
 import { FeedbackTextComponent } from '../feedback/text/feedback-text.component';
+import { ExerciceFormsModule } from '../forms/exercice-forms.module';
 
 
 @NgModule({
@@ -20,7 +21,7 @@ import { FeedbackTextComponent } from '../feedback/text/feedback-text.component'
     CommonModule,
     ExerciceFeedbackScoreModule,
     MarkdownModule.forRoot(),
-
+    ExerciceFormsModule,
     NzDividerModule,
     NzTabsModule,
     NzSpaceModule,

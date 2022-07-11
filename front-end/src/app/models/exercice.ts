@@ -1,3 +1,5 @@
+import { RadioGroupForm } from "../layout/exercice/resources/forms/components/radio-group/radio-group";
+
 export interface exerciceFeedBack {
     score: number;
     feedback : string;
@@ -11,8 +13,7 @@ export interface exercice {
     process: { // form
         title: string;
         statement: string;
-        formState :             // strongly typed
-            object; // yet to be defined 
+        formState : formState;     // strongly typed
     }
 
     templates : {
@@ -29,3 +30,8 @@ export interface titleProperties {
     titlePlacement?: "left" | "center" | "right";
 }
 
+export interface formState {
+    selector: 'radioGroup';
+    form: RadioGroupForm;
+    output?: any;
+}

@@ -1,0 +1,29 @@
+<div #target>
+  <ng-container *ngIf="this.form; else elseTemplate">
+    <span [ngSwitch]="this.form?.selector">
+      <form-radio-group
+        #child
+        *ngSwitchCase="'radioGroup'"
+        [formData]="this.form"
+      ></form-radio-group>
+      <nz-result
+        *ngSwitchDefault
+        nzTitle="Invalid Exercice Error"
+        nzStatus="error"
+        nzSubTitle="This is an internal error, please contact the administation"
+      ></nz-result>
+    </span>
+  </ng-container>
+  <ng-template #elseTemplate> </ng-template>
+</div>
+<nz-affix [nzTarget]="target" id="affix-container-target">
+  <button
+    nz-button
+    nzShape="round"
+    nzSize="large"
+    nzType="primary"
+    (click)="displayOutput()"
+  >
+    Submit Answer
+  </button>
+</nz-affix>

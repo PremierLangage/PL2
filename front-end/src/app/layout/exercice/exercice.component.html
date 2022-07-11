@@ -4,11 +4,6 @@
     [feedback]="this.feedback"
   >
   </app-exercice-template-provider>
-  <nz-affix [nzTarget]="target" id="affix-container-target">
-    <button nz-button nzShape="round" nzSize="large" nzType="primary">
-      Submit Answer
-    </button>
-  </nz-affix>
 </div>
 <button
   nz-button
@@ -18,4 +13,13 @@
   (click)="switchFeedBack()"
 >
   {{ this.gotFeedBack ? "Disable FeedBack" : "Enable FeedBack" }}
+</button>
+<button
+  nz-button
+  nzShape="round"
+  nzSize="large"
+  nzType="primary"
+  (click)="logExo()"
+>
+  Display Exercice
 </button>

@@ -16,6 +16,7 @@ import { IconsProviderModule } from './icons-provider.module';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
 import { IconModule } from '@ant-design/icons-angular';
+import { CssPipeModule } from './pipes/CssPipe.pipe';
 
 registerLocaleData(fr);
 
@@ -35,6 +36,7 @@ registerLocaleData(fr);
     NzLayoutModule, 
     NzMenuModule,
     IconModule,
+    CssPipeModule,
   ],
   providers: [{ provide: NZ_I18N, useValue: fr_FR }],
   bootstrap: [AppComponent],

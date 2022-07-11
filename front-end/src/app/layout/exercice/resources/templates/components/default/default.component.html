@@ -18,10 +18,7 @@
           <i nz-icon nzType="solution"></i>
           FeedBack
         </ng-template>
-        <app-feedback-text-provider
-          [exercice]="this.exercice"
-          [feedback]="this.feedback"
-        ></app-feedback-text-provider>
+        <app-feedback-text [feedback]="this.feedback"></app-feedback-text>
       </nz-tab>
     </nz-tabset>
   </div>
@@ -31,4 +28,11 @@
       [feedback]="this.feedback"
     ></app-feedback-score-provider>
   </div>
+</div>
+
+<nz-divider nzText="A vous de jouer"></nz-divider>
+<div class="form-container">
+  <app-forms-provider
+    [form]="this.exercice?.process?.formState"
+  ></app-forms-provider>
 </div>
