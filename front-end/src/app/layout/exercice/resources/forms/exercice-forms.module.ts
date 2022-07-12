@@ -10,6 +10,7 @@ import { NzResultModule } from 'ng-zorro-antd/result';
 import { CssPipeModule } from 'src/app/pipes/CssPipe.pipe';
 import { NzAffixModule } from 'ng-zorro-antd/affix';
 import { NzButtonModule } from 'ng-zorro-antd/button';
+import { InputBoxModule } from './components/input-box/input-box.module';
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
 
     // COMPONENTS :
     RadioGroupModule,
+    InputBoxModule,
   ],
   declarations: [
     // PROVIDER :

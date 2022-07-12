@@ -1,0 +1,107 @@
+<ng-container *ngIf="this.inputBoxData">
+  <span [ngSwitch]="this.inputBoxData?.type">
+    <!-- NUMBER CASE
+    PROPERTIES:
+      MAX 
+      MIN
+      STEP
+    -->
+    <div *ngSwitchCase="'number'">
+      <ng-container
+        *ngIf="this.inputBoxData.numberProperties; else unborderedNumber"
+      >
+        <nz-input-number
+          [(ngModel)]="this.output"
+          [nzMin]="this.numberProperties.min"
+          [nzMax]="this.numberProperties.max"
+          [nzStep]="this.numberProperties.step"
+          [nzPlaceHolder]="this.inputBoxData.placeholder"
+        ></nz-input-number>
+      </ng-container>
+      <ng-template #unborderedNumber>
+        <nz-input-number
+          [nzPlaceHolder]="this.inputBoxData.placeholder"
+          [(ngModel)]="this.output"
+        ></nz-input-number>
+      </ng-template>
+    </div>
+
+    <!-- TEXT CASE
+    PROPERTIES:
+      MAXCHAR 
+    -->
+    <div *ngSwitchCase="'text'">
+      <ng-container
+        *ngIf="this.inputBoxData.textProperties?.maxChar; else uncountedText"
+      >
+        <form nz-form [formGroup]="limitedInputSizeForm" nzLayout="horizontal">
+          <nz-form-item>
+            <nz-form-control>
+              <nz-textarea-count
+                [nzMaxCharacterCount]="this.textProperties.maxChar"
+              >
+                <textarea
+                  formControlName="comment"
+                  nz-input
+                  [placeholder]="this.inputBoxData.placeholder"
+                ></textarea>
+              </nz-textarea-count>
+            </nz-form-control>
+          </nz-form-item>
+        </form>
+      </ng-container>
+      <ng-template #uncountedText>
+        <textarea
+          nz-input
+          [placeholder]="this.inputBoxData.placeholder"
+        ></textarea>
+      </ng-template>
+    </div>
+
+    <!-- TEXT CASE
+    PROPERTIES:
+      MAXCHAR,
+      MAXLINE,
+      MINLINE
+    -->
+    <div *ngSwitchCase="'textarea'">
+      <ng-container
+        *ngIf="
+          this.inputBoxData.textareaProperties?.maxChar;
+          else uncountedTextarea
+        "
+      >
+        <form nz-form [formGroup]="limitedInputSizeForm" nzLayout="vertical">
+          <nz-form-item>
+            <nz-form-control>
+              <nz-textarea-count
+                [nzMaxCharacterCount]="this.textareaProperties.maxChar"
+              >
+                <textarea
+                  formControlName="comment"
+                  nz-input
+                  [placeholder]="this.inputBoxData.placeholder"
+                  [nzAutosize]="{
+                    minRows: this.textareaProperties.minLine,
+                    maxRows: this.textareaProperties.maxLine
+                  }"
+                ></textarea>
+              </nz-textarea-count>
+            </nz-form-control>
+          </nz-form-item>
+        </form>
+      </ng-container>
+      <ng-template #uncountedTextarea>
+        <textarea
+          nz-input
+          [placeholder]="this.inputBoxData.placeholder"
+          [nzAutosize]="{
+            minRows: this.textareaProperties.minLine,
+            maxRows: this.textareaProperties.maxLine
+          }"
+        ></textarea>
+      </ng-template>
+    </div>
+    <div *ngSwitchDefault></div>
+  </span>
+</ng-container>

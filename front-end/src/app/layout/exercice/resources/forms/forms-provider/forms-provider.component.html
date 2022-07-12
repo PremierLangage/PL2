@@ -6,6 +6,13 @@
         *ngSwitchCase="'radioGroup'"
         [formData]="this.form"
       ></form-radio-group>
+
+      <form-input-box
+        #child
+        *ngSwitchCase="'inputBox'"
+        [formData]="this.form"
+      ></form-input-box>
+
       <nz-result
         *ngSwitchDefault
         nzTitle="Invalid Exercice Error"

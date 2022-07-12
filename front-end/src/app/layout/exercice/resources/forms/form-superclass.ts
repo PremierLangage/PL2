@@ -6,16 +6,21 @@ import { formState } from "src/app/models/exercice";
     template: ''
 })
 export abstract class FormSuperclass {
-    @Input() set formData(value: formState) {
+    @Input() get formData(): formState { return this.formData_; }
+    set formData(value: formState) {
+        this.formData_ = value;
         this.initData(value);
     }
 
     @Input() get output(): any { return this.output_} 
     set output(value: any) {
         this.output_ = value;
-        console.log("Output Changed:" + JSON.stringify(this.output_));
+        this.formData_.output = this.output_;
     }
+
+    
     output_: any;
+    formData_!: formState;
 
     getOutput() {
         return this.output_;

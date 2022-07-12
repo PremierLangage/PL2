@@ -1,3 +1,4 @@
+import { InputBoxForm } from "../layout/exercice/resources/forms/components/input-box/input-box";
 import { RadioGroupForm } from "../layout/exercice/resources/forms/components/radio-group/radio-group";
 
 export interface exerciceFeedBack {
@@ -31,7 +32,7 @@ export interface titleProperties {
 }
 
 export interface formState {
-    selector: 'radioGroup';
-    form: RadioGroupForm;
+    selector: 'radioGroup' | 'inputBox';
+    form: RadioGroupForm | InputBoxForm;
     output?: any;
 }
