@@ -1,5 +1,5 @@
 import { Component, Input } from "@angular/core";
-import { formState } from "src/app/models/exercice";
+import { formState } from "../../models/exercice";
 
 @Component({
     selector: 'form-superclass',

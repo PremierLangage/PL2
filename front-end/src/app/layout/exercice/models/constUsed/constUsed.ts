@@ -1,4 +1,4 @@
-import { exercice, exerciceFeedBack, formState } from "../exercice";
+import { exercice, exerciceFeedBack } from "../exercice";
 import { cexFormStateUsed } from "./ConstUsedforms";
 
 export const cexExercice : exercice = {

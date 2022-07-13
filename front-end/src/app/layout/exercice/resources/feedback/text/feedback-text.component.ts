@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { exerciceFeedBack } from 'src/app/models/exercice';
+import { exerciceFeedBack } from '../../../models/exercice';
 
 @Component({
   selector: 'app-feedback-text',

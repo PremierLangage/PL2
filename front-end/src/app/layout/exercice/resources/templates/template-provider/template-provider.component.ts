@@ -1,5 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { exercice, exerciceFeedBack } from 'src/app/models/exercice';
+import { Component, Input } from '@angular/core';
+import { exercice, exerciceFeedBack } from '../../../models/exercice';
 
 @Component({
   selector: 'app-exercice-template-provider',

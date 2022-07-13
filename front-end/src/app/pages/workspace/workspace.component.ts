@@ -1,5 +1,6 @@
 import { Component } from "@angular/core";
-import { cexExercice } from "src/app/models/constUsed/constUsed";
+import { cexExercice } from "src/app/layout/exercice/models/constUsed/constUsed";
+
 
 @Component({
     selector: 'app-workspace',

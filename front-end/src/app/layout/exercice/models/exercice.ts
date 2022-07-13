@@ -1,5 +1,5 @@
-import { InputBoxForm } from "../layout/exercice/resources/forms/components/input-box/input-box";
-import { RadioGroupForm } from "../layout/exercice/resources/forms/components/radio-group/radio-group";
+import { InputBoxForm } from "../resources/forms/components/input-box/input-box";
+import { RadioGroupForm } from "..//resources/forms/components/radio-group/radio-group";
 
 export interface exerciceFeedBack {
     score: number;

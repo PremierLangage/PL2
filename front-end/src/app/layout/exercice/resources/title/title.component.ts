@@ -1,5 +1,5 @@
 import { Component, HostBinding, Input } from '@angular/core';
-import { exercice, titleProperties } from 'src/app/models/exercice';
+import { exercice, titleProperties } from '../../models/exercice';
 
 
 @Component({

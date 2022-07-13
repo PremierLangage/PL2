@@ -1,5 +1,5 @@
-import { AfterViewChecked, Component, Input, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
-import { exercice, formState } from 'src/app/models/exercice';
+import { Component, Input, ViewChild } from '@angular/core';
+import { formState } from '../../../models/exercice';
 import { InputBoxComponent } from '../components/input-box/input-box.component';
 import { RadioGroupComponent } from '../components/radio-group/radio-group.component';
 import { NzMessageService } from 'ng-zorro-antd/message';

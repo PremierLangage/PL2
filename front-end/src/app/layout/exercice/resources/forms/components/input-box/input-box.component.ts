@@ -1,12 +1,11 @@
 import {
-  Component,
-  OnInit,
-  ViewEncapsulation} from '@angular/core';
-import { formState } from 'src/app/models/exercice';
-import { FormSuperclass } from '../../form-superclass';
-import { InputBoxForm } from './input-box';
+  Component, ViewEncapsulation
+} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { formatDistance } from 'date-fns';
+import { formState } from '../../../../models/exercice';
+import { FormSuperclass } from '../../form-superclass';
+import { InputBoxForm } from './input-box';
 
 
 @Component({

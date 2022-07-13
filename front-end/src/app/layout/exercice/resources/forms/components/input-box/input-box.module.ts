@@ -16,7 +16,6 @@ import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NzSpaceModule } from 'ng-zorro-antd/space';
 import { MarkdownModule } from 'ngx-markdown';
-import { IconGrPipe } from 'src/app/pipes/IconGr.pipe';
 
 @NgModule({
   imports: [
@@ -36,7 +35,7 @@ import { IconGrPipe } from 'src/app/pipes/IconGr.pipe';
     MarkdownModule.forRoot()
 
   ],
-  declarations: [InputBoxComponent, IconGrPipe],
+  declarations: [InputBoxComponent],
   exports: [InputBoxComponent]
 })
 export class InputBoxModule { }

@@ -1,5 +1,5 @@
-import { Component, OnChanges, SimpleChanges } from '@angular/core';
-import { formState } from 'src/app/models/exercice';
+import { Component } from '@angular/core';
+import { formState } from '../../../../models/exercice';
 import { FormSuperclass } from '../../form-superclass';
 import { RadioGroupForm, RadioGroupItem } from './radio-group';
 
