@@ -7,8 +7,14 @@ import { NzInputNumberModule } from 'ng-zorro-antd/input-number';
 import { FormsModule } from '@angular/forms';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzFormModule } from 'ng-zorro-antd/form';
+import { NzTypographyModule } from 'ng-zorro-antd/typography';
+import { NzCommentModule } from 'ng-zorro-antd/comment';
+import { NzAvatarModule } from 'ng-zorro-antd/avatar';
 
 import { ReactiveFormsModule } from '@angular/forms';
+import { NzSpaceModule } from 'ng-zorro-antd/space';
+import { MarkdownModule } from 'ngx-markdown';
+import { IconGrPipe } from 'src/app/pipes/IconGr.pipe';
 
 @NgModule({
   imports: [
@@ -18,10 +24,16 @@ import { ReactiveFormsModule } from '@angular/forms';
     FormsModule,
     NzInputModule,
     NzFormModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NzTypographyModule,
+    NzSpaceModule,
+    NzCommentModule,
+    NzAvatarModule,
+    
+    MarkdownModule.forRoot()
 
   ],
-  declarations: [InputBoxComponent],
+  declarations: [InputBoxComponent, IconGrPipe],
   exports: [InputBoxComponent]
 })
 export class InputBoxModule { }

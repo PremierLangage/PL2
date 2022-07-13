@@ -1,15 +1,18 @@
 import {
   Component,
-  OnInit} from '@angular/core';
+  OnInit,
+  ViewEncapsulation} from '@angular/core';
 import { formState } from 'src/app/models/exercice';
 import { FormSuperclass } from '../../form-superclass';
 import { InputBoxForm } from './input-box';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { formatDistance } from 'date-fns';
 
 
 @Component({
   selector: 'form-input-box',
   templateUrl: './input-box.component.html',
+  encapsulation: ViewEncapsulation.None,
   styleUrls: ['./input-box.component.scss']
 })
 export class InputBoxComponent extends FormSuperclass {
@@ -43,9 +46,19 @@ export class InputBoxComponent extends FormSuperclass {
   }
 
   inputBoxData?: InputBoxForm;
-
   
   numberProperties : any;
   textProperties : any;
   textareaProperties: any;
+
+  suggestions?: string[];
+
+  time = formatDistance(new Date(), new Date());
+  
+  suggestionsUpdate() {
+    this.suggestions = 
+      ((this.inputBoxData?.type === 'text') ? this.inputBoxData?.textProperties : this.inputBoxData?.textareaProperties)
+      ?.completionText?.filter(s => s.startsWith(this.output));
+  }
+
 }

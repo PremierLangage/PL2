@@ -2,67 +2,86 @@
   <span [ngSwitch]="this.inputBoxData?.type">
     <!-- NUMBER CASE
     PROPERTIES:
-      MAX 
-      MIN
-      STEP
+      MAX,
+      MIN,
+      STEP,
+      PREFIXUNIT,
+      SUFFIXUNIT
     -->
     <div *ngSwitchCase="'number'">
-      <ng-container
-        *ngIf="this.inputBoxData.numberProperties; else unborderedNumber"
+      <nz-input-number-group
+        [nzPrefix]="this.inputBoxData.numberProperties?.unitPrefix"
+        [nzSuffix]="this.inputBoxData.numberProperties?.unitSuffix"
+        class="inputbox-sized"
       >
-        <nz-input-number
-          [(ngModel)]="this.output"
-          [nzMin]="this.numberProperties.min"
-          [nzMax]="this.numberProperties.max"
-          [nzStep]="this.numberProperties.step"
-          [nzPlaceHolder]="this.inputBoxData.placeholder"
-        ></nz-input-number>
-      </ng-container>
-      <ng-template #unborderedNumber>
-        <nz-input-number
-          [nzPlaceHolder]="this.inputBoxData.placeholder"
-          [(ngModel)]="this.output"
-        ></nz-input-number>
-      </ng-template>
+        <ng-container
+          *ngIf="this.inputBoxData.numberProperties; else unborderedNumber"
+        >
+          <nz-input-number
+            class="inputbox-sized"
+            [(ngModel)]="this.output"
+            [nzMin]="this.numberProperties.min"
+            [nzMax]="this.numberProperties.max"
+            [nzStep]="this.numberProperties.step"
+            [nzPlaceHolder]="this.inputBoxData.placeholder"
+            [disabled]="this.inputBoxData.disabled"
+          ></nz-input-number>
+        </ng-container>
+        <ng-template #unborderedNumber>
+          <nz-input-number
+            class="inputbox-sized"
+            [nzPlaceHolder]="this.inputBoxData.placeholder"
+            [(ngModel)]="this.output"
+            [disabled]="this.inputBoxData.disabled"
+          ></nz-input-number>
+        </ng-template>
+      </nz-input-number-group>
     </div>
 
     <!-- TEXT CASE
     PROPERTIES:
-      MAXCHAR 
+      MAXCHAR ,
+      SUGGESTIONS
     -->
     <div *ngSwitchCase="'text'">
       <ng-container
         *ngIf="this.inputBoxData.textProperties?.maxChar; else uncountedText"
       >
-        <form nz-form [formGroup]="limitedInputSizeForm" nzLayout="horizontal">
-          <nz-form-item>
-            <nz-form-control>
-              <nz-textarea-count
-                [nzMaxCharacterCount]="this.textProperties.maxChar"
-              >
-                <textarea
-                  formControlName="comment"
-                  nz-input
-                  [placeholder]="this.inputBoxData.placeholder"
-                ></textarea>
-              </nz-textarea-count>
-            </nz-form-control>
-          </nz-form-item>
-        </form>
-      </ng-container>
-      <ng-template #uncountedText>
-        <textarea
+        <input
+          class="inputbox-sized"
           nz-input
           [placeholder]="this.inputBoxData.placeholder"
-        ></textarea>
+          [(ngModel)]="this.output"
+          [nzAutocomplete]="auto"
+          (input)="this.suggestionsUpdate()"
+          [disabled]="this.inputBoxData.disabled"
+        />
+      </ng-container>
+      <ng-template #uncountedText>
+        <input #uncountedText />
+        <input
+          class="inputbox-sized"
+          nz-input
+          [placeholder]="this.inputBoxData.placeholder"
+          [(ngModel)]="this.output"
+          [nzAutocomplete]="auto"
+          (input)="this.suggestionsUpdate()"
+          [disabled]="this.inputBoxData.disabled"
+        />
       </ng-template>
-    </div>
 
+      <nz-autocomplete
+        [nzDataSource]="this.suggestions"
+        #auto
+        [nzBackfill]="true"
+      ></nz-autocomplete>
+    </div>
     <!-- TEXT CASE
     PROPERTIES:
       MAXCHAR,
       MAXLINE,
-      MINLINE
+      MINLINE,
+      SUGGESTIONS
     -->
     <div *ngSwitchCase="'textarea'">
       <ng-container
@@ -85,6 +104,10 @@
                     minRows: this.textareaProperties.minLine,
                     maxRows: this.textareaProperties.maxLine
                   }"
+                  [nzAutocomplete]="auto"
+                  (input)="this.suggestionsUpdate()"
+                  [disabled]="this.inputBoxData.disabled"
+                  [(ngModel)]="this.output"
                 ></textarea>
               </nz-textarea-count>
             </nz-form-control>
@@ -99,9 +122,36 @@
             minRows: this.textareaProperties.minLine,
             maxRows: this.textareaProperties.maxLine
           }"
+          [nzAutocomplete]="auto"
+          (input)="this.suggestionsUpdate()"
+          [disabled]="this.inputBoxData.disabled"
+          [(ngModel)]="this.output"
         ></textarea>
       </ng-template>
+      <nz-autocomplete
+        [nzDataSource]="this.suggestions"
+        [nzBackfill]="true"
+        #auto
+      ></nz-autocomplete>
     </div>
     <div *ngSwitchDefault></div>
   </span>
+
+  <!-- Hint displaying 
+    Author : Note de l'auteur
+    Hint: Markdown
+  -->
+  <div *ngIf="this.inputBoxData.hint" nz-typography nzType="secondary">
+    <nz-comment nzAuthor="Note de l'auteur">
+      <nz-avatar
+        nz-comment-avatar
+        nzIcon="user"
+        nzSrc="https://icongr.am/material/account-tie.svg?size=148&color=007bff"
+      ></nz-avatar>
+
+      <nz-comment-content>
+        <markdown>{{ this.inputBoxData.hint }}</markdown>
+      </nz-comment-content>
+    </nz-comment>
+  </div>
 </ng-container>

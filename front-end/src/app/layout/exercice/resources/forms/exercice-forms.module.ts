@@ -11,6 +11,7 @@ import { CssPipeModule } from 'src/app/pipes/CssPipe.pipe';
 import { NzAffixModule } from 'ng-zorro-antd/affix';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { InputBoxModule } from './components/input-box/input-box.module';
+import { NzSpaceModule } from 'ng-zorro-antd/space';
 
 
 @NgModule({
@@ -21,6 +22,7 @@ import { InputBoxModule } from './components/input-box/input-box.module';
     NzResultModule,
     NzAffixModule,
     NzButtonModule,
+    NzSpaceModule,
 
     // COMPONENTS :
     RadioGroupModule,
