@@ -15,4 +15,5 @@ export class IconGrPipe implements PipeTransform {
     return "https://icongr.am/" + type + "/" + iconName + ".svg?size=128&color=" + color;
   }
 
+  
 }
