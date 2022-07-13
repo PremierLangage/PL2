@@ -1,7 +1,6 @@
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { formState } from './models/exercice';
-import { cexExercice } from './models/constUsed/constUsed';
 
 
 @Injectable({
