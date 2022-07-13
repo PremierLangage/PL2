@@ -25,7 +25,9 @@
           [name]="item.content"
           [value]="item.content"
         >
-          {{ item.content }}
+          <div class="centered">
+            <markdown>{{ item.content }}</markdown>
+          </div>
         </mat-radio-button>
       </div>
     </ng-container>

@@ -5,6 +5,7 @@ import { NzRadioModule } from 'ng-zorro-antd/radio';
 import { FormsModule } from '@angular/forms';
 import { MatRadioModule } from '@angular/material/radio';
 import { CssPipeModule } from 'src/app/pipes/CssPipe.pipe';
+import { MarkdownModule } from 'ngx-markdown';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { CssPipeModule } from 'src/app/pipes/CssPipe.pipe';
     FormsModule,
     NzRadioModule,
     MatRadioModule,
-    CssPipeModule
+    CssPipeModule,
+    MarkdownModule.forRoot(),
   ],
   declarations: [RadioGroupComponent],
   exports: [

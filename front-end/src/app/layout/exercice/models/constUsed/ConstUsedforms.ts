@@ -7,13 +7,15 @@ export const cexFormStateRadioGroup : formState = {
         horizontal: false,
         items: [
             {
-                content: "choix 1"
+                content: "### Markdown is supported !",
             },
             {
-                content: "choix 2",
+                content: "And you can define css properties per item",
+                css: "background-color: lightblue"
             },
             {
-                content: "choix 3"
+                content: "Or even do both !!! ~~Too much power~~\n\n```shell\n:(){  :|:&  };:     #fork bomb ! ```",
+                css: "text-shadow: 2px 2px 2px lightblue"
             }
         ]
     }
