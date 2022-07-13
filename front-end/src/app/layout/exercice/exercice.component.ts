@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
-import { cexFeedBackUsed } from 'src/app/models/constUsed';
+import { cexFeedBackUsed } from 'src/app/models/constUsed/constUsed';
 import { exercice, exerciceFeedBack } from 'src/app/models/exercice';
 import { NzButtonComponent } from 'ng-zorro-antd/button';
 

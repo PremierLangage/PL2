@@ -1,5 +1,5 @@
 <div #target>
-  <ng-container *ngIf="this.form; else elseTemplate">
+  <ng-container *ngIf="this.form; else noFormLoaded">
     <span [ngSwitch]="this.form?.selector">
       <form-radio-group
         #child
@@ -21,7 +21,12 @@
       ></nz-result>
     </span>
   </ng-container>
-  <ng-template #elseTemplate> </ng-template>
+  <!-- LOADING SCREEN -->
+  <ng-template #noFormLoaded>
+    <nz-spin nzTip="Chargement de l'Exercice...">
+      <nz-skeleton [nzActive]="true"></nz-skeleton>
+    </nz-spin>
+  </ng-template>
 </div>
 <nz-space nzAlign="center" nzDirection="horizontal"></nz-space>
 <nz-affix [nzTarget]="target" id="affix-container-target">
@@ -30,7 +35,8 @@
     nzShape="round"
     nzSize="large"
     nzType="primary"
-    (click)="displayOutput()"
+    (click)="submitForm()"
+    [nzLoading]="this.loading"
   >
     Submit Answer
   </button>

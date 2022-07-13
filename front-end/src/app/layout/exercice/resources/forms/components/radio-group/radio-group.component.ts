@@ -12,13 +12,9 @@ export class RadioGroupComponent extends FormSuperclass {
 
   initData(value: formState): void {
     this.radioData = value.form as RadioGroupForm;
-    this.horizontal = this.radioData.horizontal;
-    this.disabled = this.radioData.disabled;
   }
   
   radioData?: RadioGroupForm;
-  horizontal: boolean = true;
-  disabled: boolean = false;
 
   trackBy(index: number, item: RadioGroupItem) {
     return item.content || index;

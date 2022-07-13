@@ -50,11 +50,18 @@
         <input
           class="inputbox-sized"
           nz-input
-          [placeholder]="this.inputBoxData.placeholder"
+          (input)="this.suggestionsUpdate()"
           [(ngModel)]="this.output"
           [nzAutocomplete]="auto"
-          (input)="this.suggestionsUpdate()"
+          [placeholder]="this.inputBoxData.placeholder"
           [disabled]="this.inputBoxData.disabled"
+          maxlength="{{ this.inputBoxData.textProperties?.maxChar }}"
+          nz-tooltip
+          nzTooltipTitle="{{ this.output ? this.output.length : 0 }}/{{
+            this.inputBoxData.textProperties?.maxChar
+          }}"
+          [nzTooltipTrigger]="'focus'"
+          [nzTooltipPlacement]="'topRight'"
         />
       </ng-container>
       <ng-template #uncountedText>
@@ -62,11 +69,12 @@
         <input
           class="inputbox-sized"
           nz-input
-          [placeholder]="this.inputBoxData.placeholder"
+          (input)="this.suggestionsUpdate()"
           [(ngModel)]="this.output"
           [nzAutocomplete]="auto"
-          (input)="this.suggestionsUpdate()"
+          [placeholder]="this.inputBoxData.placeholder"
           [disabled]="this.inputBoxData.disabled"
+          nzBackfill
         />
       </ng-template>
 

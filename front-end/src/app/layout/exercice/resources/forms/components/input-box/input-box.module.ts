@@ -10,6 +10,8 @@ import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzTypographyModule } from 'ng-zorro-antd/typography';
 import { NzCommentModule } from 'ng-zorro-antd/comment';
 import { NzAvatarModule } from 'ng-zorro-antd/avatar';
+import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
+
 
 import { ReactiveFormsModule } from '@angular/forms';
 import { NzSpaceModule } from 'ng-zorro-antd/space';
@@ -29,6 +31,7 @@ import { IconGrPipe } from 'src/app/pipes/IconGr.pipe';
     NzSpaceModule,
     NzCommentModule,
     NzAvatarModule,
+    NzToolTipModule,
     
     MarkdownModule.forRoot()
 

@@ -1,4 +1,4 @@
-import { formState } from "./exercice";
+import { formState } from "./../exercice";
 
 export const cexFormStateRadioGroup : formState = {
     selector: 'radioGroup',
@@ -77,4 +77,4 @@ export const cexFormStateInputBoxNumber : formState = {
     }
 }
 
-export const cexFormStateUsed : formState = cexFormStateInputBoxTextArea;
+export const cexFormStateUsed : formState = cexFormStateRadioGroup;

@@ -6,6 +6,11 @@ export interface exerciceFeedBack {
     feedback : string;
 }
 
+export interface exerciceFeedBackPacket {
+    flag: boolean;
+    feedbacek?: exerciceFeedBack;
+}
+
 export interface exercice {
     cid: string;
     author: string;
@@ -36,3 +41,6 @@ export interface formState {
     form: RadioGroupForm | InputBoxForm;
     output?: any;
 }
+
+
+

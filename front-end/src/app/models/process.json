@@ -1,0 +1,48 @@
+{
+  "AutomatonDrawer": { "py/type": "components.AutomatonDrawer" },
+  "AutomatonEditor": { "py/type": "components.AutomatonEditor" },
+  "CheckboxGroup": { "py/type": "components.CheckboxGroup" },
+  "CodeEditor": { "py/type": "components.CodeEditor" },
+  "Component": { "py/type": "components.Component" },
+  "DragDrop": { "py/type": "components.DragDrop" },
+  "GraphDrawer": { "py/type": "components.GraphDrawer" },
+  "Input": { "py/type": "components.Input" },
+  "MatchList": { "py/type": "components.MatchList" },
+  "MathDrawer": { "py/type": "components.MathDrawer" },
+  "MathInput": { "py/type": "components.MathInput" },
+  "MathMatrix": { "py/type": "components.MathMatrix" },
+  "RadioGroup": { "py/type": "components.RadioGroup" },
+  "SortList": { "py/type": "components.SortList" },
+  "StopBeforeExec": { "py/type": "__main__.StopBeforeExec" },
+  "Text": { "py/type": "components.Text" },
+  "TransfertList": { "py/type": "components.TransfertList" },
+  "__comment": "\n# Expected answer (T or F)\n# Feedback shown when the student gives the right answer\n# Feedback shown when the student gives the wrong answer",
+  "__extends": [],
+  "__format": ".pl",
+  "__includes": [
+    { "exp_path": "builder.py", "src_path": "resource:1/builder.py" },
+    { "exp_path": "components.py", "src_path": "resource:1/components.py" },
+    { "exp_path": "sandboxio.py", "src_path": "resource:1/sandboxio.py" }
+  ],
+  "__template": [],
+  "answer": "F",
+  "before": "if answer != 'T' and answer != 'F':\n    raise Exception('you must define a variable \"answer = T or F\"')\n\nradio.horizontal = horizontal\nradio.state = {\n    \"items\" : [\n        { \n            \"content\" : \"La reponse est Vrai\",\n        },\n        {\n            \"content\" : \"La reponse est Fausse\",\n        }\n    ]\n}",
+  "feedback_correct": "Bonne r\u00e9ponse !",
+  "feedback_wrong": "Non la r\u00e9ponse \u00e9tait 2",
+  "form": "{{radio|component}}",
+  "general_feedback": "\n",
+  "horizontal": false,
+  "radio": {
+    "cid": "0bb2efc2-0569-4679-8fb6-c71985338534",
+    "horizontal": false,
+    "selector": "wc-radio-group",
+    "state": {
+      "items": [
+        { "content": "La reponse est Vrai" },
+        { "content": "La reponse est Fausse" }
+      ]
+    }
+  },
+  "text": "1+1=3",
+  "title": "Q1"
+}
