@@ -71,9 +71,19 @@ export class CodeEditorComponent extends FormSuperclass implements AfterViewChec
                 ))
         );
 
+
+        // LISTENERS
+
+        // OUTPUT LINK
         this.disposables.push(
             this.model.onDidChangeContent(() => {
                 this.output = this.model?.getValue();
+            })
+        );
+        // CURSOR ACTUALISATION
+        this.disposables.push(
+            this.editor.onDidChangeCursorPosition((e) => {
+                this.cursor = e.position;
             })
         );
 
@@ -100,7 +110,7 @@ export class CodeEditorComponent extends FormSuperclass implements AfterViewChec
 
     reset() {
         if (this.codeEditorData)
-            this.codeEditorData.code = this.initialCode;
+            this.model?.setValue(this.initialCode);
     }
 
     goToLine() {
