@@ -70,7 +70,9 @@ export class CodeEditorComponent extends FormSuperclass implements AfterViewChec
                     this.codeEditorData?.language || 'plaintext'
                 ))
         );
-
+        this.model.updateOptions({
+            tabSize: this.codeEditorData?.tabSize
+        })
 
         // LISTENERS
 
@@ -86,6 +88,13 @@ export class CodeEditorComponent extends FormSuperclass implements AfterViewChec
                 this.cursor = e.position;
             })
         );
+
+        this.disposables.push(
+            this.editor.onDidFocusEditorWidget(() => {
+                if (this.codeEditorData)
+                    this.codeEditorData.tabSize = this.model?.getOptions().tabSize ?? this.codeEditorData.tabSize;
+            })
+        )
 
     }
 
@@ -131,6 +140,9 @@ export class CodeEditorComponent extends FormSuperclass implements AfterViewChec
         if (!this.editor) return;
         const action = this.editor.getAction(ACTION_INDENT_USING_SPACES);
         this.editor.focus();
-        action.run();
+        action.run().then(() => {
+            if (this.codeEditorData)
+                this.codeEditorData.tabSize = this.model?.getOptions().tabSize ?? this.codeEditorData.tabSize;
+        });
     }
 }
