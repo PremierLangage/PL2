@@ -1,7 +1,7 @@
 import { formSuperClassInterface } from "../../form-superclass";
 
 export interface CodeEditorForm extends formSuperClassInterface{
-    code: string;
+    initialCode: string;
     height: number;
     tabSize: number;
     language: string;

@@ -83,7 +83,7 @@ export const cexFormStateInputBoxNumber : formState = {
 export const cexFormStateCodeEditor : formState = {
     selector: 'codeEditor',
     form: {
-        code: '#test initial code',
+        initialCode: '#test initial code',
         height: 42,
         tabSize: 10,
         language: 'python',
