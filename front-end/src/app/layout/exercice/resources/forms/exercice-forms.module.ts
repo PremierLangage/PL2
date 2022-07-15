@@ -14,6 +14,7 @@ import { NzSpaceModule } from 'ng-zorro-antd/space';
 import { NzSkeletonModule } from 'ng-zorro-antd/skeleton';
 import { NzSpinModule } from 'ng-zorro-antd/spin';
 import { NzMessageModule } from 'ng-zorro-antd/message';
+import { CodeEditorModule } from './components/code-editor/code-editor.module';
 
 
 @NgModule({
@@ -32,6 +33,7 @@ import { NzMessageModule } from 'ng-zorro-antd/message';
     // COMPONENTS :
     RadioGroupModule,
     InputBoxModule,
+    CodeEditorModule,
   ],
   declarations: [
     // PROVIDER :

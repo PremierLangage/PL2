@@ -17,6 +17,7 @@ import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
 import { IconModule } from '@ant-design/icons-angular';
 import { CssPipeModule } from './pipes/CssPipe.pipe';
+import { NgeMonacoModule } from '@cisstech/nge/monaco';
 
 registerLocaleData(fr);
 

@@ -1,8 +1,9 @@
-export interface InputBoxForm {
+import { formSuperClassInterface } from "../../form-superclass";
+
+export interface InputBoxForm extends formSuperClassInterface {
     type: 'number' | 'text' | 'textarea';
     hint?: string;
     placeholder: string;
-    disabled: boolean;
     numberProperties?: numberProperties;
     textProperties?: textProperties;
     textareaProperties?: textareaProperties;

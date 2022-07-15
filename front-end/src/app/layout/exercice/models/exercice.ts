@@ -1,14 +1,16 @@
 import { InputBoxForm } from "../resources/forms/components/input-box/input-box";
 import { RadioGroupForm } from "..//resources/forms/components/radio-group/radio-group";
+import { CodeEditorForm } from "../resources/forms/components/code-editor/code-editor";
 
 export interface exerciceFeedBack {
     score: number;
     feedback : string;
+    form?: formState;
 }
 
 export interface exerciceFeedBackPacket {
-    flag: boolean;
-    feedbacek?: exerciceFeedBack;
+    gotExercice: boolean;
+    feedback?: exerciceFeedBack;
 }
 
 export interface exercice {
@@ -37,8 +39,8 @@ export interface titleProperties {
 }
 
 export interface formState {
-    selector: 'radioGroup' | 'inputBox';
-    form: RadioGroupForm | InputBoxForm;
+    selector: 'radioGroup' | 'inputBox' | 'codeEditor';
+    form: RadioGroupForm | InputBoxForm | CodeEditorForm;
     output?: any;
 }
 

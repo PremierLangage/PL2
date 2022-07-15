@@ -28,3 +28,8 @@ export abstract class FormSuperclass {
 
     abstract initData(value: formState) : void;
 }
+
+
+export interface formSuperClassInterface {
+    disabled: boolean
+}

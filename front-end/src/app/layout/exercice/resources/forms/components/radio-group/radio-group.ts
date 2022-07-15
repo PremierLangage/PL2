@@ -1,10 +1,11 @@
+import { formSuperClassInterface } from "../../form-superclass";
+
 export interface RadioGroupItem {
     css?: string;
     content: string;
 }
 
-export interface RadioGroupForm {
+export interface RadioGroupForm extends formSuperClassInterface {
     items: RadioGroupItem[];
-    disabled: boolean;
     horizontal: boolean;
 }

@@ -79,4 +79,17 @@ export const cexFormStateInputBoxNumber : formState = {
     }
 }
 
-export const cexFormStateUsed : formState = cexFormStateRadioGroup;
+
+export const cexFormStateCodeEditor : formState = {
+    selector: 'codeEditor',
+    form: {
+        code: '#test initial code',
+        height: 42,
+        tabSize: 10,
+        language: 'python',
+        quickSuggestions: true,
+        disabled: false
+    }
+}
+
+export const cexFormStateUsed : formState = cexFormStateCodeEditor;
