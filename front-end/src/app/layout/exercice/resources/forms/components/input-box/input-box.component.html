@@ -114,7 +114,6 @@
                   }"
                   [nzAutocomplete]="auto"
                   (input)="this.suggestionsUpdate()"
-                  [disabled]="this.inputBoxData.disabled"
                   [(ngModel)]="this.output"
                 ></textarea>
               </nz-textarea-count>
@@ -132,7 +131,6 @@
           }"
           [nzAutocomplete]="auto"
           (input)="this.suggestionsUpdate()"
-          [disabled]="this.inputBoxData.disabled"
           [(ngModel)]="this.output"
         ></textarea>
       </ng-template>
