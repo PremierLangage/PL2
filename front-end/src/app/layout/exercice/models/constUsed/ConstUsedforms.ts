@@ -92,4 +92,4 @@ export const cexFormStateCodeEditor : formState = {
     }
 }
 
-export const cexFormStateUsed : formState = cexFormStateCodeEditor;
+export const cexFormStateUsed : formState = cexFormStateRadioGroup;

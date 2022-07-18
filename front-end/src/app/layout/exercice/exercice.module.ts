@@ -6,6 +6,7 @@ import { ExerciceTemplateModule } from './resources/templates/exercice-template.
 
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzAffixModule } from 'ng-zorro-antd/affix';
+import { NzMessageModule } from 'ng-zorro-antd/message';
 
 const DECLARATIONS = [
     ExerciceComponent
@@ -17,7 +18,8 @@ const DECLARATIONS = [
         ExerciceTemplateModule,
 
         NzButtonModule,
-        NzAffixModule
+        NzAffixModule,
+        NzMessageModule
     ],
     exports: [
         ...DECLARATIONS,

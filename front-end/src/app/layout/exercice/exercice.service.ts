@@ -1,21 +1,30 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { formState } from './models/exercice';
+import { Observable, retry, catchError } from 'rxjs';
+import { cexExercice, cexFeedBackUsed } from './models/constUsed/constUsed';
+import { exercice, exerciceFeedBackPacket, formState } from './models/exercice';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class ExerciceService {
-  readonly ROOT_URL = "https://platon.org/api/v1/play/";
-
   constructor(private http: HttpClient) {}
 
-  sendformState(output: formState) {
-    return this.http.post(this.ROOT_URL,  output);
+  sendformState(output: formState, uri: string) : Observable<exerciceFeedBackPacket> {
+    return new Observable(observer => observer.next({gotFeedback: true, feedback : cexFeedBackUsed}));
+    
+
+    return this.http.post<exerciceFeedBackPacket>(uri, output);
   }
 
-  getExercice(cid : string) {
-    return this.http.get(this.ROOT_URL + cid);
+  getExercice(uri : string) : Observable<exercice> {
+    return new Observable(observer => observer.next(cexExercice));
+    
+    
+    return this.http.get<exercice>(uri).pipe(
+      retry(3),
+      catchError(error => {throw new Error(error)})
+    );
   }  
 }

@@ -9,7 +9,7 @@ export interface exerciceFeedBack {
 }
 
 export interface exerciceFeedBackPacket {
-    gotExercice: boolean;
+    gotFeedback: boolean;
     feedback?: exerciceFeedBack;
 }
 

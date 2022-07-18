@@ -38,6 +38,7 @@ registerLocaleData(fr);
     NzMenuModule,
     IconModule,
     CssPipeModule,
+    
   ],
   providers: [{ provide: NZ_I18N, useValue: fr_FR }],
   bootstrap: [AppComponent],

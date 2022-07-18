@@ -10,16 +10,17 @@
   nzShape="round"
   nzSize="large"
   nzType="primary"
-  (click)="switchFeedBack()"
+  (click)="logExo()"
 >
-  {{ this.gotFeedBack ? "Disable FeedBack" : "Enable FeedBack" }}
+  Display Exercice
 </button>
 <button
   nz-button
   nzShape="round"
   nzSize="large"
   nzType="primary"
-  (click)="logExo()"
+  (click)="submitForm()"
+  [nzLoading]="this.loading"
 >
-  Display Exercice
+  Submit Answer
 </button>

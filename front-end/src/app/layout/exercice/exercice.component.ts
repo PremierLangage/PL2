@@ -1,5 +1,6 @@
-import { AfterViewInit, Component, Input } from '@angular/core';
-import { cexFeedBackUsed } from './models/constUsed/constUsed';
+import { Component, Input } from '@angular/core';
+import { NzMessageService } from 'ng-zorro-antd/message';
+import { ExerciceService } from './exercice.service';
 import { exercice, exerciceFeedBack } from './models/exercice';
 
 
@@ -8,26 +9,50 @@ import { exercice, exerciceFeedBack } from './models/exercice';
   templateUrl: './exercice.component.html',
   styleUrls: ['./exercice.component.scss']
 })
-export class ExerciceComponent implements AfterViewInit {
+export class ExerciceComponent {
 
-  @Input() exercice? : exercice;
+  constructor(private service: ExerciceService,
+    private messageService: NzMessageService) {
+  }
+
+  @Input() get URI(): string { return this.__uri;} 
+  set URI(value: string) {
+    this.__uri = value;
+    this.service.getExercice(this.__uri).subscribe(packet => this.exercice = packet as exercice);
+  }
+  
+  __uri: string = "";
+  exercice? : exercice;
   feedback?: exerciceFeedBack;
+  loading = false;
 
-  gotFeedBack = false;
 
-  ngAfterViewInit(): void {
-    //Called after ngAfterContentInit when the component's view has been initialized. Applies to components only.
-    //Add 'implements AfterViewInit' to the class.
+  logExo() {
     console.log(JSON.stringify(this.exercice));
   }
 
-  switchFeedBack() {
-    
-    this.gotFeedBack = !this.gotFeedBack;
-    this.feedback = this.gotFeedBack ? cexFeedBackUsed : undefined;
-  }
+  submitForm(): void {
+    if (this.loading) return;
+    this.loading = true;
+    if (this.exercice?.process.formState.form) {
+      this.exercice.process.formState.form.disabled = true;
+      
+      const loadingMessageID = this.messageService.loading('Évaluation de votre réponse', { nzDuration: 0 }).messageId;
 
-  logExo() {
-    console.log(JSON.stringify(this.exercice?.process.formState));
+      setTimeout(() => {
+        if (this.exercice)
+          this.service.sendformState(this.exercice.process.formState, this.URI)
+        .subscribe(packet => {
+          this.messageService.remove(loadingMessageID);
+          this.messageService.success('Évaluation Terminée!', { nzDuration: 2500 })
+          if (packet.gotFeedback)
+            this.feedback = packet.feedback;
+          this.loading = false;
+          if (this.exercice?.process.formState.form)
+            this.exercice.process.formState.form.disabled = false;
+        });
+      }, 1000);
+    }
+
   }
 }
