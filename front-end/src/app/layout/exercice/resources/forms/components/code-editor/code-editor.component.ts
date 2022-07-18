@@ -27,7 +27,7 @@ export class CodeEditorComponent extends FormSuperclass implements AfterViewChec
 
     initData(value: formState): void {
         this.codeEditorData = value.form as CodeEditorForm;
-        this.initialCode = this.codeEditorData.code;
+        this.initialCode = this.codeEditorData.initialCode;
     }
 
     codeEditorData?: CodeEditorForm;
@@ -56,46 +56,64 @@ export class CodeEditorComponent extends FormSuperclass implements AfterViewChec
     onCreateEditor(editor: monaco.editor.IEditor) {
         this.editor = editor as monaco.editor.IStandaloneCodeEditor;
 
-        this.editor.updateOptions({
-            minimap: {
-                side: 'right'
-            }
-        });
-
+        // LINKING MODEL TO EDITOR
+        // ----------------------------------------------------------
         editor.setModel(
             (this.model =
                 this.model ||
                 monaco.editor.createModel(
-                    this.codeEditorData?.code || '',
+                    this.codeEditorData?.initialCode || '',
                     this.codeEditorData?.language || 'plaintext'
                 ))
         );
+
+        // CONFIGURATION
+        // ----------------------------------------------------------
         this.model.updateOptions({
-            tabSize: this.codeEditorData?.tabSize
+            tabSize: this.codeEditorData?.tabSize,
+            insertSpaces: true,
+            trimAutoWhitespace: true,
         })
+        this.editor.updateOptions({
+            autoIndent: 'advanced',
+            lineNumbers: 'on',
+            renderWhitespace: 'all',
+            quickSuggestions: this.codeEditorData?.quickSuggestions,
+            glyphMargin: false,
+            renderControlCharacters: true,
+            minimap: {
+                enabled: true,
+                side: 'right'
+            },
+            scrollbar: {
+                verticalScrollbarSize: 4,
+                verticalSliderSize: 4,
+            },
+        });
 
         // LISTENERS
-
+        // ----------------------------------------------------------
         // OUTPUT LINK
         this.disposables.push(
             this.model.onDidChangeContent(() => {
                 this.output = this.model?.getValue();
             })
         );
+
         // CURSOR ACTUALISATION
         this.disposables.push(
             this.editor.onDidChangeCursorPosition((e) => {
                 this.cursor = e.position;
             })
         );
-
+        
+        // TAB-SIZE REFRESHING
         this.disposables.push(
             this.editor.onDidFocusEditorWidget(() => {
                 if (this.codeEditorData)
                     this.codeEditorData.tabSize = this.model?.getOptions().tabSize ?? this.codeEditorData.tabSize;
             })
         )
-
     }
 
     ngAfterViewChecked() {
