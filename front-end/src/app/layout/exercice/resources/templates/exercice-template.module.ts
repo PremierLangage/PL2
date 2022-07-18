@@ -16,6 +16,11 @@ import { FeedbackTextComponent } from '../feedback/text/feedback-text.component'
 import { ExerciceFormsModule } from '../forms/exercice-forms.module';
 
 
+
+const TEMPLATE_DECLARATION = [
+  DefaultComponent
+]
+
 @NgModule({
   imports: [
     CommonModule,
@@ -29,7 +34,7 @@ import { ExerciceFormsModule } from '../forms/exercice-forms.module';
     NzIconModule,
   ],
   declarations: [
-    DefaultComponent,
+    ...TEMPLATE_DECLARATION,
     TemplateSuperclass,
     TemplateProviderComponent,
     TitleComponent,

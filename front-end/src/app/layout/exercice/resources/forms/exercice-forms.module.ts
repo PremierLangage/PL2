@@ -17,6 +17,12 @@ import { NzMessageModule } from 'ng-zorro-antd/message';
 import { CodeEditorModule } from './components/code-editor/code-editor.module';
 
 
+const FORMS_DECLARATIONS = [
+  RadioGroupModule,
+  InputBoxModule,
+  CodeEditorModule
+]
+
 @NgModule({
   imports: [
     CommonModule,
@@ -31,9 +37,7 @@ import { CodeEditorModule } from './components/code-editor/code-editor.module';
     NzMessageModule,
 
     // COMPONENTS :
-    RadioGroupModule,
-    InputBoxModule,
-    CodeEditorModule,
+    ...FORMS_DECLARATIONS,
   ],
   declarations: [
     // PROVIDER :
@@ -43,4 +47,5 @@ import { CodeEditorModule } from './components/code-editor/code-editor.module';
     FormsProviderComponent
   ]
 })
-export class ExerciceFormsModule { }
+export class ExerciceFormsModule {
+}
