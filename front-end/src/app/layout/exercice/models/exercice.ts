@@ -11,6 +11,7 @@ export interface exerciceFeedBack {
 export interface exerciceFeedBackPacket {
     gotFeedback: boolean;
     feedback?: exerciceFeedBack;
+    syntaxError?: boolean;
 }
 
 export interface exercice {
@@ -27,10 +28,7 @@ export interface exercice {
     templates : {
         templateSelector: string;
         titleProperties: titleProperties; 
-        feedback: {
-            feedBackTextSelector:  string; 
-            feedBackScoreSelector: string; 
-        }
+        feedBackScoreSelector: string; 
     }
 }
 

@@ -118,6 +118,7 @@ yarn-error.log
 /libpeerconnection.log
 testem.log
 /typings
+/front-end/.angular
 
 # System files
 .DS_Store

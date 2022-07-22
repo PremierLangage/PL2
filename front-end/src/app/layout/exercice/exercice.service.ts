@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, retry, catchError } from 'rxjs';
-import { cexExercice, cexFeedBackUsed } from './models/constUsed/constUsed';
+import { cexExercice, cexExerciceFirst, cexExerciceSecond, cexExerciceThird, cexFeedBackUsed } from './models/constUsed/constUsed';
 import { exercice, exerciceFeedBackPacket, formState } from './models/exercice';
 
 
@@ -11,7 +11,7 @@ import { exercice, exerciceFeedBackPacket, formState } from './models/exercice';
 export class ExerciceService {
   constructor(private http: HttpClient) {}
 
-  sendformState(output: formState, uri: string) : Observable<exerciceFeedBackPacket> {
+  sendformState(output: formState, uri: string) : Observable<exerciceFeedBackPacket>  {
     return new Observable(observer => observer.next({gotFeedback: true, feedback : cexFeedBackUsed}));
     
 
@@ -19,7 +19,17 @@ export class ExerciceService {
   }
 
   getExercice(uri : string) : Observable<exercice> {
-    return new Observable(observer => observer.next(cexExercice));
+    // console.log("Service recieved : " + uri);
+    switch (uri) {
+      case "first": 
+        return new Observable(observer => observer.next(cexExerciceFirst));
+      case "second":
+          return new Observable(observer => observer.next(cexExerciceSecond));
+      case "third": 
+        return new Observable(observer => observer.next(cexExerciceThird));
+      default: 
+        return new Observable(observer => observer.next(cexExercice));
+    }
     
     
     return this.http.get<exercice>(uri).pipe(

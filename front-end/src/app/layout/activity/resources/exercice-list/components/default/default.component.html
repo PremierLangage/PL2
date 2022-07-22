@@ -1,0 +1,61 @@
+<div class="logo"></div>
+<ul nz-menu nzMode="inline" [nzSelectable]="false" nzTheme="dark">
+  <li
+    nz-menu-item
+    nz-row
+    nzJustify="start"
+    (click)="this.activity.currentExercice = this.PRESENTATIONKEY"
+  >
+    <i nz-icon nz-col nzType="book" nzTheme="outline"></i>
+    <span nz-col>présentation</span>
+  </li>
+  <li nz-menu-divider></li>
+  <li
+    *ngFor="let exercice of this.getActivityExerciceList()"
+    nz-submenu
+    [nzTitle]="exercice.value.title"
+    nzIcon="form"
+  >
+    <ul>
+      <li *ngIf="exercice.value.param" nz-menu-group nzTitle="Informations">
+        <ul>
+          <li
+            *ngIf="exercice.value.param.barem"
+            nz-menu-item
+            class="infoFlexContainer"
+          >
+            Barem :
+            <span>{{ exercice.value.param.barem }}</span>
+          </li>
+          <li
+            nz-menu-item
+            class="infoFlexContainer"
+            nzJustify="space-between"
+            *ngIf="exercice.value.param.difficulty"
+          >
+            Difficulty :
+            <nz-rate
+              *ngIf="exercice.value.param && exercice.value.param.difficulty"
+              [ngModel]="exercice.value.param.difficulty / 2"
+              nzAllowHalf
+              nzDisabled="true"
+            ></nz-rate>
+          </li>
+        </ul>
+      </li>
+      <li nz-menu-item>
+        <button
+          nz-button
+          nzType="primary"
+          nzBlock
+          nzValue="large"
+          nzActive
+          ngClass="animate__animated animate__infinite animate__pulse text "
+          (click)="this.activity.currentExercice = exercice.key"
+        >
+          commencer
+        </button>
+      </li>
+    </ul>
+  </li>
+</ul>

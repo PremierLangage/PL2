@@ -1,0 +1,49 @@
+<nz-layout>
+  <nz-header nzTheme="light"
+    ><div nz-row nzJustify="space-between">
+      <div class="author">
+        <i nz-icon nzType="solution" nzTheme="outline"></i>
+        <span nz-typography nzType="secondary"
+          >Author: {{ this.activity.author }}</span
+        >
+      </div>
+      <span nz-typography>
+        <strong>{{ this.activity.title }}</strong>
+      </span>
+      <div class="version">
+        <i nz-icon [nzType]="'number'" [style]="{ opacity: 0.5 }"></i>
+        <span nz-typography nzType="secondary"
+          >v.{{ this.activity.version }}</span
+        >
+      </div>
+    </div></nz-header
+  >
+  <nz-layout>
+    <nz-sider
+      nzCollapsible
+      [(nzCollapsed)]="isCollapsed"
+      [nzCollapsedWidth]="0"
+      nzBreakpoint="xl"
+      [nzTrigger]="null"
+      nzTheme="dark"
+      nzWidth="15%"
+    >
+      <app-exercice-list-provider
+        [activity]="this.activity"
+      ></app-exercice-list-provider>
+    </nz-sider>
+    <nz-content>
+      <i
+        class="trigger"
+        nz-icon
+        [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
+        (click)="isCollapsed = !isCollapsed"
+      ></i>
+      <div class="exercice-container">
+        <app-activity-content-loader
+          [activity]="this.activity"
+        ></app-activity-content-loader>
+      </div>
+    </nz-content>
+  </nz-layout>
+</nz-layout>

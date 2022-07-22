@@ -8,6 +8,4 @@ import { cexExercice } from "src/app/layout/exercice/models/constUsed/constUsed"
     styleUrls: ['./workspace.component.scss']
 })
 export class WorkspaceComponent {
-    exampleExercice = cexExercice;
-
 }

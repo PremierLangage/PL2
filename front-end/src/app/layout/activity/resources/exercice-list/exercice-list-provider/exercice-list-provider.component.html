@@ -1,0 +1,8 @@
+<ng-container *ngIf="this.activity && this.activity.template">
+  <span [ngSwitch]="this.activity.template.exerciceList">
+    <exercice-list-default
+      *ngSwitchDefault
+      [activity]="this.activity"
+    ></exercice-list-default>
+  </span>
+</ng-container>

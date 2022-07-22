@@ -1,5 +1,5 @@
 import { exercice, exerciceFeedBack } from "../exercice";
-import { cexFormStateUsed } from "./ConstUsedforms";
+import { cexFormStateInputBoxNumber, cexFormStateInputBoxTextArea, cexFormStateRadioGroup, cexFormStateUsed } from "./ConstUsedforms";
 
 export const cexExercice : exercice = {
     cid: "DefaultComponentIdentifier",
@@ -10,10 +10,8 @@ export const cexExercice : exercice = {
         titleProperties: {
             titlePlacement: "center"
         },
-        feedback: {
-            feedBackTextSelector: "default",
-            feedBackScoreSelector: "default"
-        }
+        feedBackScoreSelector: "default"
+
     },
     process: {
         title: "Example Title Showcase",
@@ -22,8 +20,62 @@ export const cexExercice : exercice = {
     }
 }
 
+export const cexExerciceFirst : exercice = {
+    cid: "DefaultComponentIdentifier",
+    author: "PlatonShowcase",
+    version: "0.42",
+    templates: {
+        templateSelector: "default",
+        titleProperties: {
+            titlePlacement: "center"
+        },
+        feedBackScoreSelector: "default"
+    },
+    process: {
+        title: "Exercice First",
+        statement: "## Lorem Ipsum is simply dummy text of the printing and typesetting industry.\nLorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+        formState: cexFormStateInputBoxTextArea
+    }
+}
 
 
+export const cexExerciceSecond : exercice = {
+    cid: "DefaultComponentIdentifier",
+    author: "PlatonShowcase",
+    version: "4.2",
+    templates: {
+        templateSelector: "default",
+        titleProperties: {
+            titlePlacement: "left"
+        },
+        feedBackScoreSelector: "default"
+
+    },
+    process: {
+        title: "Exercice Second",
+        statement: "## Lorem Ipsum is simply dummy text of the printing and typesetting industry.\nLorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+        formState: cexFormStateRadioGroup
+    }
+}
+
+export const cexExerciceThird : exercice = {
+    cid: "DefaultComponentIdentifier",
+    author: "PlatonShowcase",
+    version: "4.2",
+    templates: {
+        templateSelector: "default",
+        titleProperties: {
+            titlePlacement: "center"
+        },
+        feedBackScoreSelector: "default"
+
+    },
+    process: {
+        title: "Exercice Third",
+        statement: "## Lorem Ipsum is simply dummy text of the printing and typesetting industry.\nLorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+        formState: cexFormStateInputBoxNumber
+    }
+}
 
 
 export const cexFeedBack100 : exerciceFeedBack = {

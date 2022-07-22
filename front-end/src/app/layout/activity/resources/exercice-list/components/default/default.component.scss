@@ -1,0 +1,20 @@
+.infoFlexContainer {
+    display: flex !important;
+    justify-content: space-between;
+
+    &:hover {
+        color: #1890ff;
+    }
+}
+
+.titre {
+    display: flex;
+    justify-content: center;
+}
+
+.logo {
+    height: 32px;
+    margin: 16px;
+    background: rgba(255, 255, 255, 0.3);
+
+}

@@ -18,6 +18,7 @@ import { NzMenuModule } from 'ng-zorro-antd/menu';
 import { IconModule } from '@ant-design/icons-angular';
 import { CssPipeModule } from './pipes/CssPipe.pipe';
 import { NgeMonacoModule } from '@cisstech/nge/monaco';
+import { ActivityModule } from './layout/activity/activity.module';
 
 registerLocaleData(fr);
 
@@ -25,7 +26,8 @@ registerLocaleData(fr);
   declarations: [
     AppComponent, 
     CourseComponent, 
-    CourseListComponent
+    CourseListComponent,
+
   ],
   imports: [
     BrowserModule, 
@@ -38,6 +40,7 @@ registerLocaleData(fr);
     NzMenuModule,
     IconModule,
     CssPipeModule,
+    ActivityModule
     
   ],
   providers: [{ provide: NZ_I18N, useValue: fr_FR }],

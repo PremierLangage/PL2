@@ -1,0 +1,61 @@
+:host {
+  display: flex;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+nz-sider {
+  box-shadow: 6px 0px 6px rgba(0,21,41,.35);
+  z-index: 10;
+}
+
+app-exercice {
+  background-color: white;
+}
+
+nz-header {
+  color: white;
+  box-shadow: 0px 6px 6px rgba(0,21,41,.35);
+  z-index:9;
+  padding-left: 1vmin;
+  padding-right: 1vmin;
+}
+
+nz-content {
+  padding: 1vmax;
+}
+
+.exercice-container {
+  background-color: white;
+  padding: 1vmax;
+}
+
+.trigger {
+  font-size: 18px;
+  line-height: 64px;
+  padding: 0 24px;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.trigger:hover {
+  color: #1890ff;
+}
+
+
+.author {
+  font-weight: bold;
+  opacity: 0.4;
+}
+
+.version {
+  font-style: italic;
+  opacity: 0.4;
+}
+
+
+
+.title {
+  font-weight: bold;
+}

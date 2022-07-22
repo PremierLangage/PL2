@@ -1,0 +1,22 @@
+<ng-container
+  *ngIf="
+    this.activity && this.activity.currentExercice === this.PRESENTATIONKEY;
+    then thenTemplate;
+    else elseTemplate
+  "
+></ng-container>
+<ng-template #thenTemplate>
+  <div class="presentation">
+    <span class="title" nzTypography> {{ this.activity.title }} </span>
+    <nz-divider></nz-divider>
+    <span class="desc" nz-typography>
+      <markdown>{{ this.activity.desc }}</markdown>
+    </span>
+  </div>
+</ng-template>
+<ng-template #elseTemplate>
+  <app-exercice
+    *ngIf="this.getCurrentExercice()"
+    [URI]="this.getCurrentExercice()!.uri"
+  ></app-exercice>
+</ng-template>
