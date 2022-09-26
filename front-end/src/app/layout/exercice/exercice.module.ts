@@ -7,9 +7,14 @@ import { ExerciceTemplateModule } from './resources/templates/exercice-template.
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzAffixModule } from 'ng-zorro-antd/affix';
 import { NzMessageModule } from 'ng-zorro-antd/message';
+import { ExerciceModifierComponent } from './exercice-modifier/exercice-modifier.component';
+import { FormlyModule } from '@ngx-formly/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NzDividerModule } from 'ng-zorro-antd/divider';
 
 const DECLARATIONS = [
-    ExerciceComponent
+    ExerciceComponent,
+    ExerciceModifierComponent
 ]
 
 @NgModule({
@@ -19,7 +24,11 @@ const DECLARATIONS = [
 
         NzButtonModule,
         NzAffixModule,
-        NzMessageModule
+        NzMessageModule,
+        FormlyModule,
+        FormsModule,
+        ReactiveFormsModule,
+        NzDividerModule,
     ],
     exports: [
         ...DECLARATIONS,

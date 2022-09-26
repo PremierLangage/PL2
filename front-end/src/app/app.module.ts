@@ -10,7 +10,7 @@ import { NZ_I18N } from 'ng-zorro-antd/i18n';
 import { fr_FR } from 'ng-zorro-antd/i18n';
 import { registerLocaleData } from '@angular/common';
 import fr from '@angular/common/locales/fr';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { IconsProviderModule } from './icons-provider.module';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
@@ -19,6 +19,9 @@ import { IconModule } from '@ant-design/icons-angular';
 import { CssPipeModule } from './pipes/CssPipe.pipe';
 import { NgeMonacoModule } from '@cisstech/nge/monaco';
 import { ActivityModule } from './layout/activity/activity.module';
+import { FormlyModule } from '@ngx-formly/core';
+import { FormlyNgZorroAntdModule } from '@ngx-formly/ng-zorro-antd';
+
 
 registerLocaleData(fr);
 
@@ -40,7 +43,10 @@ registerLocaleData(fr);
     NzMenuModule,
     IconModule,
     CssPipeModule,
-    ActivityModule
+    ActivityModule,
+    FormlyModule.forRoot(),
+    ReactiveFormsModule,
+    FormlyNgZorroAntdModule,
     
   ],
   providers: [{ provide: NZ_I18N, useValue: fr_FR }],

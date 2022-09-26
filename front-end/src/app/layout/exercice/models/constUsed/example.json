@@ -1,0 +1,29 @@
+{
+  "cid": "DefaultComponentIdentifier",
+  "author": "PlatonShowcase",
+  "version": "0.42",
+  "templates": {
+    "templateSelector": "default",
+    "titleProperties": { "titlePlacement": "center" },
+    "feedBackScoreSelector": "default"
+  },
+  "process": {
+    "title": "Exercice First",
+    "statement": "## Lorem Ipsum is simply dummy text of the printing and typesetting industry.\nLorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+    "formState": {
+      "selector": "inputBox",
+      "form": {
+        "type": "textarea",
+        "hint": "#### Markdown is supported ! \n*Feel free to use it whenever your want*\n| Table | Example |\n|--|--|\n| Works | Well |\n```python\ndef truc(i : int):\n    return 42\n```",
+        "placeholder": "Rentrez une donnée",
+        "disabled": false,
+        "textareaProperties": {
+          "maxChar": 150,
+          "maxLine": 5,
+          "minLine": 2,
+          "completionText": ["test", "completion", "efficace"]
+        }
+      }
+    }
+  }
+}

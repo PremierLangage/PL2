@@ -18,5 +18,5 @@ export class ActivityComponent {
       this.__activity.currentExercice = PRESENTATIONKEY;
   }
   __activity: activity;
-
 }
+

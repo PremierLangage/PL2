@@ -1,3 +1,5 @@
+import { exercice } from "../../exercice/models/exercice";
+
 export interface exerciceLoadingData {
     uri: string;
     title: string;
@@ -21,6 +23,6 @@ export interface activity {
     template: {
         template: 'default';
         exerciceList: 'default';
-    }
+    };
 }
 
