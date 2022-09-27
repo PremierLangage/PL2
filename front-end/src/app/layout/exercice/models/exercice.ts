@@ -1,6 +1,7 @@
 import { InputBoxForm } from "../resources/forms/components/input-box/input-box";
 import { RadioGroupForm } from "..//resources/forms/components/radio-group/radio-group";
 import { CodeEditorForm } from "../resources/forms/components/code-editor/code-editor";
+import { FormlyForm } from "../resources/forms/components/formlyform/formlyform";
 
 export interface exerciceFeedBack {
     score: number;
@@ -37,8 +38,8 @@ export interface titleProperties {
 }
 
 export interface formState {
-    selector: 'radioGroup' | 'inputBox' | 'codeEditor';
-    form: RadioGroupForm | InputBoxForm | CodeEditorForm;
+    selector: 'radioGroup' | 'inputBox' | 'codeEditor' | 'form';
+    form: RadioGroupForm | InputBoxForm | CodeEditorForm | FormlyForm;
     output?: any;
 }
 

@@ -26,4 +26,7 @@
 </button>
 <nz-divider nzText="Editeur"></nz-divider>
 
-<app-exercice-modifier [model]="this.exercice"></app-exercice-modifier>
+<app-exercice-modifier
+  [model]="this.exercice"
+  (exerciceChangesEvent)="updateExercice($event)"
+></app-exercice-modifier>

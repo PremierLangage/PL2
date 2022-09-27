@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';
 import { exercice } from '../models/exercice';
@@ -11,6 +11,7 @@ import { exercice } from '../models/exercice';
 export class ExerciceModifierComponent implements OnInit {
   form = new FormGroup({});
   @Input() model ?: exercice;
+  @Output() exerciceChangesEvent = new EventEmitter<exercice>()
 
   options: FormlyFormOptions = {};
 
@@ -95,7 +96,6 @@ export class ExerciceModifierComponent implements OnInit {
   }
 
   onSubmit(model : any) {
-    console.log(JSON.stringify(model));
-    this.model = model as exercice;
+    this.exerciceChangesEvent.emit(model);
   }
 }

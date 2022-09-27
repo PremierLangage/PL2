@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { ChangeDetectorRef, Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { ExerciceService } from './exercice.service';
 import { exercice, exerciceFeedBack } from './models/exercice';
@@ -9,11 +9,11 @@ import { exercice, exerciceFeedBack } from './models/exercice';
   templateUrl: './exercice.component.html',
   styleUrls: ['./exercice.component.scss']
 })
-export class ExerciceComponent {
+export class ExerciceComponent  {
 
   constructor(private service: ExerciceService,
-    private messageService: NzMessageService) {
-  }
+    private messageService: NzMessageService)
+  {}
 
   @Input() get URI(): string { return this.__uri;} 
   set URI(value: string) {
@@ -25,7 +25,6 @@ export class ExerciceComponent {
   exercice? : exercice;
   feedback?: exerciceFeedBack;
   loading = false;
-
 
   logExo() {
     console.log(JSON.stringify(this.exercice));
@@ -54,5 +53,9 @@ export class ExerciceComponent {
       }, 1000);
     }
 
+  }
+
+  updateExercice(eventData : exercice) {
+    this.exercice = eventData;
   }
 }

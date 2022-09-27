@@ -11,6 +11,7 @@ export class TitleComponent {
 
 
   @Input() set exercice(value: exercice | undefined) {
+    console.log("set!");
     switch (value?.templates.titleProperties.titlePlacement) {
       case "left": this.titlealignement = "flex-start"; break;
       case "right": this.titlealignement = "flex-end"; break;
@@ -27,4 +28,9 @@ export class TitleComponent {
   title:    string = "";
   version:  string = "";
   author:   string = "";
+
+
+  log() {
+    console.log(this.title, this.exercice);
+  }
 }

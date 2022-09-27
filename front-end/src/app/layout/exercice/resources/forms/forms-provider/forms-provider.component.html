@@ -18,7 +18,8 @@
         *ngSwitchCase="'codeEditor'"
         [formData]="this.form"
       ></form-code-editor>
-
+      <form-formlyform #child *ngSwitchCase="'form'" [formData]="this.form">
+      </form-formlyform>
       <nz-result
         *ngSwitchDefault
         nzTitle="Invalid Exercice Error"
