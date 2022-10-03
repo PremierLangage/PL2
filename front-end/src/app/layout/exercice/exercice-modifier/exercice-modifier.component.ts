@@ -83,6 +83,7 @@ export class ExerciceModifierComponent implements OnInit {
           { label: 'radioGroup', value: 'radioGroup' },
           { label: 'inputBox', value: 'inputBox' },
           { label: 'codeEditor', value: 'codeEditor' },
+          { label: 'form', value: 'form'},
         ],
         required: true,
       }

@@ -3,12 +3,17 @@ import { exercice } from '../../models/exercice';
 
 @Component({
   selector: 'app-exercice-statement',
-  template: '<markdown>{{ this.statement }}</markdown>'
+  template: '<markdown [data]="this._exercice?.process?.statement"></markdown>'
 })
 export class StatementComponent {
-  @Input() set exercice(value: exercice | undefined) {
-    this.statement = value?.process.statement ?? "";
+  @Input() set exercice(value : exercice | undefined ) {
+    this._exercice = value;
   }
+  get exercice() { return this._exercice; }
+  _exercice?: exercice;
 
-  statement: string = "";
+  
+  log() {
+    console.log(JSON.stringify(this.exercice));
+  }
 }
