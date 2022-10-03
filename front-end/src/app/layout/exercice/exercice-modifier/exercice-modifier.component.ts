@@ -2,7 +2,6 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';
 import { exercice } from '../models/exercice';
-
 @Component({
   selector: 'app-exercice-modifier',
   templateUrl: './exercice-modifier.component.html',

@@ -33,3 +33,4 @@ export abstract class FormSuperclass {
 export interface formSuperClassInterface {
     disabled: boolean
 }
+

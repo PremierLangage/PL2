@@ -25,24 +25,22 @@
             *ngSwitchCase="'right'"
             [ngStyle]="{ display: 'flex', 'justify-content': 'flex-end' }"
           >
-            {{ this._exercice?.process?.title }} 1
+            {{ this._exercice?.process?.title }}
           </span>
           <span
             *ngSwitchCase="'left'"
             [ngStyle]="{ display: 'flex', 'justify-content': 'flex-start' }"
           >
-            {{ this._exercice?.process?.title }} 2
+            {{ this._exercice?.process?.title }}
           </span>
           <span
             *ngSwitchDefault
             [ngStyle]="{ display: 'flex', 'justify-content': 'center' }"
           >
-            {{ this._exercice?.process?.title }} 3
+            {{ this._exercice?.process?.title }}
           </span>
         </span>
       </strong>
     </h1>
   </div>
 </div>
-
-<button (click)="log()"></button>

@@ -1,7 +1,6 @@
-import { InputBoxForm } from "../resources/forms/components/input-box/input-box";
-import { RadioGroupForm } from "..//resources/forms/components/radio-group/radio-group";
-import { CodeEditorForm } from "../resources/forms/components/code-editor/code-editor";
-import { FormlyForm } from "../resources/forms/components/formlyform/formlyform";
+import { ProviderExerciceTemplateKeys } from "./providers/exerciceTemplate";
+import { ProviderFeedbackScoreKeys } from "./providers/feedbackScore";
+import { ProviderFormKeys, ProviderFormTypes } from "./providers/form";
 
 export interface exerciceFeedBack {
     score: number;
@@ -27,9 +26,9 @@ export interface exercice {
     }
 
     templates : {
-        templateSelector: string;
+        templateSelector: ProviderExerciceTemplateKeys;
         titleProperties: titleProperties; 
-        feedBackScoreSelector: string; 
+        feedBackScoreSelector: ProviderFeedbackScoreKeys; 
     }
 }
 
@@ -38,8 +37,8 @@ export interface titleProperties {
 }
 
 export interface formState {
-    selector: 'radioGroup' | 'inputBox' | 'codeEditor' | 'form';
-    form: RadioGroupForm | InputBoxForm | CodeEditorForm | FormlyForm;
+    selector: ProviderFormKeys;
+    form: ProviderFormTypes;
     output?: any;
 }
 

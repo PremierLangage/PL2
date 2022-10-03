@@ -11,6 +11,7 @@ import { ExerciceModifierComponent } from './exercice-modifier/exercice-modifier
 import { FormlyModule } from '@ngx-formly/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NzDividerModule } from 'ng-zorro-antd/divider';
+import { FormlyformModule } from './resources/forms/components/formlyform/formlyform.module';
 
 const DECLARATIONS = [
     ExerciceComponent,
@@ -29,6 +30,9 @@ const DECLARATIONS = [
         FormsModule,
         ReactiveFormsModule,
         NzDividerModule,
+
+        FormlyformModule
+
     ],
     exports: [
         ...DECLARATIONS,

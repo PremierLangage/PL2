@@ -1,6 +1,6 @@
 <div #target>
   <ng-container *ngIf="this.form; else noFormLoaded">
-    <span [ngSwitch]="this.form?.selector">
+    <span [ngSwitch]="this.form.selector">
       <form-radio-group
         #child
         *ngSwitchCase="'radioGroup'"
