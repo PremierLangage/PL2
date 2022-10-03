@@ -1,7 +1,7 @@
 <span [ngSwitch]="this.exercice?.templates?.templateSelector">
   <exercice-templates-default
     *ngSwitchDefault
-    [exercice]="this.exercice"
+    [(exercice)]="this.exercice"
     [feedback]="this.feedback"
   ></exercice-templates-default>
 </span>

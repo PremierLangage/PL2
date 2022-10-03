@@ -1,36 +1,30 @@
-import { Component, HostBinding, Input } from '@angular/core';
-import { exercice, titleProperties } from '../../models/exercice';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, HostBinding, Input } from '@angular/core';
+import { exercice } from '../../models/exercice';
 
-
+// ChangeDetectionStrategy, ChangeDetectorRef
 @Component({
   selector: 'app-exercice-title',
   templateUrl: './title.component.html',
-  styleUrls: ['./title.component.scss']
+  styleUrls: ['./title.component.scss'],
 })
 export class TitleComponent {
 
+  constructor(  ) { }
 
-  @Input() set exercice(value: exercice | undefined) {
+  @Input() 
+  set exercice(value: exercice | undefined) {
     console.log("set!");
-    switch (value?.templates.titleProperties.titlePlacement) {
-      case "left": this.titlealignement = "flex-start"; break;
-      case "right": this.titlealignement = "flex-end"; break;
-      default: this.titlealignement = "center";
-    }
-    this.title = value?.process.title ?? "chargement";
-    this.version = value?.version ?? "chargement";
-    this.author = value?.author ?? "chargement";
+    this._exercice = value;
   }
+  get exercice() {
+    return this._exercice;
+  }
+  _exercice ?: exercice;
 
-  @HostBinding("style.--titleAlignment")
-  titlealignement : string = "center";
-
-  title:    string = "";
-  version:  string = "";
-  author:   string = "";
-
+  // @HostBinding("style.--titleAlignment")
+  // titlealignement : string = "center";
 
   log() {
-    console.log(this.title, this.exercice);
+    console.log(this.exercice);
   }
 }

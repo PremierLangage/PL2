@@ -29,7 +29,7 @@ export const cexActivity : activity = {
             }
         },
         "fourth": {
-            uri: "test",
+            uri: "fourth",
             title: "fourth exercice",
             param: {
             }

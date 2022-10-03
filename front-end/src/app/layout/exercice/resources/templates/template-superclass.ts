@@ -1,4 +1,4 @@
-import { Component, Input } from "@angular/core";
+import { Component, EventEmitter, Input, Output } from "@angular/core";
 import { exercice, exerciceFeedBack } from "../../models/exercice";
 
 @Component({
@@ -6,5 +6,6 @@ import { exercice, exerciceFeedBack } from "../../models/exercice";
 })
 export class TemplateSuperclass {
     @Input() exercice?: exercice;
+    @Output() exerciceChange =  new EventEmitter<exercice>();
     @Input() feedback?: exerciceFeedBack;
 }

@@ -11,7 +11,7 @@ import { exercice } from '../models/exercice';
 export class ExerciceModifierComponent implements OnInit {
   form = new FormGroup({});
   @Input() model ?: exercice;
-  @Output() exerciceChangesEvent = new EventEmitter<exercice>()
+  @Output() modelChange = new EventEmitter<exercice>()
 
   options: FormlyFormOptions = {};
 
@@ -96,6 +96,6 @@ export class ExerciceModifierComponent implements OnInit {
   }
 
   onSubmit(model : any) {
-    this.exerciceChangesEvent.emit(model);
+    this.modelChange.emit(model);
   }
 }

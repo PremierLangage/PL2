@@ -5,24 +5,23 @@
     justify-content: space-between;
     flex-wrap: wrap;
 
-.top {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    .top {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
 
-    .author {
-    font-weight: bold;
+        .author {
+        font-weight: bold;
+        }
+
+        .version {
+        font-style: italic;
+        opacity: 0.4;
+        }
     }
 
-    .version {
-    font-style: italic;
-    opacity: 0.4;
-    }
-}
-
-
-.title {
-    align-self: var(--titleAlignment);
-    font-weight: bold;
-}
+    // .title {
+    //     align-self: var(--titleAlignment);
+    //     font-weight: bold;
+    // }
 }

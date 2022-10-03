@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, retry, catchError } from 'rxjs';
-import { cexExercice, cexExerciceFirst, cexExerciceSecond, cexExerciceThird, cexFeedBackUsed } from './models/constUsed/constUsed';
+import { cexExercice, cexExerciceFirst, cexExerciceFourth, cexExerciceSecond, cexExerciceThird, cexFeedBackUsed } from './models/constUsed/constUsed';
 import { exercice, exerciceFeedBackPacket, formState } from './models/exercice';
 
 
@@ -27,6 +27,8 @@ export class ExerciceService {
           return new Observable(observer => observer.next(cexExerciceSecond));
       case "third": 
         return new Observable(observer => observer.next(cexExerciceThird));
+      case "fourth":
+        return new Observable(observer => observer.next(cexExerciceFourth));
       default: 
         return new Observable(observer => observer.next(cexExercice));
     }

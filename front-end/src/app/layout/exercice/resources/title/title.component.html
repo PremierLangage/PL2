@@ -2,16 +2,45 @@
   <div class="top">
     <div class="author">
       <i nz-icon nzType="solution" nzTheme="outline"></i>
-      <span nz-typography nzType="secondary">Author: {{ this.author }}</span>
+      <span nz-typography nzType="secondary"
+        >Author: {{ this._exercice?.author ?? "chargement" }}</span
+      >
     </div>
     <div class="version">
       <i nz-icon [nzType]="'number'" [style]="{ opacity: 0.5 }"></i>
-      <span nz-typography nzType="secondary">v.{{ this.version }}</span>
+      <span nz-typography nzType="secondary"
+        >v.{{ this._exercice?.version ?? "chargement" }}</span
+      >
     </div>
   </div>
   <div class="title">
     <h1 nz-typography>
-      <strong>{{ this.title }}</strong>
+      <strong>
+        <span
+          [ngSwitch]="
+            this._exercice?.templates?.titleProperties?.titlePlacement
+          "
+        >
+          <span
+            *ngSwitchCase="'right'"
+            [ngStyle]="{ display: 'flex', 'justify-content': 'flex-end' }"
+          >
+            {{ this._exercice?.process?.title }} 1
+          </span>
+          <span
+            *ngSwitchCase="'left'"
+            [ngStyle]="{ display: 'flex', 'justify-content': 'flex-start' }"
+          >
+            {{ this._exercice?.process?.title }} 2
+          </span>
+          <span
+            *ngSwitchDefault
+            [ngStyle]="{ display: 'flex', 'justify-content': 'center' }"
+          >
+            {{ this._exercice?.process?.title }} 3
+          </span>
+        </span>
+      </strong>
     </h1>
   </div>
 </div>
