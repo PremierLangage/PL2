@@ -12,9 +12,11 @@ export class ExerciceModifierComponent  {
   @Input() model ?: exercice;
   @Output() modelChange = new EventEmitter<exercice>()
 
+  showJson : boolean = true;
+
   options: FormlyFormOptions = {};
 
-  
+
   fields : FormlyFieldConfig[] = [
     {
       key: 'author',
@@ -23,6 +25,7 @@ export class ExerciceModifierComponent  {
         label: 'Auteur',
         placeholder: 'Entrez une valeur',
         required: true,
+        description: "test de desc"
       }
     },
     {
@@ -67,7 +70,7 @@ export class ExerciceModifierComponent  {
     },
     {
       key: 'process.statement',
-      type: 'input',
+      type: 'textarea',
       props: {
         label: 'Enoncé exercice',
         placeholder: 'Entrez une valeur (markdown)',

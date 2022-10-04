@@ -6,5 +6,20 @@
     [model]="this.model"
   ></formly-form>
 </form>
+Affichage JSON:
+<nz-switch
+  [(ngModel)]="this.showJson"
+  [nzCheckedChildren]="checkedTemplate"
+  [nzUnCheckedChildren]="unCheckedTemplate"
+>
+</nz-switch>
+<ng-template #checkedTemplate>
+  <span nz-icon nzType="check"></span
+></ng-template>
+<ng-template #unCheckedTemplate
+  ><span nz-icon nzType="close"></span
+></ng-template>
 
-<!-- <form-formlyform></form-formlyform> -->
+<span *ngIf="this.showJson" nz-typography>
+  <pre><code>{{ this.model | json }}</code></pre>
+</span>

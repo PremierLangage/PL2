@@ -112,6 +112,7 @@ export const cexFormStateFormly : formState = {
                     label: 'Age',
                     placeholder: 'Entrez un age',
                     required: true,
+                    type: 'number',
                 }
             },
             {
@@ -132,10 +133,28 @@ export const cexFormStateFormly : formState = {
                 type: 'input',
                 props: {
                     label: 'Origine',
-                    placeholder: 'Optionel',
+                    placeholder: 'Optionel, rentrez pour débloquer une autre',
                     required: false,
                 }
-            },  
+            },
+            {
+                key : 'checkbox',
+                type: 'checkbox',
+                props: {
+                    label: "Bien joué !"
+                },
+                expressions: {
+                    hide: '!this.output.optional'
+                }
+            },
+            {
+                key: 'default',
+                type: 'textarea',
+                props : {
+                    label: "Valeur par défaut",
+                },
+                defaultValue: 'This is a default value',
+            }
         ],
         disabled: false
     }

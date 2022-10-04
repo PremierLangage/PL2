@@ -26,10 +26,6 @@ export class ExerciceComponent  {
   feedback?: exerciceFeedBack;
   loading = false;
 
-  logExo() {
-    console.log(JSON.stringify(this.exercice));
-  }
-
   submitForm(): void {
     if (this.loading) return;
     this.loading = true;
