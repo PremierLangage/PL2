@@ -97,78 +97,45 @@ export const cexFormStateFormly : formState = {
     form : {
         fields: [
             {
-                key: 'author',
+                key: 'name',
                 type: 'input',
                 props: {
-                    label: 'Auteur',
-                    placeholder: 'Entrez une valeur',
+                    label: 'Name',
+                    placeholder: 'Entrez un nom',
                     required: true,
                 }
             },
             {
-                key: 'version',
+                key: 'chained.value',
                 type: 'input',
                 props: {
-                    label: 'Version',
-                    placeholder: 'Entrez une valeur',
+                    label: 'Age',
+                    placeholder: 'Entrez un age',
                     required: true,
                 }
             },
             {
-                key: 'templates.templateSelector',
-                type: 'input',
-                props: {
-                    label: 'Selecteur de Template',
-                    placeholder: 'Entrez une valeur',
-                    required: true,
-                }
-            },
-            {
-                key: 'templates.titleProperties.titlePlacement',
+                key: 'gender',
                 type: 'select',
                 props: {
-                    label: 'Position du titre',
+                    label: 'Genre',
                     options: [
-                    { label: 'left', value: 'left' },
-                    { label: 'center', value: 'center' },
-                    { label: 'right', value: 'right' },
+                    { label: 'homme', value: 'male' },
+                    { label: 'femme', value: 'female' },
+                    { label: 'autres', value: 'others' },
                     ],
                     required: true,
                 }
             },
             {
-                key: 'process.title',
+                key: 'optional',
                 type: 'input',
                 props: {
-                    label: 'Titre exercice',
-                    placeholder: 'Entrez une valeur',
-                    required: true,
+                    label: 'Origine',
+                    placeholder: 'Optionel',
+                    required: false,
                 }
-            },
-            {
-                key: 'process.statement',
-                type: 'input',
-                props: {
-                    label: 'Enoncé exercice',
-                    placeholder: 'Entrez une valeur (markdown)',
-                    required: true,
-                }
-            },
-            {
-                key: 'process.formState.selector',
-                type: 'select',
-                props: {
-                    label: 'Type d\'exercice',
-                    options: [
-                    { label: 'radioGroup', value: 'radioGroup' },
-                    { label: 'inputBox', value: 'inputBox' },
-                    { label: 'codeEditor', value: 'codeEditor' },
-                    { label: 'formlyForm', value: 'form'}
-                    ],
-                    required: true,
-                }
-            },
-                
+            },  
         ],
         disabled: false
     }

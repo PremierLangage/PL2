@@ -15,12 +15,14 @@ export class FormlyformComponent extends FormSuperclass{
   formlyformData?: FormlyForm;
   options: FormlyFormOptions = {};
 
+
   initData(value: formState): void {
     this.formlyformData = value.form as FormlyForm;
+    this.output = {};
   }
 
   onSubmit(model : any) {
-
+    console.log(this.output);
   }
 
 }

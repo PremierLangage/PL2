@@ -7,7 +7,7 @@ import { exercice } from '../models/exercice';
   templateUrl: './exercice-modifier.component.html',
   styleUrls: ['./exercice-modifier.component.scss']
 })
-export class ExerciceModifierComponent implements OnInit {
+export class ExerciceModifierComponent  {
   form = new FormGroup({});
   @Input() model ?: exercice;
   @Output() modelChange = new EventEmitter<exercice>()
@@ -92,10 +92,7 @@ export class ExerciceModifierComponent implements OnInit {
   ];
   constructor() { }
 
-  ngOnInit() {
-  }
-
   onSubmit(model : any) {
-    this.modelChange.emit(model);
+    this.modelChange.emit(model);    
   }
 }
