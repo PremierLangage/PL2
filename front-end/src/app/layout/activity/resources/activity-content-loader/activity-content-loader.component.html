@@ -17,6 +17,29 @@
 <ng-template #elseTemplate>
   <app-exercice
     *ngIf="this.getCurrentExercice()"
-    [URI]="this.getCurrentExercice()!.uri"
+    [exercice]="this.exercice"
+    [feedback]="this.feedback"
+    [loading]="this.loading"
   ></app-exercice>
+  <div style="display: flex">
+    <button
+      nz-button
+      nzShape="round"
+      nzSize="large"
+      nzType="primary"
+      (click)="log()"
+    >
+      LOG
+    </button>
+    <button
+      nz-button
+      nzShape="round"
+      nzSize="large"
+      nzType="primary"
+      (click)="submitForm()"
+      [nzLoading]="this.loading"
+    >
+      Submit
+    </button>
+  </div>
 </ng-template>

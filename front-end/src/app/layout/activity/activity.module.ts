@@ -7,7 +7,7 @@ import { ActivityTemplateModule } from './resources/templates/activity-template.
 @NgModule({
   imports: [
     CommonModule,
-    ActivityTemplateModule
+    ActivityTemplateModule,
   ],
   declarations: [ActivityComponent],
   exports: [ActivityComponent]

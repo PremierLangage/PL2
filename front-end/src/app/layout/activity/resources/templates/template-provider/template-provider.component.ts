@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 import { activity } from '../../../models/activity';
 
 @Component({
@@ -7,4 +8,5 @@ import { activity } from '../../../models/activity';
 })
 export class TemplateProviderComponent {
   @Input() activity?: activity;
+  @Input() exerciceSelector?: BehaviorSubject<string>;
 }

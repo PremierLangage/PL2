@@ -13,7 +13,6 @@ export class TitleComponent {
 
   @Input() 
   set exercice(value: exercice | undefined) {
-    console.log("set!");
     this._exercice = value;
   }
   get exercice() {

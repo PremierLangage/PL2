@@ -2,7 +2,8 @@
   <span [ngSwitch]="this.activity.template.exerciceList">
     <exercice-list-default
       *ngSwitchDefault
-      [activity]="this.activity"
+      [(activity)]="this.activity"
+      [exerciceSelector]="this.exerciceSelector"
     ></exercice-list-default>
   </span>
 </ng-container>

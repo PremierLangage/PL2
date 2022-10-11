@@ -30,6 +30,7 @@
     >
       <app-exercice-list-provider
         [activity]="this.activity"
+        [exerciceSelector]="this.exerciceSelector"
       ></app-exercice-list-provider>
     </nz-sider>
     <nz-content>
@@ -42,6 +43,7 @@
       <div class="exercice-container">
         <app-activity-content-loader
           [activity]="this.activity"
+          [exerciceSelector]="this.__exerciceSelector"
         ></app-activity-content-loader>
       </div>
     </nz-content>

@@ -16,6 +16,7 @@ import { NzRateModule } from 'ng-zorro-antd/rate';
 import { FormsModule } from '@angular/forms';
 import { ExerciceListModule } from '../exercice-list/exercice-list-template.module';
 import { ActivityContentLoaderComponent } from '../activity-content-loader/activity-content-loader.component';
+import { NzButtonModule } from 'ng-zorro-antd/button';
 
 
 
@@ -37,6 +38,7 @@ const TEMPLATE_DECLARATION = [
     NzLayoutModule,
     NzMenuModule,
     NzRateModule,
+    NzButtonModule,
 
     ExerciceModule,
     ExerciceListModule,

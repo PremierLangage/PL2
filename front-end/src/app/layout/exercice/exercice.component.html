@@ -5,16 +5,6 @@
   >
   </app-exercice-template-provider>
 </div>
-<button
-  nz-button
-  nzShape="round"
-  nzSize="large"
-  nzType="primary"
-  (click)="submitForm()"
-  [nzLoading]="this.loading"
->
-  Submit Answer
-</button>
 <nz-divider nzText="Editeur"></nz-divider>
 
 <app-exercice-modifier [(model)]="this.exercice"></app-exercice-modifier>

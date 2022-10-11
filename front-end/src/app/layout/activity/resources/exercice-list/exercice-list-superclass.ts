@@ -1,4 +1,5 @@
-import { Component, Input } from "@angular/core";
+import { Component, EventEmitter, Input, Output } from "@angular/core";
+import { BehaviorSubject } from "rxjs";
 import { activity, exerciceLoadingData, PRESENTATIONKEY } from "../../models/activity";
 
 export interface keySet {
@@ -20,6 +21,10 @@ export class ExerciceListSuperclass {
         });
     }
     get activity() { return this.__activity; }
+    @Output() activityChange = new EventEmitter<activity>();
+
+    @Input() exerciceSelector ?: BehaviorSubject<string>;
+
     __activity!: activity;
 
     __currentExercice?: exerciceLoadingData;
@@ -33,8 +38,11 @@ export class ExerciceListSuperclass {
     }
 
     setCurrentExercice(value: string) {
+        console.log("test");
+
         if (this.activity)
             this.activity.currentExercice = value;
+            this.exerciceSelector?.next(value);
     }
 
     getActivityExerciceList() {

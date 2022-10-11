@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 import { ActivityService } from './activity.service';
 import { activity, PRESENTATIONKEY } from './models/activity';
 import { cexActivity } from './models/constUsed/activity';
@@ -18,5 +19,6 @@ export class ActivityComponent {
       this.__activity.currentExercice = PRESENTATIONKEY;
   }
   __activity: activity;
+  __exerciceSelector = new BehaviorSubject<string>("");
 }
 
