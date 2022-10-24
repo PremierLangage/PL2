@@ -1,4 +1,6 @@
 import { exercice } from "../../exercice/models/exercice";
+import { ProviderActivityTemplateKeys } from "./providers/activityTemplate";
+import { ProviderExerciceListTemplateKeys } from "./providers/exercice-list";
 
 export interface exerciceLoadingData {
     uri: string;
@@ -21,8 +23,8 @@ export interface activity {
     currentExercice?: string;
     entryExercice: string;
     template: {
-        template: 'default';
-        exerciceList: 'default';
+        template: ProviderActivityTemplateKeys;
+        exerciceList: ProviderExerciceListTemplateKeys;
     };
 }
 

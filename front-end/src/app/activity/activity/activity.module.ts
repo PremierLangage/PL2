@@ -12,4 +12,4 @@ import { ActivityTemplateModule } from './resources/templates/activity-template.
   declarations: [ActivityComponent],
   exports: [ActivityComponent]
 })
-export class ActivityModule { }
+export class ActivityModule {}
