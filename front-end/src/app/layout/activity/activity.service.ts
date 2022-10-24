@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { exerciceFeedBackPacket, formState } from '../exercice/models/exercice';
+import { catchError, Observable, retry } from 'rxjs';
+import { cexExercice, cexExerciceFirst, cexExerciceFourth, cexExerciceSecond, cexExerciceThird } from '../exercice/models/constUsed/constUsed';
+import { exercice, exerciceFeedBackPacket, formState } from '../exercice/models/exercice';
 import { cexFeedBackUsed } from './models/constUsed/feedback';
 
 
@@ -17,4 +18,26 @@ export class ActivityService {
 
     return this.http.post<exerciceFeedBackPacket>(uri, output);
   }
+
+  getExercice(uri : string) : Observable<exercice> {
+    // console.log("Service recieved : " + uri);
+    switch (uri) {
+      case "first": 
+        return new Observable(observer => observer.next(cexExerciceFirst));
+      case "second":
+          return new Observable(observer => observer.next(cexExerciceSecond));
+      case "third": 
+        return new Observable(observer => observer.next(cexExerciceThird));
+      case "fourth":
+        return new Observable(observer => observer.next(cexExerciceFourth));
+      default: 
+        return new Observable(observer => observer.next(cexExercice));
+    }
+    
+    
+    return this.http.get<exercice>(uri).pipe(
+      retry(3),
+      catchError(error => {throw new Error(error)})
+    );
+  }  
 }

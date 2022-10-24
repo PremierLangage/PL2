@@ -1,8 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { BehaviorSubject } from 'rxjs';
-import { ExerciceService } from 'src/app/layout/exercice/exercice.service';
 import { exercice, exerciceFeedBack } from 'src/app/layout/exercice/models/exercice';
+import { ActivityService } from '../../activity.service';
 import { PRESENTATIONKEY } from '../../models/activity';
 import { TemplateSuperclass } from '../templates/template-superclass';
 
@@ -20,7 +20,7 @@ export class ActivityContentLoaderComponent extends TemplateSuperclass {
     })
   }
 
-  constructor(private service: ExerciceService,
+  constructor(private service: ActivityService,
     private messageService: NzMessageService) {
     super();
   }

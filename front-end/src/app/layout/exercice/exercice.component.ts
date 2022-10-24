@@ -1,6 +1,4 @@
-import { ChangeDetectorRef, Component, Input, OnChanges, SimpleChanges } from '@angular/core';
-import { NzMessageService } from 'ng-zorro-antd/message';
-import { ExerciceService } from './exercice.service';
+import { Component, Input } from '@angular/core';
 import { exercice, exerciceFeedBack } from './models/exercice';
 
 
