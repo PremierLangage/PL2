@@ -1,8 +1,8 @@
 import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
-import { ActivityModule } from "src/app/layout/activity/activity.module";
-import { ExerciceModule } from "src/app/layout/exercice/exercice.module";
-import { SharedLayoutModule } from "src/app/layout/layout.module";
+import { ActivityModule } from "src/app/activity/activity/activity.module";
+import { ExerciceModule } from "src/app/activity/exercice/exercice.module";
+import { ActivitySharedLayoutModule } from "src/app/activity/activityLayout.module";
 import { WorkspaceRoutingModule } from "./workspace-routing.module";
 import { WorkspaceComponent } from "./workspace.component";
 

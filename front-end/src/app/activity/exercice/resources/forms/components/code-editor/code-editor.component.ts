@@ -13,7 +13,7 @@ import {
     ACTION_INDENT_USING_SPACES,
     ACTION_QUICK_COMMAND,
 } from '@cisstech/nge/monaco';
-import { formState } from 'src/app/layout/exercice/models/exercice';
+import { formState } from 'src/app/activity/exercice/models/exercice';
 import { FormSuperclass } from '../../form-superclass';
 import { CodeEditorForm } from './code-editor';
 
