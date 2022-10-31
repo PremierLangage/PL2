@@ -19,6 +19,7 @@ export class FormlyformComponent extends FormSuperclass{
   initData(value: formState): void {
     this.formlyformData = value.form as FormlyForm;
     this.output = {};
+  
   }
 
   onSubmit(model : any) {

@@ -13,6 +13,7 @@ import {
     ACTION_INDENT_USING_SPACES,
     ACTION_QUICK_COMMAND,
 } from '@cisstech/nge/monaco';
+import { BehaviorSubject, ReplaySubject } from 'rxjs';
 import { formState } from 'src/app/activity/exercice/models/exercice';
 import { FormSuperclass } from '../../form-superclass';
 import { CodeEditorForm } from './code-editor';
@@ -37,7 +38,6 @@ export class CodeEditorComponent extends FormSuperclass implements AfterViewChec
     private editor?: monaco.editor.IStandaloneCodeEditor;
     private width = 0;
     private height = 0;
-
     @ViewChild('footer', { static: true })
     footer!: ElementRef<HTMLElement>;
 
@@ -55,7 +55,6 @@ export class CodeEditorComponent extends FormSuperclass implements AfterViewChec
     }
     onCreateEditor(editor: monaco.editor.IEditor) {
         this.editor = editor as monaco.editor.IStandaloneCodeEditor;
-
         // LINKING MODEL TO EDITOR
         // ----------------------------------------------------------
         editor.setModel(
@@ -66,7 +65,7 @@ export class CodeEditorComponent extends FormSuperclass implements AfterViewChec
                     this.codeEditorData?.language || 'plaintext'
                 ))
         );
-
+        
         // CONFIGURATION
         // ----------------------------------------------------------
         this.model.updateOptions({
@@ -89,6 +88,7 @@ export class CodeEditorComponent extends FormSuperclass implements AfterViewChec
                 verticalScrollbarSize: 4,
                 verticalSliderSize: 4,
             },
+            readOnly: this.formData.form.disabled
         });
 
         // LISTENERS
@@ -113,7 +113,7 @@ export class CodeEditorComponent extends FormSuperclass implements AfterViewChec
                 if (this.codeEditorData)
                     this.codeEditorData.tabSize = this.model?.getOptions().tabSize ?? this.codeEditorData.tabSize;
             })
-        )
+        );
     }
 
     ngAfterViewChecked() {

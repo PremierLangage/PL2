@@ -1,0 +1,8 @@
+<app-forms-provider
+  [form]="this.exerciceReviewerData?.exerciceForm"
+></app-forms-provider>
+
+<div *ngIf="this.exerciceReviewerData?.statement">
+  <nz-divider nzText="Informations:"></nz-divider>
+  <markdown [data]="this.exerciceReviewerData?.statement"></markdown>
+</div>

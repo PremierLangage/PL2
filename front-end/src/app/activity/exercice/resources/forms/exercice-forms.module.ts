@@ -16,14 +16,16 @@ import { NzSpinModule } from 'ng-zorro-antd/spin';
 import { NzMessageModule } from 'ng-zorro-antd/message';
 import { CodeEditorModule } from './components/code-editor/code-editor.module';
 import { FormlyformModule } from './components/formlyform/formlyform.module';
+import { ExerciceReviewerModule } from './components/exercice-reviewer/exercice-reviewer.module';
 
 
 const FORMS_DECLARATIONS = [
   RadioGroupModule,
   InputBoxModule,
   CodeEditorModule,
-  FormlyformModule
-]
+  FormlyformModule,
+  ExerciceReviewerModule
+];
 
 @NgModule({
   imports: [

@@ -49,7 +49,7 @@ export class ActivityContentLoaderComponent extends TemplateSuperclass {
           if (this.exercice?.process.formState.form)
             this.exercice.process.formState.form.disabled = false;
         });
-      }, 1000);
+      }, 5000);
     }
 
   }

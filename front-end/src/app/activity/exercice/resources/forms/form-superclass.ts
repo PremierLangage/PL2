@@ -10,6 +10,8 @@ export abstract class FormSuperclass {
     set formData(value: formState) {
         this.formData_ = value;
         this.initData(value);
+        console.log(value.form.disabled);
+        
     }
 
     @Input() get output(): any { return this.output_} 

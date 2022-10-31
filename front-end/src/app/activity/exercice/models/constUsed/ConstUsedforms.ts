@@ -156,7 +156,7 @@ export const cexFormStateFormly : formState = {
                 defaultValue: 'This is a default value',
             }
         ],
-        disabled: false
+        disabled: true
     }
     }
 

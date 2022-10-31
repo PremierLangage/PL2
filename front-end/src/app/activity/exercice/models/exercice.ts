@@ -14,6 +14,7 @@ export interface exerciceFeedBackPacket {
     syntaxError?: boolean;
 }
 
+
 export interface exercice {
     cid: string;
     author: string;

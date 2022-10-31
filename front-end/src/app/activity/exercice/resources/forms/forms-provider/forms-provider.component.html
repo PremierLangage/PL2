@@ -1,32 +1,40 @@
 <div #target>
   <ng-container *ngIf="this.form; else noFormLoaded">
-    <span [ngSwitch]="this.form.selector">
-      <form-radio-group
-        #child
-        *ngSwitchCase="'radioGroup'"
-        [formData]="this.form"
-      ></form-radio-group>
+    <div [ngClass]="this.form.form.disabled ? 'disabled' : 'enabled'">
+      <span [ngSwitch]="this.form.selector">
+        <form-radio-group
+          #child
+          *ngSwitchCase="'radioGroup'"
+          [formData]="this.form"
+        ></form-radio-group>
 
-      <form-input-box
-        #child
-        *ngSwitchCase="'inputBox'"
-        [formData]="this.form"
-      ></form-input-box>
+        <form-input-box
+          #child
+          *ngSwitchCase="'inputBox'"
+          [formData]="this.form"
+        ></form-input-box>
 
-      <form-code-editor
-        #child
-        *ngSwitchCase="'codeEditor'"
-        [formData]="this.form"
-      ></form-code-editor>
-      <form-formlyform #child *ngSwitchCase="'form'" [formData]="this.form">
-      </form-formlyform>
-      <nz-result
-        *ngSwitchDefault
-        nzTitle="Invalid Exercice Error"
-        nzStatus="error"
-        nzSubTitle="This is an internal error, please contact the administation"
-      ></nz-result>
-    </span>
+        <form-code-editor
+          #child
+          *ngSwitchCase="'codeEditor'"
+          [formData]="this.form"
+        ></form-code-editor>
+        <form-formlyform #child *ngSwitchCase="'form'" [formData]="this.form">
+        </form-formlyform>
+        <form-exercice-reviewer
+          #child
+          *ngSwitchCase="'correction'"
+          [formData]="this.form"
+        >
+        </form-exercice-reviewer>
+        <nz-result
+          *ngSwitchDefault
+          nzTitle="Invalid Exercice Error"
+          nzStatus="error"
+          nzSubTitle="This is an internal error, please contact the administation"
+        ></nz-result>
+      </span>
+    </div>
   </ng-container>
   <!-- LOADING SCREEN -->
   <ng-template #noFormLoaded>
