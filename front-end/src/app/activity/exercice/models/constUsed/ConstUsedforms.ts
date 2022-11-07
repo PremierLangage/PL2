@@ -158,6 +158,6 @@ export const cexFormStateFormly : formState = {
         ],
         disabled: true
     }
-    }
+}
 
 export const cexFormStateUsed : formState = cexFormStateCodeEditor;

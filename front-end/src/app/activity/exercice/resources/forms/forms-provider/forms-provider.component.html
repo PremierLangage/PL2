@@ -21,12 +21,6 @@
         ></form-code-editor>
         <form-formlyform #child *ngSwitchCase="'form'" [formData]="this.form">
         </form-formlyform>
-        <form-exercice-reviewer
-          #child
-          *ngSwitchCase="'correction'"
-          [formData]="this.form"
-        >
-        </form-exercice-reviewer>
         <nz-result
           *ngSwitchDefault
           nzTitle="Invalid Exercice Error"

@@ -1,19 +1,14 @@
 import {
-    AfterViewChecked,
-    ChangeDetectionStrategy,
-    Component,
+    AfterViewChecked, Component,
     ElementRef,
-    Injector,
-    Input,
-    OnDestroy,
-    ViewChild,
+    Injector, OnDestroy,
+    ViewChild
 } from '@angular/core';
 import {
     ACTION_GOTO_LINE,
     ACTION_INDENT_USING_SPACES,
-    ACTION_QUICK_COMMAND,
+    ACTION_QUICK_COMMAND
 } from '@cisstech/nge/monaco';
-import { BehaviorSubject, ReplaySubject } from 'rxjs';
 import { formState } from 'src/app/activity/exercice/models/exercice';
 import { FormSuperclass } from '../../form-superclass';
 import { CodeEditorForm } from './code-editor';
