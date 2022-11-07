@@ -1,0 +1,7 @@
+<div *ngIf="this.grid">
+  <correctionGridElement
+    *ngFor="let elem of this.grid.correction"
+    [gridElem]="elem"
+  >
+  </correctionGridElement>
+</div>

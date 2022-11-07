@@ -4,8 +4,9 @@ import { ActivityService } from './activity.service';
 import { activity, PRESENTATIONKEY } from './models/activity';
 import { cexActivity } from './models/constUsed/activity';
 
+
 @Component({
-  selector: 'app-activity',
+  selector: 'app-activity-player',
   templateUrl: './activity.component.html',
   styleUrls: ['./activity.component.scss']
 })

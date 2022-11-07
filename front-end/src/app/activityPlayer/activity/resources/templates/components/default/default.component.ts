@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { exerciceLoadingData } from 'src/app/activity/activity/models/activity';
+import { exerciceLoadingData } from 'src/app/activityPlayer/activity/models/activity';
 import { TemplateSuperclass } from '../../template-superclass';
 
 @Component({

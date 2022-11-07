@@ -23,4 +23,4 @@ const DECLARATIONS = [
         ...DECLARATIONS,
     ],
 })
-export class ActivitySharedLayoutModule {}
+export class ActivityPlayerSharedLayoutModule {}

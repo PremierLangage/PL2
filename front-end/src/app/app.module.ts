@@ -18,7 +18,7 @@ import { NzMenuModule } from 'ng-zorro-antd/menu';
 import { IconModule } from '@ant-design/icons-angular';
 import { CssPipeModule } from './pipes/CssPipe.pipe';
 import { NgeMonacoModule } from '@cisstech/nge/monaco';
-import { ActivityModule } from './activity/activity/activity.module';
+import { ActivityModule } from './activityPlayer/activity/activity.module';
 import { FormlyModule } from '@ngx-formly/core';
 import { FormlyNgZorroAntdModule } from '@ngx-formly/ng-zorro-antd';
 

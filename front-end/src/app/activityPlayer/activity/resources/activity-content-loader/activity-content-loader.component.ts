@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { BehaviorSubject } from 'rxjs';
-import { exercice, exerciceFeedBack } from 'src/app/activity/exercice/models/exercice';
+import { exercice, exerciceFeedBack } from 'src/app/activityPlayer/exercice/models/exercice';
 import { ActivityService } from '../../activity.service';
 import { PRESENTATIONKEY } from '../../models/activity';
 import { TemplateSuperclass } from '../templates/template-superclass';

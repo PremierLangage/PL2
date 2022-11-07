@@ -9,7 +9,7 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { TemplateProviderComponent } from './template-provider/template-provider.component';
 import { MarkdownModule } from 'ngx-markdown';
-import { ExerciceModule } from 'src/app/activity/exercice/exercice.module';
+import { ExerciceModule } from 'src/app/activityPlayer/exercice/exercice.module';
 import { DefaultComponent } from './components/default/default.component';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
 import { NzRateModule } from 'ng-zorro-antd/rate';

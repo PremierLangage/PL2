@@ -5,5 +5,5 @@ import { Component } from '@angular/core';
   templateUrl: './activityPage.component.html',
 })
 export class ActivityPageComponent {
-
+  private choice : "player" | "reviewer" = "player";
 }

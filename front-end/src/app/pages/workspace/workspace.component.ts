@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { cexExercice } from "src/app/activity/exercice/models/constUsed/constUsed";
+import { cexExercice } from "src/app/activityPlayer/exercice/models/constUsed/constUsed";
 
 
 @Component({

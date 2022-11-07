@@ -1,0 +1,33 @@
+<div class="main">
+  <ng-container *ngIf="this.gridElem; else elseTemplate">
+    <h3>{{ gridElem.label }}</h3>
+    <nz-row [nzAlign]="'middle'">
+      <div nz-col nzFlex="auto">
+        <nz-slider
+          [nzMin]="gridElem.noteInfo.min"
+          [nzMax]="gridElem.noteInfo.max"
+          [nzStep]="gridElem.noteInfo.step || 1"
+          [(ngModel)]="gridElem.note"
+        ></nz-slider>
+      </div>
+      <div nz-col nzFlex="10%">
+        <nz-input-number
+          [nzMin]="gridElem.noteInfo.min"
+          [nzMax]="gridElem.noteInfo.max"
+          [nzStep]="gridElem.noteInfo.step || 1"
+          [(ngModel)]="gridElem.note"
+        ></nz-input-number>
+      </div>
+    </nz-row>
+
+    <span *ngIf="this.gridElem.comment != null">
+      <nz-divider nzText="Commentaire : <Optionnel>"></nz-divider>
+      <textarea
+        [nzAutosize]="true"
+        nz-input
+        [(ngModel)]="gridElem.comment"
+      ></textarea>
+    </span>
+  </ng-container>
+  <ng-template #elseTemplate> Merde </ng-template>
+</div>
