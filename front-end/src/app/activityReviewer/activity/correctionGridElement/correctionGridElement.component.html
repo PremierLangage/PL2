@@ -1,7 +1,21 @@
-<div class="main">
+<div class="gridElem-main">
   <ng-container *ngIf="this.gridElem; else elseTemplate">
-    <h3>{{ gridElem.label }}</h3>
-    <nz-row [nzAlign]="'middle'">
+    <nz-row [nzAlign]="'top'" class="gridElem-header">
+      <h3 nz-col>
+        {{ gridElem.label }}
+      </h3>
+      <div nz-col>
+        <nz-input-number
+          class="gridElem-input"
+          [nzMin]="gridElem.noteInfo.min"
+          [nzMax]="gridElem.noteInfo.max"
+          [nzStep]="gridElem.noteInfo.step || 1"
+          [(ngModel)]="gridElem.note"
+          nzBorderless
+        ></nz-input-number>
+      </div>
+    </nz-row>
+    <nz-row [nzAlign]="'middle'" class="gridElem-bar">
       <div nz-col nzFlex="auto">
         <nz-slider
           [nzMin]="gridElem.noteInfo.min"
@@ -10,24 +24,17 @@
           [(ngModel)]="gridElem.note"
         ></nz-slider>
       </div>
-      <div nz-col nzFlex="10%">
-        <nz-input-number
-          [nzMin]="gridElem.noteInfo.min"
-          [nzMax]="gridElem.noteInfo.max"
-          [nzStep]="gridElem.noteInfo.step || 1"
-          [(ngModel)]="gridElem.note"
-        ></nz-input-number>
-      </div>
     </nz-row>
-
-    <span *ngIf="this.gridElem.comment != null">
-      <nz-divider nzText="Commentaire : <Optionnel>"></nz-divider>
-      <textarea
-        [nzAutosize]="true"
-        nz-input
-        [(ngModel)]="gridElem.comment"
-      ></textarea>
-    </span>
+    <nz-collapse [nzBordered]="false">
+      <nz-collapse-panel [nzHeader]="test">
+        <ng-template #test> Commentaire </ng-template>
+        <textarea
+          [nzAutosize]="{ minRows: 3, maxRows: 16 }"
+          nz-input
+          [(ngModel)]="gridElem.comment"
+        ></textarea>
+      </nz-collapse-panel>
+    </nz-collapse>
   </ng-container>
   <ng-template #elseTemplate> Merde </ng-template>
 </div>

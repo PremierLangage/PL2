@@ -24,7 +24,7 @@ export const cexActivityCorrectionGridElem3 : CorrectionGridElem = {
     label : "Exercice 3",
     noteInfo : {
         min : 0,
-        max : 10,
+        max : 20,
         step:  0.5
     },
     comment : "Pour l'instant rien de bien méchant"

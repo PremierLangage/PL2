@@ -1,7 +1,29 @@
 <div *ngIf="this.grid">
-  <correctionGridElement
-    *ngFor="let elem of this.grid.correction"
-    [gridElem]="elem"
-  >
-  </correctionGridElement>
+  <nz-row [nzAlign]="'middle'">
+    <div nz-col nzFlex="50%">{{ getValues() }}</div>
+    <div nz-col nzFlex="50%">
+      <div class="grid-header">
+        <h2>
+          Note totale : {{ getFlooredScore() }} / {{ this.grid.noteRange.max }}
+          <i
+            *ngIf="
+              this.grid.noteRange.max &&
+              getFlooredScore() >= this.grid.noteRange.max
+            "
+            >({{ getTotalScore() }} )</i
+          >
+          <span *ngIf="this.grid.noteRange">
+            [{{ this.grid.noteRange.min }} : {{ this.grid.noteRange.max }}]
+          </span>
+        </h2>
+      </div>
+      <div class="grid-body">
+        <correctionGridElement
+          *ngFor="let item of this.grid.correction; let i = index"
+          [(gridElem)]="this.grid.correction[i]"
+        >
+        </correctionGridElement>
+      </div>
+    </div>
+  </nz-row>
 </div>

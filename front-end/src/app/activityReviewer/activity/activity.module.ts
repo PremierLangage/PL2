@@ -5,6 +5,9 @@ import { NzSliderModule } from 'ng-zorro-antd/slider';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzInputNumberModule } from 'ng-zorro-antd/input-number';
 import { NzDividerModule } from 'ng-zorro-antd/divider';
+import { NzButtonModule } from 'ng-zorro-antd/button';
+import { NzIconModule } from 'ng-zorro-antd/icon';
+import { NzCollapseModule } from 'ng-zorro-antd/collapse';
 
 import { ActivityReviewerComponent } from './activity.component';
 
@@ -21,7 +24,10 @@ import { CorrectionGridComponent } from './correctionGrid/correctionGrid.compone
     NzGridModule,
     NzInputModule,
     NzInputNumberModule,
-    NzDividerModule
+    NzDividerModule,
+    NzButtonModule,
+    NzIconModule,
+    NzCollapseModule
   ],
   declarations: [
     ActivityReviewerComponent,
