@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="statement">
+    <h3 nz-typography>
+      <span nz-icon nzType="book" nzTheme="outline"></span> Énoncé
+    </h3>
+    <ep-statement [statement]="exercise.statement"></ep-statement>
+  </div>
+  <br />
+  <div class="formPlayer">
+    <h3 nz-typography>Activité</h3>
+    <app-forms-provider [exercise]="exercise"></app-forms-provider>
+  </div>
+</div>

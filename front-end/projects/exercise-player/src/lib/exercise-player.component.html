@@ -1,0 +1,58 @@
+<div>
+  <nz-page-header
+    class="site-page-header-ghost-wrapper header"
+    [nzGhost]="false"
+  >
+    <nz-page-header-title>{{ exercise.title }}</nz-page-header-title>
+    <nz-page-header-subtitle>
+      <span nz-icon nzType="tags" nzTheme="outline"></span>
+      Tags :
+    </nz-page-header-subtitle>
+    <nz-breadcrumb nz-page-header-breadcrumb [nzSeparator]="null">
+      <ng-container *ngFor="let item of context.split('/')">
+        <nz-breadcrumb-item>{{ item }}</nz-breadcrumb-item>
+        <nz-breadcrumb-separator> / </nz-breadcrumb-separator>
+      </ng-container>
+      <nz-breadcrumb-item> {{ exercise.title }}</nz-breadcrumb-item>
+      <nz-breadcrumb-separator> : </nz-breadcrumb-separator>
+      <nz-breadcrumb-item>
+        <span nz-typography nzType="secondary" nzCopyable="true">
+          {{ exercise.id }}
+        </span>
+      </nz-breadcrumb-item>
+    </nz-breadcrumb>
+
+    <nz-page-header-extra>
+      <nz-tag nzColor="blue">
+        <span>Author : {{ exercise.author }}</span>
+      </nz-tag>
+      <nz-tag nzColor="cyan">
+        <span>Version : {{ exercise.version }}</span>
+      </nz-tag>
+    </nz-page-header-extra>
+    <nz-page-header-content>
+      <ng-container *ngFor="let tag of exercise.tags">
+        <nz-tag nzColor="{{ color(tag) }}">
+          <span>{{ tag }}</span>
+        </nz-tag>
+      </ng-container>
+      <nz-divider></nz-divider>
+    </nz-page-header-content>
+  </nz-page-header>
+
+  <provider-ep-layout [exercise]="exercise"></provider-ep-layout>
+
+  <nz-divider></nz-divider>
+</div>
+<!-- <ng-container
+*ngIf="this.exercise; then thenTemplate; else elseTemplate"
+></ng-container>
+<ng-template #thenTemplate>
+</ng-template>
+<ng-template #elseTemplate>
+<div class="loading">
+  <nz-spin nzSimple nzSize="large" nzTip="Loading Data"></nz-spin>
+  <p nz-typography nzType="secondary">Please Wait</p>
+  <nz-skeleton [nzActive]="true" [nzParagraph]="{ rows: 4 }"> </nz-skeleton>
+</div>
+</ng-template> -->

@@ -1,0 +1,16 @@
+import { Component, Input, ViewChild } from '@angular/core';
+import { FormSuperClass } from 'dist/exercise-player/lib/models/exercise';
+import { Exercise } from '../../models/exercise';
+
+
+@Component({
+  selector: 'app-forms-provider',
+  templateUrl: './forms-provider.component.html',
+  styleUrls: [
+    './forms-provider.component.scss'
+  ]
+})
+export class FormsProviderComponent {
+  @Input() exercise?: Exercise;
+  @ViewChild('child') formComponent?: FormSuperClass;
+}

@@ -1,0 +1,7 @@
+<ng-container [ngSwitch]="exercise.displayData.templateSelector">
+  <ep-layout-default
+    class="provider"
+    *ngSwitchDefault
+    [exercise]="exercise"
+  ></ep-layout-default>
+</ng-container>

@@ -1,0 +1,18 @@
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    width: 100%;
+
+    .statement {
+        background-color: rgba(222, 222, 222, 0.301);
+        padding: 1vmax;
+    }
+
+    .formPlayer {
+        
+    }
+}

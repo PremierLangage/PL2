@@ -1,0 +1,44 @@
+<ng-container *ngIf="this.radioData">
+  <div
+    class="organisation"
+    [class.horizontal]="this.radioData.statementHorizontal"
+  >
+    <div class="statement" *ngIf="this.radioData.statement">
+      <markdown>{{ this.radioData.statement }}</markdown>
+    </div>
+    <div class="divider" *ngIf="this.radioData.statementHorizontal"></div>
+    <mat-radio-group
+      [disabled]="this.radioData.disabled"
+      [class.disabled]="this.radioData.disabled"
+      [class.horizontal]="this.radioData.horizontal"
+      [class.vertical]="!this.radioData.horizontal"
+      [(ngModel)]="this.output"
+    >
+      <ng-container
+        *ngFor="
+          let item of this.radioData?.items;
+          let i = index;
+          trackBy: trackBy
+        "
+      >
+        <div
+          class="radio-item"
+          [ngClass]="item.css | css : 'class'"
+          [ngStyle]="item.css | css : 'style'"
+          (click)="this.output = item.content"
+          [class.selected]="this.output === item.content"
+        >
+          <mat-radio-button
+            color="primary"
+            [name]="item.content"
+            [value]="item.content"
+          >
+            <div class="centered">
+              <markdown>{{ item.content }}</markdown>
+            </div>
+          </mat-radio-button>
+        </div>
+      </ng-container>
+    </mat-radio-group>
+  </div>
+</ng-container>
