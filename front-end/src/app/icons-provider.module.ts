@@ -19,7 +19,9 @@ import {
   CheckCircleFill,
   CloseCircleFill,
   BookFill,
-  BookOutline
+  BookOutline,
+  TagOutline,
+  TagsOutline
 } from '@ant-design/icons-angular/icons';
 
 const icons = [
@@ -40,7 +42,9 @@ const icons = [
   FrownFill,
   CheckCircleFill,
   CloseCircleFill,
-  BookFill,BookOutline
+  BookFill,BookOutline,
+  TagOutline,
+  TagsOutline
 ];
 
 @NgModule({

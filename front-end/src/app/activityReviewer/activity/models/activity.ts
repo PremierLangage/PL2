@@ -19,11 +19,11 @@ export interface CorrectionGrid {
 
 export interface CorrectionGridElem {
     label : string;
-    note ?: number;
+    note ?: any;
     noteInfo: {
         min : number;
         max : number;
         step ?: number;
-    }
+    };
     comment?: string;
 }

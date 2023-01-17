@@ -1,6 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { CorrectionGridElem } from '../models/activity';
-
 @Component({
   selector: 'correctionGridElement',
   templateUrl: './correctionGridElement.component.html',

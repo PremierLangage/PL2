@@ -5,6 +5,16 @@
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
+    "paths": {
+      "exercisePlayer": [
+        "dist/exercise-player/exercise-player",
+        "dist/exercise-player"
+      ],
+      "test": [
+        "dist/test/test",
+        "dist/test"
+      ]
+    },
     "strict": true,
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,

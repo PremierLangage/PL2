@@ -18,6 +18,7 @@
     <nz-row [nzAlign]="'middle'" class="gridElem-bar">
       <div nz-col nzFlex="auto">
         <nz-slider
+          *ngIf="gridElem.noteInfo; instanceof: NumberNote"
           [nzMin]="gridElem.noteInfo.min"
           [nzMax]="gridElem.noteInfo.max"
           [nzStep]="gridElem.noteInfo.step || 1"
