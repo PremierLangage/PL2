@@ -66,7 +66,7 @@ export const CExercise : Exercise = {
             selector: "inputBox",
             form: {
                 disabled : false,
-                statement: "Time to write stuffs",
+                statement: "# Time to write stuffs",
                 type: 'text',
                 hint: "what do you mean",
                 placeholder: 'write something',
