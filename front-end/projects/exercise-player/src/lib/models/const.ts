@@ -79,6 +79,17 @@ export const CExercise : Exercise = {
                     ]
                 }
             }
+        },
+        {
+            selector: "codeEditor",
+            form : {
+                disabled: false,
+                statement: "## Finally some Code",
+                initialCode: "#Write your code here",
+                tabSize: 4,
+                language: "python",
+                quickSuggestions: true
+            }
         }
     ],
 

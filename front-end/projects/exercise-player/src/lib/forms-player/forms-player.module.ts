@@ -17,11 +17,12 @@ import { RadioGroupModule } from "./components/radio-group/radio-group.module";
 import { FormsProviderComponent } from "./forms-provider/forms-provider.component";
 import { InputBoxModule } from "./components/input-box/input-box.module";
 import { NzDividerModule } from "ng-zorro-antd/divider";
+import { CodeEditorModule } from "./components/code-editor/code-editor.module";
 
 const FORMS_DECLARATIONS = [
     RadioGroupModule,
     InputBoxModule,
-    // CodeEditorModule,
+    CodeEditorModule,
     // FormlyformModule,
 ];
 

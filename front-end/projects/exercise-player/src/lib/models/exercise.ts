@@ -1,3 +1,4 @@
+import { CodeEditorForm } from "../forms-player/components/code-editor/code-editor";
 import { InputBoxForm } from "../forms-player/components/input-box/input-box";
 import { RadioGroupForm } from "../forms-player/components/radio-group/radio-group";
 
@@ -10,7 +11,7 @@ export interface FormSuperInterface {
 
 export interface formState {
     selector: string;
-    form: RadioGroupForm | InputBoxForm | FormSuperInterface;
+    form: RadioGroupForm | InputBoxForm | CodeEditorForm | FormSuperInterface;
     output?: any;
 }
 

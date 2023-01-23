@@ -52,6 +52,11 @@
           *ngSwitchCase="'inputBox'"
           [formData]="form"
         ></form-input-box>
+        <form-code-editor
+          #child
+          *ngSwitchCase="'codeEditor'"
+          [formData]="this.form"
+        ></form-code-editor>
         <nz-result
           *ngSwitchDefault
           nzTitle="Invalid Exercice Error"
