@@ -1,4 +1,14 @@
 <ng-container [ngSwitch]="exercise.displayData.templateSelector">
+  <ep-layout-row
+    class="provider"
+    *ngSwitchCase="'row'"
+    [exercise]="exercise"
+  ></ep-layout-row>
+  <ep-layout-tab
+    class="provider"
+    *ngSwitchCase="'tab'"
+    [exercise]="exercise"
+  ></ep-layout-tab>
   <ep-layout-default
     class="provider"
     *ngSwitchDefault

@@ -6,10 +6,13 @@ import { IconsProviderModule } from './icons-provider.module';
 
 import { ExercisePlayerComponent } from './exercise-player.component';
 
+import { FormsPlayerModule } from './forms-player/forms-player.module';
 
 import { EpLayoutProviderComponent } from './ep-layout/ep-layout-provider.component';
 // LAYOUT PROVIDER :
 import { DefaultComponent as EPL_Default} from './ep-layout/components/default/default.component';
+import { RowComponent as EPL_Row } from './ep-layout/components/row/row.component';
+import { TabComponent as EPL_Tab } from './ep-layout/components/tab/tab.component';
 import { EpStatementComponent } from './ep-layout/ep-statement/ep-statement.component';
 
 // NGZORRO
@@ -21,7 +24,8 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzDividerModule } from 'ng-zorro-antd/divider';
 import { NzSkeletonModule } from 'ng-zorro-antd/skeleton';
 import { NzSpinModule } from 'ng-zorro-antd/spin';
-import { FormsPlayerModule } from './forms-player/forms-player.module';
+import { NzMenuModule } from 'ng-zorro-antd/menu';
+
 
 
 
@@ -31,7 +35,7 @@ import { FormsPlayerModule } from './forms-player/forms-player.module';
     ExercisePlayerComponent,
     EpStatementComponent,
     EpLayoutProviderComponent,
-    EPL_Default
+    EPL_Default, EPL_Row, EPL_Tab
   ],
   imports: [
     CommonModule,
@@ -47,7 +51,8 @@ import { FormsPlayerModule } from './forms-player/forms-player.module';
     NzIconModule,
     NzDividerModule,
     NzSkeletonModule,
-    NzSpinModule  
+    NzSpinModule,
+    NzMenuModule
   ],
   exports: [
     ExercisePlayerComponent

@@ -28,6 +28,10 @@ export class ExercisePlayerComponent implements OnInit {
 
 
   log() {
-    console.log(JSON.stringify(this.exercise));
+    console.log("Output : {\n");
+    this.exercise.formArray.forEach(form => {
+      console.log(JSON.stringify(form.output));
+    });
+    console.log("}");
   }
 }

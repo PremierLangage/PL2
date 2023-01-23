@@ -162,7 +162,7 @@ export const CExercise : Exercise = {
     ],
 
     displayData: {
-        templateSelector: "default"
+        templateSelector: "tab"
     },
 
     tags : [
