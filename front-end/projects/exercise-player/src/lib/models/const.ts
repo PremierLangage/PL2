@@ -90,6 +90,74 @@ export const CExercise : Exercise = {
                 language: "python",
                 quickSuggestions: true
             }
+        },
+        {
+            selector: "form",
+            form : {
+                disabled: true,
+                statement: "## Chose your faith",
+                fields: [
+                    {
+                        key: 'name',
+                        type: 'input',
+                        props: {
+                            label: 'Name',
+                            placeholder: 'Entrez un nom',
+                            required: true,
+                        }
+                    },
+                    {
+                        key: 'chained.value',
+                        type: 'input',
+                        props: {
+                            label: 'Age',
+                            placeholder: 'Entrez un age',
+                            required: true,
+                            type: 'number',
+                        }
+                    },
+                    {
+                        key: 'gender',
+                        type: 'select',
+                        props: {
+                            label: 'Genre',
+                            options: [
+                            { label: 'homme', value: 'male' },
+                            { label: 'femme', value: 'female' },
+                            { label: 'autres', value: 'others' },
+                            ],
+                            required: true,
+                        }
+                    },
+                    {
+                        key: 'optional',
+                        type: 'input',
+                        props: {
+                            label: 'Origine',
+                            placeholder: 'Optionel, rentrez pour débloquer une autre',
+                            required: false,
+                        }
+                    },
+                    {
+                        key : 'checkbox',
+                        type: 'checkbox',
+                        props: {
+                            label: "Bien joué !"
+                        },
+                        expressions: {
+                            hide: '!model.optional'
+                        }
+                    },
+                    {
+                        key: 'default',
+                        type: 'textarea',
+                        props : {
+                            label: "Valeur par défaut",
+                        },
+                        defaultValue: 'This is a default value',
+                    }
+                ],
+            }
         }
     ],
 
