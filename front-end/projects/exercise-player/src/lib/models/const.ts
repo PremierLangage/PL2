@@ -22,20 +22,21 @@ export const CExercise : Exercise = {
             form: {
                 disabled: false,
                 horizontal: false,
-                statement: "## test statement *hehe*",
+                statement: "## test statement *hehe*\nEnoncé petit mais assez long pour déranger l'affichage je peux continuer à écrire du coup 0 soucis, le text s'habituera ? ",
                 statementHorizontal: true,
                 items: [
                     {
-                        content: "### Markdown is supported !",
+                        content: "Choix 1",
                     },
                     {
-                        content: "And you can define css properties per item",
-                        css: "background-color: lightblue"
+                        content: "Choix 2",
                     },
                     {
-                        content: "Or even do both !!! ~~Too much power~~\n\n```shell\n:(){  :|:&  };:     #fork bomb ! ```",
-                        css: "text-shadow: 2px 2px 2px lightblue"
-                    }
+                        content: "Choix 3",
+                    },
+                    {
+                        content: "Choix 4",
+                    },    
                 ]
             }
         },
@@ -47,19 +48,36 @@ export const CExercise : Exercise = {
                 statement: "## test statement *hehe*",
                 items: [
                     {
-                        content: "### Markdown is supported !",
+                        content: "Choix 1",
                     },
                     {
-                        content: "Or even do both !!! ~~Too much power~~\n\n```shell\n:(){  :|:&  };:     #fork bomb ! ```",
-                        css: "text-shadow: 2px 2px 2px lightblue"
-                    }
+                        content: "Choix 2",
+                    },
+                    {
+                        content: "Choix 3",
+                    },
+                    {
+                        content: "Choix 4",
+                    },               
                 ]
             }
         },
         {
-            selector: "InputBox",
+            selector: "inputBox",
             form: {
-                disabled : false
+                disabled : false,
+                statement: "Time to write stuffs",
+                type: 'text',
+                hint: "what do you mean",
+                placeholder: 'write something',
+                textProperties: {
+                    maxChar: 64,
+                    completionText: [
+                        "test",
+                        'platon',
+                        "antonin"
+                    ]
+                }
             }
         }
     ],

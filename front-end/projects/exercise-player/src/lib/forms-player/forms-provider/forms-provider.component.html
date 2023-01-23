@@ -38,7 +38,7 @@
 </div>
 <nz-space nzAlign="center" nzDirection="horizontal"></nz-space> -->
 
-<div #target>
+<div #target class="mainContainer">
   <ng-container *ngIf="this.exercise; else noFormLoaded">
     <ng-container *ngFor="let form of exercise!.formArray">
       <span [ngSwitch]="form.selector">
@@ -47,6 +47,11 @@
           *ngSwitchCase="'radioGroup'"
           [formData]="form"
         ></form-radio-group>
+        <form-input-box
+          #child
+          *ngSwitchCase="'inputBox'"
+          [formData]="form"
+        ></form-input-box>
         <nz-result
           *ngSwitchDefault
           nzTitle="Invalid Exercice Error"
@@ -54,6 +59,7 @@
           nzSubTitle="This is an internal error, please contact the administation"
         ></nz-result>
       </span>
+      <nz-divider></nz-divider>
     </ng-container>
   </ng-container>
   <ng-template #noFormLoaded>

@@ -15,10 +15,12 @@ import { NzSpinModule } from 'ng-zorro-antd/spin';
 
 import { RadioGroupModule } from "./components/radio-group/radio-group.module";
 import { FormsProviderComponent } from "./forms-provider/forms-provider.component";
+import { InputBoxModule } from "./components/input-box/input-box.module";
+import { NzDividerModule } from "ng-zorro-antd/divider";
 
 const FORMS_DECLARATIONS = [
     RadioGroupModule,
-    // InputBoxModule,
+    InputBoxModule,
     // CodeEditorModule,
     // FormlyformModule,
 ];
@@ -30,6 +32,7 @@ const FORMS_DECLARATIONS = [
         NzTypographyModule,
         NzResultModule,
         NzAffixModule,
+        NzDividerModule,
         NzButtonModule,
         NzSpaceModule,
         NzSkeletonModule,

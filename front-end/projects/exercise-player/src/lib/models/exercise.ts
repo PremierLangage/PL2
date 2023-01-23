@@ -1,3 +1,4 @@
+import { InputBoxForm } from "../forms-player/components/input-box/input-box";
 import { RadioGroupForm } from "../forms-player/components/radio-group/radio-group";
 
 export type markdownString = string;
@@ -9,7 +10,7 @@ export interface FormSuperInterface {
 
 export interface formState {
     selector: string;
-    form: RadioGroupForm | FormSuperInterface;
+    form: RadioGroupForm | InputBoxForm | FormSuperInterface;
     output?: any;
 }
 

@@ -26,4 +26,8 @@ export class ExercisePlayerComponent implements OnInit {
   ngOnInit(): void {
   }
 
+
+  log() {
+    console.log(JSON.stringify(this.exercise));
+  }
 }
