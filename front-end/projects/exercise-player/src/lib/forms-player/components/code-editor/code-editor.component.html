@@ -1,0 +1,53 @@
+<markdown>{{ this.codeEditorData?.statement }}</markdown>
+
+<nge-monaco-editor
+  style="--editor-height: 200px"
+  (ready)="onCreateEditor($event)"
+>
+</nge-monaco-editor>
+<footer #footer>
+  <span
+    class="footer-item"
+    aria-label="Raccourcies"
+    matTooltip="Raccourcies"
+    (click)="quickCommand()"
+  >
+    <span class="footer-item-icon codicon codicon-light-bulb"></span>
+  </span>
+  <span
+    *ngIf="initialCode"
+    class="footer-item"
+    aria-label="Remettre le code initial"
+    matTooltip="Remettre le code initial"
+    (click)="reset()"
+  >
+    <span class="footer-item-icon codicon codicon-sync"></span>
+  </span>
+
+  <span class="spacer"></span>
+  <span
+    class="footer-item"
+    [attr.aria-label]="
+      'Ln ' + cursor.lineNumber + ',' + 'Col  ' + cursor.column
+    "
+    matTooltip="Aller à la ligne/colonne"
+    (click)="goToLine()"
+  >
+    Ln {{ cursor.lineNumber }}, Col {{ cursor.column }}
+  </span>
+  <span
+    class="footer-item"
+    [attr.aria-label]="'Espaces:' + this.codeEditorData?.tabSize"
+    matTooltip="Modifier l'indentation"
+    (click)="changeIndent()"
+  >
+    Espaces: {{ this.codeEditorData?.tabSize }}
+  </span>
+  <span
+    class="footer-item"
+    [attr.aria-label]="this.codeEditorData?.language"
+    matTooltip="Langage"
+  >
+    {{ this.codeEditorData?.language }}
+  </span>
+</footer>

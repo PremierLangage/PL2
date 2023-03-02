@@ -22,16 +22,18 @@
     "@angular/router": "~13.2.0",
     "@ant-design/icons-angular": "^13.1.0",
     "@cisstech/nge": "^13.1.5",
+    "@ngx-formly/core": "^6.0.0",
+    "@ngx-formly/ng-zorro-antd": "^6.0.0",
     "ang-jsoneditor": "^1.10.5",
     "animate.css": "^4.1.1",
+    "mathquill": "^0.10.1-a",
     "monaco-editor": "^0.30.1",
     "ng-zorro-antd": "^13.3.2",
+    "ngx-markdown": "^13.1.0",
+    "ngx-mathquill": "^2.1.5",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
-    "zone.js": "~0.11.4",
-    "ngx-markdown": "^13.1.0",
-    "@ngx-formly/core": "^6.0.0",
-    "@ngx-formly/ng-zorro-antd": "^6.0.0"
+    "zone.js": "~0.11.4"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~13.2.0",

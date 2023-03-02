@@ -1,0 +1,12 @@
+<ng-container *ngIf="this.formlyformData?.statement">
+  <markdown>{{ this.formlyformData?.statement }}</markdown>
+</ng-container>
+
+<form [formGroup]="form" (ngSubmit)="onSubmit(output)">
+  <formly-form
+    [form]="form"
+    [fields]="formlyformData?.fields ?? []"
+    [options]="options"
+    [model]="this.output"
+  ></formly-form>
+</form>
