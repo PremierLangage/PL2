@@ -19,12 +19,14 @@ import { InputBoxModule } from "./components/input-box/input-box.module";
 import { NzDividerModule } from "ng-zorro-antd/divider";
 import { CodeEditorModule } from "./components/code-editor/code-editor.module";
 import { FormlyformModule } from "./components/formlyform/formlyform.module";
+// import { MathLiveModule } from "./components/math-live/math-live.module";
 
 const FORMS_DECLARATIONS = [
     RadioGroupModule,
     InputBoxModule,
     CodeEditorModule,
     FormlyformModule,
+    // MathLiveModule
 ];
 
 @NgModule({

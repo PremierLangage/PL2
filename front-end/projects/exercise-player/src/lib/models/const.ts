@@ -18,6 +18,13 @@ export const CExercise : Exercise = {
     statement: "### Markdown works!\nCan establish *styled* text easely !",
     formArray : [
         {
+            selector: 'mathlive',
+            form : {
+                disabled: false,
+                statement: "## Test mathquill",
+            }
+        },
+        {
             selector: 'radioGroup',
             form: {
                 disabled: false,
@@ -162,7 +169,7 @@ export const CExercise : Exercise = {
     ],
 
     displayData: {
-        templateSelector: "tab"
+        templateSelector: "default"
     },
 
     tags : [
