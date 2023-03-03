@@ -55,7 +55,8 @@ import { NzMenuModule } from 'ng-zorro-antd/menu';
     NzMenuModule
   ],
   exports: [
-    ExercisePlayerComponent
+    ExercisePlayerComponent,
+    EpLayoutProviderComponent
   ]
 })
 export class ExercisePlayerModule { }

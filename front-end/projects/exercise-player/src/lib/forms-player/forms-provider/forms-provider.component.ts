@@ -1,5 +1,5 @@
 import { Component, Input, ViewChild } from '@angular/core';
-import { FormSuperClass } from 'dist/exercise-player/lib/models/exercise';
+import { FormSuperInterface } from '../../models/exercise';
 import { Exercise } from '../../models/exercise';
 
 
@@ -12,5 +12,5 @@ import { Exercise } from '../../models/exercise';
 })
 export class FormsProviderComponent {
   @Input() exercise?: Exercise;
-  @ViewChild('child') formComponent?: FormSuperClass;
+  @ViewChild('child') formComponent?: FormSuperInterface;
 }

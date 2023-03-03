@@ -17,6 +17,21 @@ export interface formState {
     output?: any;
 };
 
+
+export interface OldExercise {
+    id : string,
+    title: string,
+    author: string,
+    version: string,
+    statement : markdownString,
+    formState : formState;
+
+    displayData : {
+        templateSelector: string;
+    }
+    tags : Array<string>;
+};
+
 export interface Exercise {
     id : string,
     title: string,
